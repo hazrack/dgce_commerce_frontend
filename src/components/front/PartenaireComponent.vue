@@ -1,0 +1,52 @@
+<template>
+  <div class="partenaire-component">
+    <div class="container">
+      <div class="p-4">
+        <div class="partnaire-central">
+          <div v-for="(step, index) in partenaireInfos" :key="index" class="logo-central-item">
+            <div class="logo-img-block">
+              <img :src="step.image" class="logo-img-simple" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      partenaireInfos: [
+        { image: new URL('../../assets/images/logo_export_cm.png', import.meta.url).href },
+        { image: new URL('../../assets/images/agence_pql.png', import.meta.url).href },
+        { image: new URL('../../assets/images/epcci.jpg', import.meta.url).href },
+        { image: new URL('../../assets/images/copv.jpg', import.meta.url).href },
+      ]
+    }
+  }
+}
+</script>
+
+
+<style lang="scss" scoped>
+
+.partenaire-component {
+  background: #f8f9fa; // Fond gris clair pour faire ressortir les logos
+
+  .partnaire-central {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .logo-central-item {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+  }
+
+  
+}
+</style>

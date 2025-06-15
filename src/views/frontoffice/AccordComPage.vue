@@ -785,7 +785,7 @@ export default {
 <style lang="scss" scoped>
 .suffix-clicked {
   font-style: italic;
-  font-weight: bold;
+  font-weight: bold !important;
 }
 
 .l-map {

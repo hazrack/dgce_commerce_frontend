@@ -102,11 +102,23 @@
     </div>
 
     <div class="area-form">
-      <b-modal id="modal-global-form" v-model="showFormModal">
+      <b-modal id="modal-global-form" hide-footer v-model="showFormModal">
         <template #header>
+                            <div class="d-flex justify-content-between w-100">
+              <div>
+
           <p class="suffix-clicked">
             <span>Espace Accord {{ clickedAgreementForm }}</span>
           </p>
+          </div>
+
+
+          <div>
+                      <span class="close-modal-icon" @click="showFormModal=false" >
+                        <i class="bi bi-x-lg"></i>
+                      </span>
+                    </div>
+                 </div> 
         </template>
         <div class="espace-formulaire">
           <FormGlobalComponent
@@ -120,8 +132,10 @@
       </b-modal>
     </div>
 
-    <b-modal id="modal-multi-flux" v-model="showDetailsModal">
+    <b-modal id="modal-multi-flux" hide-footer  v-model="showDetailsModal">
       <template #header>
+        <div class="d-flex justify-content-between w-100">
+                    <div>
         <p class="suffix-clicked">
           <span>Accords {{ currentAccord.typeOfAgreement }} / </span>
           <span v-if="currentAccord.organizationLabel">{{
@@ -131,6 +145,13 @@
             currentAccord.countryLabel
           }}</span>
         </p>
+        </div>
+         <div>
+                      <span class="close-modal-icon" @click="showDetailsModal=false" >
+                        <i class="bi bi-x-lg"></i>
+                      </span>
+                    </div>
+                  </div>
       </template>
       <div class="mx-3">
         <div class="editing-block">
@@ -208,6 +229,7 @@
     </b-modal>
 
     <ConfirmDeleteModal
+      v-model:show="showDeleteModal"
       :item-id="deleteItemId"
       @confirm-delete="handleDelete"
     />
@@ -244,6 +266,7 @@ export default {
       loaderMessage: "Chargement...",
       userTextBtn: "Soumettre l'accord ",
       showFormModal: false,
+      showDeleteModal:false,
       deleteItemId: 0,
       clickedAgreementForm: "",
       filteredQuery: "",
@@ -461,7 +484,7 @@ export default {
 
     deleteSelected(item) {
       this.deleteItemId = item.id;
-      this.$bvModal.show("confirm-delete-modal");
+      this.showDeleteModal = true;
     },
 
     handleDelete(id) {

@@ -182,6 +182,20 @@ export default {
     },
 
     handleFormSubmit(datas) {
+      console.log(datas);
+
+      if (!datas || Object.keys(datas).length === 0) {
+        Swal.fire({
+          title: "Fichier requis",
+          text: "Veuillez ajouter un fichier .accdb avant de continuer.",
+          icon: "warning",
+          timer: 2500,
+          showConfirmButton: false,
+        });
+
+        return;
+      }
+
       this.showSpinner = true;
       this.showExchangeForm = false;
       this.loaderMessage = "Chargement des flux encours...";
@@ -215,6 +229,7 @@ export default {
       });
 
       this.isFileForm = false;
+      this.defaultValues = {};
     },
   },
 

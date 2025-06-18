@@ -132,9 +132,11 @@
       </div>
     </b-modal>
 
-    <ConfirmDeleteModal
-      :item-id="deleteItemId"
-      @confirm-delete="handleDelete"
+    <ConfirmDeleteModal 
+  :item-id="deleteItemId"
+  :show="showDeleteModal" 
+  @confirm-delete="handleDelete"
+  @update:show="val => showDeleteModal = val"
     />
 
     <LoaderBlockComponent :isLoading="showSpinner" :message="loaderMessage" />
@@ -162,6 +164,7 @@ export default {
       userTextBtn: "",
       loaderMessage: "Chargement...",
       deleteItemId: 0,
+      showDeleteModal:false,
       editMode: false,
       packflux: {},
       currentClick: {},
@@ -211,7 +214,7 @@ export default {
     handleDeleteOrgaClick(item) {
       console.log("delete area ", item);
       this.deleteItemId = item.id;
-      this.$bvModal.show("confirm-delete-modal");
+      this.showDeleteModal = true;
       this.editMode = false;
     },
 
@@ -288,6 +291,7 @@ export default {
           this.$store.dispatch("getListOfOrganization");
         },
       });
+
     },
 
     initOrganisationForm() {

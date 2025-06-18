@@ -10,8 +10,9 @@
         <div class="link-user-info">
           <p class="user-info">
             <span class="mx-2"> </span>
-            Admin
-            {{ retLogUser.username }} .
+            {{ retLogUser.roles }} 
+            {{ retLogUser.firstname }} 
+            {{ retLogUser.name }} .
           </p>
 
           <div class="user-img" @click="showDropdown = !showDropdown">
@@ -51,7 +52,18 @@ export default {
     ...mapGetters(["retLogUser"]),
   },
 
+   watch: {
+    retLogUser: {
+      immediate: true, // Exécute dès le montage
+      handler(newValue) {
+        this.check();
+      },
+    },},
+
   methods: {
+    check(){
+      console.log("user man ",this.retLogUser)
+    },
     logoutUser() {
       this.userDropClick = true;
       setTimeout(() => {

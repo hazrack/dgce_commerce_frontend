@@ -19,12 +19,21 @@
     </div>
 
     <div class="area-form">
-      <b-modal id="user-modal-form" v-model="showUserForm">
+      <b-modal id="user-modal-form" hide-footer v-model="showUserForm">
         <template #header>
-          <p class="suffix-clicked">
-            <span v-if="!editMode">Nouveau utilisateur </span>
-            <span v-else>Modification utilisateur </span>
-          </p>
+          <div class="d-flex justify-content-between w-100">
+            <div>
+              <p class="suffix-clicked">
+                <span v-if="!editMode">Nouveau utilisateur </span>
+                <span v-else>Modification utilisateur </span>
+              </p>
+            </div>
+            <div>
+              <span class="close-modal-icon" @click="showUserForm = false">
+                <i class="bi bi-x-lg"></i>
+              </span>
+            </div>
+          </div>
         </template>
         <div class="espace-formulaire mt-5 mb-4">
           <FormGlobalComponent
@@ -49,7 +58,9 @@
 
     <ConfirmDeleteModal
       :item-id="deleteItemId"
+      :show="showDeleteModal"
       @confirm-delete="handleDelete"
+      @update:show="(val) => (showDeleteModal = val)"
     />
 
     <LoaderBlockComponent :isLoading="showSpinner" :message="loaderMessage" />
@@ -76,6 +87,7 @@ export default {
       editMode: false,
       showSpinner: false,
       deleteItemId: 0,
+      showDeleteModal: false,
       defaultValues: {},
       currentPage: 0,
       totalPages: 1,
@@ -113,7 +125,11 @@ export default {
     retlistOfUsers: {
       immediate: true, // Exécute dès le montage
       handler(newValue) {
-        if (newValue && Array.isArray(newValue.datas) && newValue.datas.length > 0) {
+        if (
+          newValue &&
+          Array.isArray(newValue.datas) &&
+          newValue.datas.length > 0
+        ) {
           this.initListOfUsersBlock();
         }
       },
@@ -121,10 +137,7 @@ export default {
   },
 
   methods: {
-    
-
     initListOfUsersBlock() {
-      console.log("Les elements simule ", this.retlistOfUsers.datas);
       this.currentPage = this.retlistOfUsers.currentPage;
       this.pageSize = this.retlistOfUsers.pageSize;
       this.totalItems = this.retlistOfUsers.totalItems;
@@ -151,8 +164,8 @@ export default {
         url,
         data: formData,
         onSuccess: () => {
-        this.$store.dispatch("getListOfUsers", { page: 0, size: 10 });
-        }
+          this.$store.dispatch("getListOfUsers", { page: 0, size: 10 });
+        },
       });
     },
 
@@ -204,7 +217,10 @@ export default {
 
     checkToPage(page) {
       this.currentPage = page;
-      this.$store.dispatch("getListOfUsers", { page: this.currentPage, size: 10 });
+      this.$store.dispatch("getListOfUsers", {
+        page: this.currentPage,
+        size: 10,
+      });
     },
 
     fillEditInputPacksData(item) {
@@ -217,7 +233,7 @@ export default {
 
     deleteSelected(item) {
       this.deleteItemId = item.id;
-      this.$bvModal.show("confirm-delete-modal");
+      this.showDeleteModal = true;
     },
 
     handleDelete(id) {
@@ -227,10 +243,11 @@ export default {
         url: `/users/${id}`,
         onSuccess: () => {
           this.$store.dispatch("getListOfUsers", { page: 0, size: 10 });
-        }
+        },
       });
+
+      this.showDeleteModal = false;
     },
-   
 
     initEditUserForm() {
       this.formFields = [

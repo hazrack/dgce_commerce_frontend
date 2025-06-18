@@ -73,7 +73,9 @@
 
     <ConfirmDeleteModal
       :item-id="deleteItemId"
+      :show="showDeleteModal" 
       @confirm-delete="handleDelete"
+      @update:show="val => showDeleteModal = val"
     />
 
     <LoaderBlockComponent :isLoading="showSpinner" :message="loaderMessage" />
@@ -85,8 +87,6 @@ import FormGlobalComponent from "../../components/front/FormGlobalComponent.vue"
 import PaginnationComponent from "../../components/front/PaginnationComponent.vue";
 import SearchInputComponent from "../../components/front/SearchInputComponent.vue";
 import { mapGetters } from "vuex";
-import axios from "../../services/index.js";
-import Swal from "sweetalert2";
 import actionMixin from "../../mixins/actionMixin.js";
 import ConfirmDeleteModal from "../../components/front/ConfirmDeleteModal.vue";
 import LoaderBlockComponent from "../../components/front/LoaderBlockComponent.vue";
@@ -101,6 +101,7 @@ export default {
       showSpinner: false,
       userTextBtn: "Soumettre le pays ",
       deleteItemId: 0,
+      showDeleteModal:false,
       loaderMessage: "Chargement...",
       defaultValues: {},
       currentPage: 0,
@@ -189,7 +190,7 @@ export default {
 
     deleteSelected(item) {
       this.deleteItemId = item.id;
-      this.$bvModal.show("confirm-delete-modal");
+      this.showDeleteModal = true;
     },
 
     handleDelete(id) {
@@ -200,6 +201,8 @@ export default {
           this.$store.dispatch("getListOfOmc", { page: 0, size: 12 });
         },
       });
+
+      this.showDeleteModal = false;
     },
 
     handleNewOmc() {

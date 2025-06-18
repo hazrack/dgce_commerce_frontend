@@ -29,10 +29,10 @@
             </div>
 
             <div class="editing-block">
-              <!-- <button class="edite-btn" @click="handleEditClick(product)">
+              <button class="edite-btn" @click="handleEditClick(product)">
                 <span><i class="bi bi-pencil-square"></i> Modifier </span>
               </button>
-              <button class="delete-btn" @click="deleteSelected(product)">
+              <!--  <button class="delete-btn" @click="deleteSelected(product)">
                 <span><i class="bi bi-trash"></i> Supprimer </span>
               </button> -->
             </div>
@@ -41,17 +41,27 @@
       </div>
     </div>
 
-    <NoResultsMessageComponent :message="'Aucun produit trouvé pour cette recherche'" v-if="listOfProduct.length === 0" />
-
-
+    <NoResultsMessageComponent
+      :message="'Aucun produit trouvé pour cette recherche'"
+      v-if="listOfProduct.length === 0"
+    />
 
     <div class="area-form">
-      <b-modal id="modal-global-form" v-model="showProductForm">
+      <b-modal id="modal-global-form" hide-footer v-model="showProductForm">
         <template #header>
-          <p class="suffix-clicked">
-            <span v-if="!editMode">Création</span>
-            <span v-else>Edition</span> d'un produit
-          </p>
+          <div class="d-flex justify-content-between w-100">
+            <div>
+              <p class="suffix-clicked">
+                <span v-if="!editMode">Création</span>
+                <span v-else>Edition</span> d'un produit
+              </p>
+            </div>
+            <div>
+              <span class="close-modal-icon" @click="showProductForm = false">
+                <i class="bi bi-x-lg"></i>
+              </span>
+            </div>
+          </div>
         </template>
         <div class="espace-formulaire">
           <FormGlobalComponent
@@ -64,24 +74,23 @@
       </b-modal>
     </div>
 
-    <div class="my-4 pt-4 ">
-      <PaginnationComponent 
-            :current-page="currentPage"
-            :total-pages="totalPages"
-            :maxvisible-pages="maxVisiblePages"
-            @page-change="checkToPage"
-          />
+    <div class="my-4 pt-4">
+      <PaginnationComponent
+        :current-page="currentPage"
+        :total-pages="totalPages"
+        :maxvisible-pages="maxVisiblePages"
+        @page-change="checkToPage"
+      />
     </div>
 
-    <ConfirmDeleteModal
+    <!-- <ConfirmDeleteModal
       :item-id="deleteItemId"
+      :show="showDeleteModal" 
       @confirm-delete="handleDelete"
-    />
+      @update:show="val => showDeleteModal = val"
+    /> -->
 
     <LoaderBlockComponent :isLoading="showSpinner" />
-  
-
-
   </div>
 </template>
 
@@ -100,18 +109,19 @@ import NoResultsMessageComponent from "../../components/front/NoResultsMessageCo
 export default {
   data() {
     return {
-      formFields:[],
-      showProductForm:false,
+      formFields: [],
+      showProductForm: false,
       showSpinner: false,
       userTextBtn: "Soumettre le produit ",
-      editMode:false,
+      editMode: false,
+      showDeleteModal: false,
       deleteItemId: 0,
       defaultValues: {},
-      currentPage: 0, 
-      totalPages: 1, 
+      currentPage: 0,
+      totalPages: 1,
       maxVisiblePages: 5,
-      packflux:{},
-      listOfProduct: []
+      packflux: {},
+      listOfProduct: [],
     };
   },
 
@@ -123,20 +133,22 @@ export default {
     PaginnationComponent,
     ConfirmDeleteModal,
     LoaderBlockComponent,
-    NoResultsMessageComponent
+    NoResultsMessageComponent,
   },
-  
+
   computed: {
-    ...mapGetters([
-      "retlistOfProducts",
-    ]),
+    ...mapGetters(["retlistOfProducts"]),
   },
 
   watch: {
     retlistOfProducts: {
       immediate: true,
       handler(newValue) {
-        if (newValue && Array.isArray(newValue.datas) && newValue.datas.length > 0) {
+        if (
+          newValue &&
+          Array.isArray(newValue.datas) &&
+          newValue.datas.length > 0
+        ) {
           this.initListOfProductsBlock();
         } else {
           this.listOfProduct = [];
@@ -145,9 +157,8 @@ export default {
     },
   },
 
- 
   methods: {
-    initListOfProductsBlock(){
+    initListOfProductsBlock() {
       console.log("Les produis ", this.retlistOfProducts);
       this.currentPage = this.retlistOfProducts.currentPage;
       this.totalPages = this.retlistOfProducts.totalPages;
@@ -158,16 +169,13 @@ export default {
       console.log("la longueur du query :", query.length);
 
       if (query.length >= 2) {
-        this.$store.dispatch("SearchListOfProduct", { value:query});
+        this.$store.dispatch("SearchListOfProduct", { value: query });
       }
 
       if (query.length == 0) {
         this.$store.dispatch("getListOfProducts", { page: 0, size: 12 });
       }
-
     },
-
-  
 
     handleFormSubmit(formData) {
       console.log("LA SOUSCRIPTION ", formData);
@@ -185,7 +193,6 @@ export default {
       }
 
       this.pushToSubmitDatas({ url, data: formData, method });
-
     },
 
     pushToSubmitDatas({ url, data, method }) {
@@ -227,25 +234,25 @@ export default {
 
     handleEditClick(item) {
       console.log("edit area", item);
-      this.defaultValues = {...item};
+      this.defaultValues = { ...item };
       this.editMode = true;
       this.initProductForm();
     },
 
     deleteSelected(item) {
       this.deleteItemId = item.id;
-      this.$bvModal.show("confirm-delete-modal");
+      this.showDeleteModal = true;
     },
 
-    handleDelete(id) {
-      this.processRequest({
-        method: "delete",
-        url: `/products/${id}`,
-        onSuccess: () => {
-          this.$store.dispatch("getListOfProducts", { page: 0, size: 12 });
-        },
-      });
-    },
+    // handleDelete(id) {
+    //   this.processRequest({
+    //     method: "delete",
+    //     url: `/products/${id}`,
+    //     onSuccess: () => {
+    //       this.$store.dispatch("getListOfProducts", { page: 0, size: 12 });
+    //     },
+    //   });
+    // },
 
     handleNewProduct() {
       this.defaultValues = {};
@@ -254,9 +261,8 @@ export default {
     },
 
     initProductForm() {
-
       this.formFields = [
-      {
+        {
           label: "Libellé ",
           type: "text",
           required: true,
@@ -274,18 +280,18 @@ export default {
         size: 12,
       });
     },
-
   },
 
   mounted() {
     this.showSpinner = true;
-    this.$store.dispatch("getListOfProducts", { page: 0, size: 12 }).then(() => {
-      this.$nextTick(() => {
-        this.showSpinner = false;
+    this.$store
+      .dispatch("getListOfProducts", { page: 0, size: 12 })
+      .then(() => {
+        this.$nextTick(() => {
+          this.showSpinner = false;
+        });
       });
-    });
   },
-
 };
 </script>
 
@@ -317,8 +323,8 @@ export default {
   }
 }
 
-.country-list{
-  .line-block-text{
+.country-list {
+  .line-block-text {
     padding: 10px 20px;
   }
 }

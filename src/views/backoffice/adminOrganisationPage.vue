@@ -133,10 +133,10 @@
     </b-modal>
 
     <ConfirmDeleteModal 
-  :item-id="deleteItemId"
-  :show="showDeleteModal" 
-  @confirm-delete="handleDelete"
-  @update:show="val => showDeleteModal = val"
+      :item-id="deleteItemId"
+      :show="showDeleteModal" 
+      @confirm-delete="handleDelete"
+      @update:show="val => showDeleteModal = val"
     />
 
     <LoaderBlockComponent :isLoading="showSpinner" :message="loaderMessage" />
@@ -291,6 +291,8 @@ export default {
           this.$store.dispatch("getListOfOrganization");
         },
       });
+
+      this.showDeleteModal = false;
 
     },
 

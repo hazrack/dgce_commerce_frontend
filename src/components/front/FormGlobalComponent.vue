@@ -28,15 +28,13 @@
         </div>
 
         <div class="simple-input" v-if="showFile">
-          <template>
-            <input
-              type="file"
-              id="image"
-              @change="onFileChange"
-              accept=".pdf,application/pdf,image/*,.accdb"
-              ref="serviceFileInput"
-            />
-          </template>
+          <input
+            type="file"
+            id="image"
+            @change="onFileChange"
+            accept=".pdf,application/pdf,image/*,.accdb"
+            ref="serviceFileInput"
+          />
           <span for="image">Document </span>
           <i></i>
         </div>
@@ -64,6 +62,10 @@ export default {
       default: () => ({}),
     },
     showFile: {
+      type: Boolean,
+      default: false,
+    },
+    requireFile: {
       type: Boolean,
       default: false,
     },
@@ -145,9 +147,10 @@ export default {
       return isValid;
     },
 
-    handleSubmit() {
+    handleSubmit(e) {
+      e.preventDefault();
       if (this.validateForm()) {
-        this.$emit("submit", this.formData);
+        this.$emit("form-submitted", this.formData);
       } else {
         Swal.fire({
           title: "Données invalides",

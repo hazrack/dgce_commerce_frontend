@@ -11,7 +11,7 @@
       </div>
     </div>
 
-    <div class="country-list">
+    <div class="country-list pb-3">
       <div>
         <div
           class="line-block-text my-3"
@@ -45,8 +45,10 @@
     </div>
 
     <div class="area-form">
-      <b-modal id="modal-global-form" v-model="showOrgaFormModal">
+      <b-modal id="modal-global-form" hide-footer v-model="showOrgaFormModal">
         <template #header>
+          <div class="d-flex justify-content-between w-100">
+            <div>
           <div class="suffix-clicked">
             <p v-if="!isCountryForm">
               <span v-if="!editMode">Création organisation</span>
@@ -59,6 +61,15 @@
               </span>
             </p>
           </div>
+        </div>
+
+        <div>
+                      <span class="close-modal-icon" @click="showOrgaFormModal=false" >
+                        <i class="bi bi-x-lg"></i>
+                      </span>
+                    </div>
+                  </div>
+
         </template>
         <div class="espace-formulaire">
           <FormGlobalComponent
@@ -66,19 +77,31 @@
             :showFile="false"
             :initialData="defaultValues"
             :buttonText="userTextBtn"
-            @submit="handleFormSubmit"
+            @form-submitted="handleFormSubmit"
           />
         </div>
       </b-modal>
     </div>
 
-    <b-modal id="modal-global-form" v-model="showDetailsModal">
+    <b-modal id="modal-global-form" hide-footer v-model="showDetailsModal">
       <template #header>
+        <div class="d-flex justify-content-between w-100">
+                    <div>
+
         <p class="suffix-clicked">
           <span class="label-orange shadow-title">
             {{ currentClick.label }}
           </span>
         </p>
+      </div>
+
+      <div>
+                      <span class="close-modal-icon" @click="showDetailsModal=false" >
+                        <i class="bi bi-x-lg"></i>
+                      </span>
+                    </div>
+                    </div>
+
       </template>
       <div class="mx-3">
         <div class="editing-block">
@@ -122,8 +145,6 @@
 import FormGlobalComponent from "../../components/front/FormGlobalComponent.vue";
 import SearchInputComponent from "../../components/front/SearchInputComponent.vue";
 import { mapGetters } from "vuex";
-import axios from "../../services/index.js";
-import Swal from "sweetalert2";
 import actionMixin from "../../mixins/actionMixin.js";
 import ConfirmDeleteModal from "../../components/front/ConfirmDeleteModal.vue";
 import LoaderBlockComponent from "../../components/front/LoaderBlockComponent.vue";

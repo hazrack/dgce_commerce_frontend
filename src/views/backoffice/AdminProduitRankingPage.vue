@@ -84,7 +84,7 @@ export default {
       switchedValue: "",
       switchOptions: [
         { id: "global", label: "Basic", value: "global" },
-        { id: "product", label: "Par Produit", value: "product" },
+        // { id: "product", label: "Par Produit", value: "product" },
         { id: "pays", label: "Par Pays", value: "pays" },
       ],
     };

@@ -58,7 +58,7 @@
             :fields="formFields"
             :showFile="false"
             :initialData="defaultValues"
-            @submit="handleFormSubmit"
+            @form-submitted="handleFormSubmit"
           />
         </div>
       </b-modal>

@@ -848,4 +848,9 @@ p {
     gap: 16px; // Espacement entre les éléments
   }
 }
+
+.suffix-clicked {
+  font-style: italic;
+  font-weight: bold !important;
+}
 </style>

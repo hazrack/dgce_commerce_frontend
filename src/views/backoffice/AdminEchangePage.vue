@@ -10,9 +10,6 @@
       </div>
 
       <div class="block-action-btn mb-4">
-        <!-- <button class="btn-custom" @click="handleNewData">
-          <i class="bi bi-plus-circle"></i> Ajouter
-        </button> -->
         <button class="btn-custom" @click="handleImportdb">
           <i class="bi bi-cloud-arrow-down"></i> Charger
         </button>
@@ -30,22 +27,18 @@
         @is-more-product="checkSearchProduct"
         @field-changed="handleFieldFluxChange"
       />
-      
     </div>
     <div>
-    
       <div v-if="showSearch">
-        <SearchInputComponent :placeHolderText="'Rechercher d\'autres Produits..'" @search="performSearch" />
+        <SearchInputComponent
+          :placeHolderText="'Rechercher d\'autres Produits..'"
+          @search="performSearch"
+        />
       </div>
-
-
     </div>
 
     <div class="block-trade-table mt-3" v-if="tableData.length !== 0">
-      <TableComponent
-        :table-data="tableData"
-        :fields="tablefields"
-      />
+      <TableComponent :table-data="tableData" :fields="tablefields" />
     </div>
     <div v-else>
       <NoResultsMessageComponent :message="filterMessage" />
@@ -61,19 +54,28 @@
     </div>
 
     <div class="area-form">
-      <b-modal id="modal-global-form" v-model="showExchangeForm">
+      <b-modal id="modal-global-form" hide-footer v-model="showExchangeForm">
         <template #header>
-          <p class="suffix-clicked">
-            <span v-if="!isdbModalImport">Création de flux commercial </span>
-            <span v-else>Charger Le fichier de donnée (ACCESS DB) </span>
-          </p>
+          <div class="d-flex justify-content-between w-100">
+            <div>
+              <p class="suffix-clicked">
+                <span>Charger Le fichier de donnée (ACCESS DB) </span>
+              </p>
+            </div>
+            <div>
+              <span class="close-modal-icon" @click="showExchangeForm = false">
+                <i class="bi bi-x-lg"></i>
+              </span>
+            </div>
+          </div>
         </template>
         <div class="espace-formulaire">
           <FormGlobalComponent
             :fields="formFields"
+            :requireFile="true"
             :showFile="isFileForm"
             :initialData="defaultValues"
-            @submit="handleFormSubmit"
+            @form-submitted="handleFormSubmit"
           />
         </div>
       </b-modal>
@@ -94,12 +96,13 @@ import NoResultsMessageComponent from "../../components/front/NoResultsMessageCo
 import actionMixin from "../../mixins/actionMixin.js";
 import filterTableMixin from "../../mixins/filterTableMixin.js";
 import SearchInputComponent from "../../components/front/SearchInputComponent.vue";
+import Swal from "sweetalert2";
 
 export default {
   data() {
     return {
       isFileForm: false,
-      showSearch:false,
+      showSearch: false,
       showExchangeForm: false,
       loaderMessage: "Chargement...",
       defaultValues: {},
@@ -118,12 +121,9 @@ export default {
     NoResultsMessageComponent,
   },
 
-
   methods: {
-    
     handleNewData() {
       this.defaultValues = {};
-      this.isdbModalImport = false;
       this.isFileForm = false;
       this.initExchangeForm();
     },
@@ -133,7 +133,6 @@ export default {
 
     handleImportdb() {
       this.formFields = [];
-      this.isdbModalImport = true;
       this.isFileForm = true;
       this.showExchangeForm = true;
     },
@@ -183,8 +182,6 @@ export default {
     },
 
     handleFormSubmit(datas) {
-      // console.log("LE RETOUR ", datas);
-
       this.showSpinner = true;
       this.showExchangeForm = false;
       this.loaderMessage = "Chargement des flux encours...";
@@ -222,8 +219,7 @@ export default {
   },
 
   mounted() {
-   console.log("le premoer moutend");
-   
+    console.log("le premoer moutend");
   },
 };
 </script>
@@ -270,6 +266,4 @@ export default {
 .btn-actu {
   background: #7c7a75;
 }
-
-
 </style>

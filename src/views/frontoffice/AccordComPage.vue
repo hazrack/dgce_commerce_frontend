@@ -783,10 +783,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.suffix-clicked {
-  font-style: italic;
-  font-weight: bold !important;
-}
 
 .l-map {
   height: 100%;

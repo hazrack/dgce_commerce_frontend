@@ -126,7 +126,7 @@
             :initialData="defaultValues"
             :showFile="true"
             :buttonText="userTextBtn"
-            @submit="handleFormSubmit"
+            @form-submitted="handleFormSubmit"
           />
         </div>
       </b-modal>

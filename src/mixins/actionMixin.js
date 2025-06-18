@@ -24,6 +24,23 @@ export default {
   
       processError(error) {
         this.showSpinner = false;
+
+         if (error.response && error.response.status === 401) {
+    // Si tu utilises Vuex, déclenche une mutation globale :
+          this.$store.commit("mutLogin", false);
+          localStorage.clear();
+
+          Swal.fire({
+            title: "Session expirée",
+            text: "Votre session a expiré. Veuillez vous reconnecter.",
+            icon: "warning",
+            timer: 3000,
+            showConfirmButton: false,
+          });
+
+          return;
+        }
+
         const message =
           error.response && error.response.data && error.response.data.message
             ? error.response.data.message

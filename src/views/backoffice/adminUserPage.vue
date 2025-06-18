@@ -32,7 +32,7 @@
             :showFile="false"
             :initialData="defaultValues"
             :buttonText="userTextBtn"
-            @submit="handleFormSubmit"
+            @form-submitted="handleFormSubmit"
           />
         </div>
       </b-modal>

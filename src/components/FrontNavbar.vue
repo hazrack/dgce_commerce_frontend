@@ -38,8 +38,8 @@
       <div class="full-navbar-space px-3 py-2" >
         
 
-        <div >
-          <nav :class="isSticky ? 'bar-fixed-top' : 'bar-static-top'">
+        <div :class="isSticky ? 'bar-fixed-top' : 'bar-static-top'">
+          <nav >
             <ul class="nav">
               <li v-for="route in routes" :key="route.path" class="nav-item">
                 <router-link

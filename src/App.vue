@@ -83,6 +83,9 @@ export default {
   background-color: #fff;
 }
 
+.bm-burger-button {
+    top: 56px !important;
+  }
 .app-box-shadow-block {
   box-shadow: 0px 3px 12px #0000008c;
 }

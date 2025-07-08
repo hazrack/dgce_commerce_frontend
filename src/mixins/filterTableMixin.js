@@ -211,11 +211,15 @@ export default {
     mounted() {
         console.log("le sencde moutend");
 
+
         this.showSpinner = true;
+
+
         this.filterYear = new Date().getFullYear() - 1;
         this.initSelectFilter();
 
-        Promise.all([
+        setTimeout(() => {
+            Promise.all([
             this.$store.dispatch("getListOfCountries"),
             this.$store.dispatch("getListOfContinents"),
             this.$store.dispatch("getListOfProducts", { page: 0, size: 16 }),
@@ -229,5 +233,8 @@ export default {
                 this.showSpinner = false;
             }, 100);
         });
+        }, 1500);
+
+        
     },
 };

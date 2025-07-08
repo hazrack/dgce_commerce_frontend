@@ -261,7 +261,12 @@ export default {
   },
 
   mounted() {
-    this.loadData();
+    setTimeout(() => {
+          this.loadData();
+console.log('====================================');
+console.log("LES GENS");
+console.log('====================================');
+    }, 2000);
   },
 };
 </script>

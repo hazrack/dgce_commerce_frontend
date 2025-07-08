@@ -584,7 +584,7 @@ export default {
           label: "Veuillez selectionner un pays",
           type: "select",
           model: "paysBilalSelected",
-          required: true,
+          required: false,
           options: this.retagreemBilatMapSelect,
         },
       ];
@@ -596,7 +596,7 @@ export default {
           label: "Veuillez selectionner une organisation",
           type: "select",
           model: "orgaRegioSelected",
-          required: true,
+          required: false,
           options: this.retorgaSelectData,
         }
       ];

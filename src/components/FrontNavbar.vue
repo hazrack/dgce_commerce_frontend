@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container-fluid p-0">
+    <div v-if="showAllNav" class="container-fluid p-0">
       <div class="top-head-civ fw-bold text-light text-center py-3">
         <p >MINISTÈRE DU COMMERCE ET DE L'INDUSTRIE  _  DGCE</p>
       </div>
@@ -35,22 +35,11 @@
       </div>
 
 
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-
-
-
-
       <div class="full-navbar-space px-3 py-2" >
         
 
-        <div v-if="showAllNav">
-          <nav :class="{ 'bar-fixed-top': isSticky }">
+        <div >
+          <nav :class="isSticky ? 'bar-fixed-top' : 'bar-static-top'">
             <ul class="nav">
               <li v-for="route in routes" :key="route.path" class="nav-item">
                 <router-link
@@ -65,12 +54,27 @@
           </nav>
         </div>
 
+        <div>
+          <img
+              src="../assets/icons/amoirie-civ.png"
+              width="80"
+              class="little-img"
+              alt=""
+            />
+        </div>
+
+      </div>
+
+    </div>
 
 
-        <div v-else class="zone-small-screen">
+     <div v-if="!showAllNav" >
+        <div class="my-3 py-3 mobil-nav">
+
+          <div class="space-slide">
           <Slide left>
             <nav>
-              <ul class="nav small-screen">
+              <ul >
                 <li v-for="route in routes" :key="route.path" class="nav-item">
                   <router-link
                     :to="route.path"
@@ -83,30 +87,22 @@
               </ul>
             </nav>
           </Slide>
-        </div>
-
-
-        <div>
-          <img
+          </div>
+          <div>
+            <div>
+            <img
               src="../assets/icons/amoirie-civ.png"
-              width="80"
-              class="little-img"
+              width="100"
+              class="normal-zone-img"
               alt=""
             />
+            </div>
+          </div>
+        </div>
         </div>
 
+        </div>
 
-      </div>
-
-
-
-
-
-
-
-
-    </div>
-  </div>
 </template>
 
 <script>
@@ -330,7 +326,28 @@ export default {
 
 .zone-small-screen {
   ul.nav.small-screen {
-    display: block;
+    display: block ;
   }
 }
+
+.bar-static-top {
+  position: relative !important;
+  top: auto;
+  box-shadow: none;
+  background-color: transparent;
+
+  .active {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.mobil-nav{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+  
 </style>

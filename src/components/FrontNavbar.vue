@@ -338,8 +338,9 @@ export default {
 
   .active {
     text-decoration: none;
-    color: inherit;
+    color: #FF6B07 !important; 
   }
+  
 }
 
 .mobil-nav{

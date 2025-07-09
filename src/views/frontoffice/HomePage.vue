@@ -261,12 +261,13 @@ export default {
   },
 
   mounted() {
+    //STRUCTURE CALL
+    this.showSpinner = true;
+
     setTimeout(() => {
+          //LOAD DATA
           this.loadData();
-console.log('====================================');
-console.log("LES GENS");
-console.log('====================================');
-    }, 2000);
+    }, 1000);
   },
 };
 </script>

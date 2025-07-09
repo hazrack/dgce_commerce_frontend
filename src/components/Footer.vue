@@ -46,15 +46,14 @@
           </div>
   
           <div class="col-md-3">
-            <h5 class="footer-title">Implantation</h5>
+            <h5 class="footer-title">MISSIONS & ENGAGEMENT</h5>
             <hr class="foot-hr">
 
             <p class="footer-text">
-              Présents en Côte d'Ivoire, nous réalisons des projets de <strong>voirie, assainissement, drainage, routes et bâtiments.</strong>
-              Contactez-nous pour donner vie à vos infrastructures !
+              Présents sur tout le territoire ivoirien, nous œuvrons au développement du commerce intérieur et extérieur, à la régulation des marchés, à la promotion de la consommation locale et à la protection des consommateurs. 
             </p>
             <div class="social-icons">
-                <a href="https://www.facebook.com/profile.php?id=100063905965798" class="social-link" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="social-link" target="_blank"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
                 <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
                 <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>

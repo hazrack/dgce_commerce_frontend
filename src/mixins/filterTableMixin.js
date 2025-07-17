@@ -50,6 +50,7 @@ export default {
         retcountryTradeRankings: {
             immediate: true,
             handler(newValue) {
+                this.showSpinner = false;
                 if (newValue && Array.isArray(newValue.datas) && newValue.datas.length > 0) {
                     this.initCountryTradeTableRanking();
                 } else {
@@ -113,6 +114,7 @@ export default {
         },
 
         checkToPage(page) {
+            this.showSpinner = true;
             this.currentPage = page;
             this.fetchTradeRanking();
         },

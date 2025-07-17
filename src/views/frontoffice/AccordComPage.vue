@@ -491,6 +491,7 @@ export default {
         ) {
           this.initMultilateralAgreement();
         } else {
+          this.showSpinner = false;
           this.listOfmultiAccord = [];
         }
       },

@@ -120,8 +120,6 @@ export default {
     handler(newValue) {
       if (Array.isArray(newValue) && newValue.length > 0) {
         this.initStatsSeriesHistory();
-      } else {
-        this.loadData();
       }
     },
   },
@@ -130,11 +128,7 @@ export default {
   methods: {
     initStatsBlock() {
 
-      if (this.retglobalStats.agreementsBilateral == undefined) {
-        this.loadData();
-        return;
-      }
-
+     
       this.donutData = [
         {
           name: "BILATERAUX",

@@ -118,7 +118,8 @@ export default {
       routes: [
         { name: "Accueil", path: "/accueil" },
         { name: "Accord commerciaux", path: "/accord-commercial" },
-        { name: "Flux commerciaux", path: "/flux-commercial" }
+        { name: "Flux commerciaux", path: "/flux-commercial" },
+        { name: "Contact", path: "/contact" }
       ],
     };
   },

@@ -2,7 +2,7 @@
   <div>
     <div v-if="showAllNav" class="container-fluid p-0">
       <div class="top-head-civ fw-bold text-light text-center py-3">
-        <p >MINISTÈRE DU COMMERCE ET DE L'INDUSTRIE  _  DGCE</p>
+        <p >MINISTÈRE DU COMMERCE ET DE L'INDUSTRIE</p>
       </div>
 
       <div class="py-2">
@@ -119,6 +119,7 @@ export default {
         { name: "Accueil", path: "/accueil" },
         { name: "Accord commerciaux", path: "/accord-commercial" },
         { name: "Flux commerciaux", path: "/flux-commercial" },
+        { name: "Faqs", path: "/faq" },
         { name: "Contact", path: "/contact" }
       ],
     };

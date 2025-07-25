@@ -1,7 +1,7 @@
 <template>
   <div class="ministry-portal">
     <!-- En-tête officiel -->
-    <header class="official-header">
+    <!-- <header class="official-header">
       <div class="header-container">
         <div class="ministry-brand">
           <div class="coat-of-arms">
@@ -27,7 +27,7 @@
           <span>Union - Discipline - Travail</span>
         </div>
       </div>
-    </header>
+    </header> -->
 
     <!-- Section principale -->
     <main class="main-section">

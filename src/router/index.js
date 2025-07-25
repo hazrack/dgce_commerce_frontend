@@ -15,6 +15,7 @@ import AdminProduitRankingPage from '../views/backoffice/AdminProduitRankingPage
 import AdminUserPage from '../views/backoffice/adminUserPage.vue';
 import ContactPage from '@/views/frontoffice/ContactPage.vue';
 import FaqPage from '@/views/frontoffice/FaqPage.vue';
+import CooperationPage from '@/views/frontoffice/CooperationPage.vue';
 
 const routes = [
   { path: '/', redirect: '/accueil', meta: { guest: true } },
@@ -30,6 +31,7 @@ const routes = [
   { path: '/administration/utilisateurs', component: AdminUserPage, name: 'user-page', meta: { title: 'Espace Utilisateur', requiresAuth: true } },
   { path: '/accord-commercial', component: AccordComPage, name: 'Accord Commercial', meta: { title: 'Commerciaux', guest: true } },
   { path: '/flux-commercial', component: FluxComPage, name: 'Flux Commercial', meta: { title: 'Flux Commerciaul', guest: true } },
+  { path: '/point-cooperations', component: CooperationPage, name: 'Point Cooperation', meta: { title: 'Point de Cooperation', guest: true } },
   { path: '/faq', component: FaqPage, name: 'Faqs', meta: { title: 'Foire aux questions', guest: true } },
   { path: '/contact', component: ContactPage, name: 'Contact', meta: { title: 'Nous Contacter', guest: true } },
   { path: '/:pathMatch(.*)*', redirect: '/accueil', meta: { guest: true } }, // remplace path: '*'

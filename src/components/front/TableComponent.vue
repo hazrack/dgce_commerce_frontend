@@ -36,6 +36,8 @@
         {{ addSeparatorNumber(data.value) }}
       </template>
 
+      
+
       <template #cell(balance)="data">
         <div :class="{'deficit': isDeficit(data.item), 'excedent': !isDeficit(data.item)}">
           <p class="balance-text"> {{ calculateBalance(data.item) }} </p>
@@ -46,6 +48,14 @@
         {{ data.item.roles }}
       </template>
 
+      
+      <template #cell(documentUrl)="data">
+        <div class="action-btn">
+            <button class="btn-action edit" @click="$emit('downloadCoopec', data.item.documentUrl)">
+            <i class="bi bi-arrow-down"></i>
+          </button>
+        </div>
+      </template>
 
       <template #cell(action)="data">
         <div class="action-btn" v-if="loginUserRole == 'admin'">

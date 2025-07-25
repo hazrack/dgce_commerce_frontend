@@ -1,156 +1,328 @@
 <template>
-  <div class="detail-servicepage-space">
-    <div class="home-services-block">
-      <div class="container my-5">
-        <div class="row">
-          <div class="col-md-3 mt-4">
-            <SideTitleComponent
-              :items="sideComTitleList"
-              @item-selected="handleSideTitleSelection"
-            />
-          </div>
+  <div>
+    <UnderNavComponent />
 
-          <div class="col-md-9 mt-4">
-            <div v-if="!showMultilateralBlock">
-              <div class="w-50">
-                <FormComponent
-                  :fields="selectAccordDatas"
-                  :initial-values="packs"
-                  @field-changed="handleFieldChange"
-                />
-              </div>
-
-              <div class="my-4">
-                <l-map
-                  :zoom="2"
-                  :center="[29, 0]"
-                  style="height: 500px; width: 100%"
-                >
-                  <l-tile-layer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    attribution="&copy; OpenStreetMap contributors"
-                  />
-
-                  <l-marker
-                    v-for="(marker, index) in markers"
-                    :key="
-                      index +
-                      '-' +
-                      (currentClick === marker.id ? 'green' : 'orange')
-                    "
-                    :lat-lng="[marker.lat, marker.lng]"
-                    :icon="
-                      getIcon(currentClick === marker.id ? 'green' : 'orange')
-                    "
-                  >
-                    <LPopup>
-                      <div
-                        class="info-marque text-center"
-                        @click="checkMarkerDetail(marker)"
-                      >
-                        <p>{{ marker.label }}</p>
-                        <p role="button" class="label-orange">voir plus -></p>
-                      </div>
-                    </LPopup>
-                  </l-marker>
-                </l-map>
-              </div>
+    <div class="detail-servicepage-space">
+      <div class="home-services-block">
+        <div class="container my-5">
+          <div class="row">
+            <div class="col-md-3 mt-4">
+              <SideTitleComponent
+                :items="sideComTitleList"
+                @item-selected="handleSideTitleSelection"
+              />
             </div>
 
-            <div v-else>
-              <!--  -->
-              <!--  -->
-              <!--  -->
-              <!-- MUTILATERAL -->
-
-              <div
-                class="top-multi-block-info d-flex align-items-center justify-content-end"
-              >
-                <!-- <SearchInputComponent @search="performSearch" /> -->
-
-                <SwitchBlockComponent
-                  :options="switchOptions"
-                  @switchValue="toSwitchedCountry"
-                />
-              </div>
-
-              <div class="overflow-scroll-block multi-block-size">
-                <div v-if="!isSwitchCountry">
-                  <div
-                    class="line-block-text my-3"
-                    v-for="(accord, index) in listOfmultiAccord"
-                    :key="index"
-                    >
-                    <div
-                      class="line-title d-flex align-items-center justify-content-between"
-                    >
-                      <p>
-                        {{
-                          accord.title.length > 70
-                            ? accord.title.substring(0, 90) + "..."
-                            : accord.title
-                        }}
-                        
-                      </p>
-
-                      <span
-                        class="icon-arrow custom-icon-space"
-                        @click="seeAboutMultiAccord(accord)"
-                      >
-                        <i class="bi bi-arrow-right"></i>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div v-else>
-                  <div
-                    class="line-block-text my-3"
-                    v-for="(country, index) in listOfCountry"
-                    :key="index"
-                  >
-                    <div
-                      class="line-title d-flex align-items-center justify-content-between"
-                    >
-                      <p>
-                        {{ country.countryLabel }}
-                      </p>
-
-                      <p>Membre depuis {{ country.year }}</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="pt-4">
-                  <PaginnationComponent
-                    :current-page="currentPage"
-                    :total-pages="totalPages"
-                    :maxvisible-pages="maxVisiblePages"
-                    @page-change="checkToPage"
+            <div class="col-md-9 mt-4">
+              <div v-if="!showMultilateralBlock">
+                <div class="w-50">
+                  <FormComponent
+                    :fields="selectAccordDatas"
+                    :initial-values="packs"
+                    @field-changed="handleFieldChange"
                   />
                 </div>
 
+                <div class="my-4">
+                  <l-map
+                    :zoom="2"
+                    :center="[29, 0]"
+                    style="height: 500px; width: 100%"
+                  >
+                    <l-tile-layer
+                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                      attribution="&copy; OpenStreetMap contributors"
+                    />
+
+                    <l-marker
+                      v-for="(marker, index) in markers"
+                      :key="
+                        index +
+                        '-' +
+                        (currentClick === marker.id ? 'green' : 'orange')
+                      "
+                      :lat-lng="[marker.lat, marker.lng]"
+                      :icon="
+                        getIcon(currentClick === marker.id ? 'green' : 'orange')
+                      "
+                    >
+                      <LPopup>
+                        <div
+                          class="info-marque text-center"
+                          @click="checkMarkerDetail(marker)"
+                        >
+                          <p>{{ marker.label }}</p>
+                          <p role="button" class="label-orange">voir plus -></p>
+                        </div>
+                      </LPopup>
+                    </l-marker>
+                  </l-map>
+                </div>
               </div>
 
-              <b-modal id="modal-multi-flux" hide-footer v-model="showMultilateralModal">
+              <div v-else>
+                <!--  -->
+                <!--  -->
+                <!--  -->
+                <!-- MUTILATERAL -->
+
+                <div
+                  class="top-multi-block-info d-flex align-items-center justify-content-end"
+                >
+                  <!-- <SearchInputComponent @search="performSearch" /> -->
+
+                  <SwitchBlockComponent
+                    :options="switchOptions"
+                    @switchValue="toSwitchedCountry"
+                  />
+                </div>
+
+                <div class="overflow-scroll-block multi-block-size">
+                  <div v-if="!isSwitchCountry">
+                    <div
+                      class="line-block-text my-3"
+                      v-for="(accord, index) in listOfmultiAccord"
+                      :key="index"
+                    >
+                      <div
+                        class="line-title d-flex align-items-center justify-content-between"
+                      >
+                        <p>
+                          {{
+                            accord.title.length > 70
+                              ? accord.title.substring(0, 90) + "..."
+                              : accord.title
+                          }}
+                        </p>
+
+                        <span
+                          class="icon-arrow custom-icon-space"
+                          @click="seeAboutMultiAccord(accord)"
+                        >
+                          <i class="bi bi-arrow-right"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div v-else>
+                    <div
+                      class="line-block-text my-3"
+                      v-for="(country, index) in listOfCountry"
+                      :key="index"
+                    >
+                      <div
+                        class="line-title d-flex align-items-center justify-content-between"
+                      >
+                        <p>
+                          {{ country.countryLabel }}
+                        </p>
+
+                        <p>Membre depuis {{ country.year }}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pt-4">
+                    <PaginnationComponent
+                      :current-page="currentPage"
+                      :total-pages="totalPages"
+                      :maxvisible-pages="maxVisiblePages"
+                      @page-change="checkToPage"
+                    />
+                  </div>
+                </div>
+
+                <b-modal
+                  id="modal-multi-flux"
+                  hide-footer
+                  v-model="showMultilateralModal"
+                >
+                  <template #header>
+                    <div class="d-flex justify-content-between w-100">
+                      <div>
+                        <p class="suffix-clicked">
+                          <span>Accords Multilateral / </span>
+                          <span class="label-orange"> OMC </span>
+                        </p>
+                      </div>
+                      <div>
+                        <span
+                          class="close-modal-icon"
+                          @click="showMultilateralModal = false"
+                        >
+                          <i class="bi bi-x-lg"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </template>
+                  <div class="mx-3">
+                    <div>
+                      <div class="line-block-text my-3">
+                        <div class="text-center detail-title">
+                          <p>{{ currentAccord.title }}</p>
+                        </div>
+
+                        <div class="detail-content my-4">
+                          <div class="details-link">
+                            <div v-if="currentAccord.documentUrl">
+                              <a
+                                href="#"
+                                @click.prevent="
+                                  downloadFile(currentAccord.documentUrl)
+                                "
+                                class="telechargement"
+                              >
+                                <span class="icon-arrow">
+                                  Télécharger la pièce jointe
+                                  <i class="bi bi-arrow-down"></i>
+                                </span>
+                              </a>
+                            </div>
+
+                            <div v-else>
+                              <p class="not-file-link">Pas de pièce jointe</p>
+                            </div>
+                          </div>
+
+                          <div
+                            class="line-bottom d-flex align-items-center justify-content-between"
+                          >
+                            <p class="basique-line">Accord signé le :</p>
+                            <p class="boucle-text">
+                              {{ currentAccord.signDate }}
+                            </p>
+                          </div>
+                          <div
+                            class="line-bottom d-flex align-items-center justify-content-between"
+                          >
+                            <p class="basique-line">Accord signé à :</p>
+                            <p class="boucle-text">
+                              {{ currentAccord.signCountry }}
+                            </p>
+                          </div>
+                          <div
+                            class="line-bottom d-flex align-items-center justify-content-between"
+                          >
+                            <p class="basique-line">Entré en vigueur le :</p>
+                            <p class="boucle-text">
+                              {{ currentAccord.effectiveDate }}
+                            </p>
+                          </div>
+                          <div class="text-center mt-4">
+                            <p class="basique-line">DISPOSITIF DE SUIVI</p>
+                            <hr class="detail-hr mx-auto" />
+                            <p class="boucle-text mt-3">
+                              {{ currentAccord.trackingDevice }}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </b-modal>
+              </div>
+
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- MODAL REGIONNAL AND BILATERAL -->
+
+              <b-modal
+                id="modal-simple-flux"
+                hide-footer
+                v-model="showSimpleModal"
+              >
                 <template #header>
                   <div class="d-flex justify-content-between w-100">
                     <div>
-                       <p class="suffix-clicked">
-                    <span>Accords Multilateral / </span>
-                    <span class="label-orange"> OMC </span>
-                  </p>
+                      <p class="suffix-clicked">
+                        <span v-if="titleModalText == 1"
+                          >Accords Billateraux /
+                        </span>
+                        <span v-if="titleModalText == 2"
+                          >Accords regionnaux /
+                        </span>
+                        <span class="label-orange">{{
+                          selectedCountry.label
+                        }}</span>
+                      </p>
                     </div>
+
                     <div>
-                      <span class="close-modal-icon" @click="showMultilateralModal=false" >
+                      <span
+                        class="close-modal-icon"
+                        @click="showSimpleModal = false"
+                      >
                         <i class="bi bi-x-lg"></i>
                       </span>
                     </div>
                   </div>
                 </template>
                 <div class="mx-3">
-                  <div>
+                  <div
+                    v-if="!showSimpleBlock"
+                    class="overflow-scroll-block simple-block-size"
+                  >
+                    <div
+                      class="line-block-text my-3"
+                      v-for="(accord, index) in listOfAccord"
+                      :key="index"
+                    >
+                      <div
+                        class="line-title d-flex align-items-center justify-content-between"
+                      >
+                        <p>
+                          {{
+                            accord.title.length > 70
+                              ? accord.title.substring(0, 70) + "..."
+                              : accord.title
+                          }}
+                          <span class="custom-green" v-if="titleModalText == 2"
+                            >( {{ accord.organizationLabel }} )</span
+                          >
+                        </p>
+
+                        <span
+                          class="icon-arrow custom-icon-space"
+                          @click="seeAboutSimpleAccord(accord)"
+                        >
+                          <i class="bi bi-arrow-right"></i>
+                        </span>
+                      </div>
+                    </div>
+
+                    <NoResultsMessageComponent
+                      :message="'Aucun Accord signé.'"
+                      v-if="listOfAccord.length === 0"
+                    />
+                  </div>
+
+                  <div v-else>
                     <div class="line-block-text my-3">
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <div
+                          class="custom-icon-space line-title mb-3"
+                          @click="showSimpleBlock = !showSimpleBlock"
+                        >
+                          <span class="icon-arrow"
+                            ><i class="bi bi-arrow-left"></i
+                          ></span>
+                        </div>
+
+                        <div class="info-orga">
+                          <span
+                            class="custom-green"
+                            v-if="titleModalText == 2"
+                            >{{ currentAccord.organizationLabel }}</span
+                          >
+                        </div>
+                      </div>
+
                       <div class="text-center detail-title">
                         <p>{{ currentAccord.title }}</p>
                       </div>
@@ -159,12 +331,12 @@
                         <div class="details-link">
                           <div v-if="currentAccord.documentUrl">
                             <a
-                            href="#"
-                            @click.prevent="
-                              downloadFile(currentAccord.documentUrl)
-                            "
-                            class="telechargement"
-                          >
+                              href="#"
+                              @click.prevent="
+                                downloadFile(currentAccord.documentUrl)
+                              "
+                              class="telechargement"
+                            >
                               <span class="icon-arrow">
                                 Télécharger la pièce jointe
                                 <i class="bi bi-arrow-down"></i>
@@ -213,171 +385,25 @@
                   </div>
                 </div>
               </b-modal>
+
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
             </div>
-
-            
-
-            <!--  -->
-            <!--  -->
-            <!--  -->
-            <!--  -->
-            <!--  -->
-            <!-- MODAL REGIONNAL AND BILATERAL -->
-
-            <b-modal id="modal-simple-flux" hide-footer v-model="showSimpleModal">
-              <template #header>
-                                  <div class="d-flex justify-content-between w-100">
-                                <div>
-                <p class="suffix-clicked">
-                  <span v-if="titleModalText == 1">Accords Billateraux / </span>
-                  <span v-if="titleModalText == 2">Accords regionnaux / </span>
-                  <span class="label-orange">{{ selectedCountry.label }}</span>
-                </p>
-                </div>
-
-                  <div>
-                      <span class="close-modal-icon" @click="showSimpleModal=false" >
-                        <i class="bi bi-x-lg"></i>
-                      </span>
-                    </div>
-                 </div>   
-              </template>
-              <div class="mx-3">
-                <div
-                  v-if="!showSimpleBlock"
-                  class="overflow-scroll-block simple-block-size"
-                >
-                  <div
-                    class="line-block-text my-3"
-                    v-for="(accord, index) in listOfAccord"
-                    :key="index"
-                    >
-                    <div
-                      class="line-title d-flex align-items-center justify-content-between"
-                    >
-                      <p>
-                        {{
-                          accord.title.length > 70
-                            ? accord.title.substring(0, 70) + "..."
-                            : accord.title
-                        }}
-                        <span class="custom-green" v-if="titleModalText == 2"
-                          >( {{ accord.organizationLabel }}  )</span
-                        >
-                      </p>
-
-                      <span
-                        class="icon-arrow custom-icon-space"
-                        @click="seeAboutSimpleAccord(accord)"
-                      >
-                        <i class="bi bi-arrow-right"></i>
-                      </span>
-                    </div>
-                  </div>
-
-                  <NoResultsMessageComponent :message="'Aucun Accord signé.'" v-if="listOfAccord.length === 0"  />
-
-                </div>
-
-                <div v-else>
-                  <div class="line-block-text my-3">
-                    <div
-                      class="d-flex align-items-center justify-content-between"
-                    >
-                      <div
-                        class="custom-icon-space line-title mb-3"
-                        @click="showSimpleBlock = !showSimpleBlock"
-                      >
-                        <span class="icon-arrow"
-                          ><i class="bi bi-arrow-left"></i
-                        ></span>
-                      </div>
-
-                      <div class="info-orga">
-                        <span class="custom-green" v-if="titleModalText == 2">{{
-                          currentAccord.organizationLabel
-                        }}</span>
-                      </div>
-                    </div>
-
-                    <div class="text-center detail-title">
-                      <p>{{ currentAccord.title }}</p>
-                    </div>
-
-                    <div class="detail-content my-4">
-                      <div class="details-link">
-                        <div v-if="currentAccord.documentUrl">
-                          <a
-                            href="#"
-                            @click.prevent="
-                              downloadFile(currentAccord.documentUrl)
-                            "
-                            class="telechargement"
-                          >
-                            <span class="icon-arrow">
-                              Télécharger la pièce jointe
-                              <i class="bi bi-arrow-down"></i>
-                            </span>
-                          </a>
-                        </div>
-
-                        <div v-else>
-                          <p class="not-file-link">Pas de pièce jointe</p>
-                        </div>
-                      </div>
-
-                      <div
-                        class="line-bottom d-flex align-items-center justify-content-between"
-                      >
-                        <p class="basique-line">Accord signé le :</p>
-                        <p class="boucle-text">{{ currentAccord.signDate }}</p>
-                      </div>
-                      <div
-                        class="line-bottom d-flex align-items-center justify-content-between"
-                      >
-                        <p class="basique-line">Accord signé à :</p>
-                        <p class="boucle-text">
-                          {{ currentAccord.signCountry }}
-                        </p>
-                      </div>
-                      <div
-                        class="line-bottom d-flex align-items-center justify-content-between"
-                      >
-                        <p class="basique-line">Entré en vigueur le :</p>
-                        <p class="boucle-text">
-                          {{ currentAccord.effectiveDate }}
-                        </p>
-                      </div>
-                      <div class="text-center mt-4">
-                        <p class="basique-line">DISPOSITIF DE SUIVI</p>
-                        <hr class="detail-hr mx-auto" />
-                        <p class="boucle-text mt-3">
-                          {{ currentAccord.trackingDevice }}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </b-modal>
-
-            <!--  -->
-            <!--  -->
-            <!--  -->
-            <!--  -->
-            <!--  -->
           </div>
         </div>
       </div>
-    </div>
 
-    <LoaderBlockComponent :isLoading="showSpinner" :message="loaderMessage" />
+      <LoaderBlockComponent :isLoading="showSpinner" :message="loaderMessage" />
+    </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import { LMap, LTileLayer, LMarker, LPopup } from '@vue-leaflet/vue-leaflet';
+import { LMap, LTileLayer, LMarker, LPopup } from "@vue-leaflet/vue-leaflet";
 import L from "leaflet";
 import SearchInputComponent from "../../components/front/SearchInputComponent.vue";
 import SwitchBlockComponent from "../../components/front/SwitchBlockComponent.vue";
@@ -387,6 +413,7 @@ import LoaderBlockComponent from "../../components/front/LoaderBlockComponent.vu
 import NoResultsMessageComponent from "../../components/front/NoResultsMessageComponent.vue";
 import actionMixin from "../../mixins/actionMixin.js";
 import PaginnationComponent from "../../components/front/PaginnationComponent.vue";
+import UnderNavComponent from "@/components/front/UnderNavComponent.vue";
 
 export default {
   data() {
@@ -438,12 +465,11 @@ export default {
       currentClick: null,
       markers: [],
       sideComTitleList: [],
-      regionalFilterMapData:[]
+      regionalFilterMapData: [],
     };
   },
 
   mixins: [actionMixin],
-
 
   components: {
     LMap,
@@ -456,7 +482,8 @@ export default {
     FormComponent,
     LoaderBlockComponent,
     NoResultsMessageComponent,
-    PaginnationComponent
+    PaginnationComponent,
+    UnderNavComponent,
   },
 
   computed: {
@@ -467,7 +494,7 @@ export default {
       "retlistOfOrganization",
       "retlistOfAgreement",
       "retAgrementByCountryIdOrOrgaId",
-      "retlistOfOmcs"
+      "retlistOfOmcs",
     ]),
   },
 
@@ -515,7 +542,11 @@ export default {
     retlistOfOmcs: {
       immediate: true,
       handler(newValue) {
-        if (newValue && Array.isArray(newValue.datas) && newValue.datas.length > 0) {
+        if (
+          newValue &&
+          Array.isArray(newValue.datas) &&
+          newValue.datas.length > 0
+        ) {
           this.initListOfOmcsBlock();
         } else {
           this.listOfCountry = [];
@@ -544,24 +575,25 @@ export default {
       });
     },
 
-    getCountryInOrganizationById(id){
-      const currentOrga = this.retlistOfOrganization.find(item => item.id === id);
+    getCountryInOrganizationById(id) {
+      const currentOrga = this.retlistOfOrganization.find(
+        (item) => item.id === id
+      );
       if (currentOrga && currentOrga.countries) {
         this.regionalFilterMapData = currentOrga.countries;
-        this.initMapBillateralMarker(this.regionalFilterMapData)
+        this.initMapBillateralMarker(this.regionalFilterMapData);
       }
     },
 
-    initMultilateralAgreement(){
+    initMultilateralAgreement() {
       this.currentPage = this.retlistOfAgreement.currentPage;
       this.totalPages = this.retlistOfAgreement.totalPages;
       this.listOfmultiAccord = this.retlistOfAgreement.datas;
       this.showSpinner = false;
       console.log("LE MULTI ACCORD ", this.listOfmultiAccord);
-      
     },
 
-    initListOfOmcsBlock(){
+    initListOfOmcsBlock() {
       console.log("LES OMCS ", this.retlistOfOmcs);
       this.currentPage = this.retlistOfOmcs.currentPage;
       this.totalPages = this.retlistOfOmcs.totalPages;
@@ -570,8 +602,14 @@ export default {
 
     getIcon(color) {
       return new L.Icon({
-        iconUrl: new URL(`../../assets/icons/marker-icon-${color}.png`, import.meta.url).href,
-        shadowUrl: new URL('leaflet/dist/images/marker-shadow.png', import.meta.url).href,
+        iconUrl: new URL(
+          `../../assets/icons/marker-icon-${color}.png`,
+          import.meta.url
+        ).href,
+        shadowUrl: new URL(
+          "leaflet/dist/images/marker-shadow.png",
+          import.meta.url
+        ).href,
         iconSize: [25, 41],
         iconAnchor: [12, 41],
         popupAnchor: [1, -34],
@@ -599,7 +637,7 @@ export default {
           model: "orgaRegioSelected",
           required: false,
           options: this.retorgaSelectData,
-        }
+        },
       ];
     },
 
@@ -611,14 +649,13 @@ export default {
       ];
     },
 
-
     checkMarkerDetail(marker) {
       console.log("les habitans de ce pays ", marker);
       //LORSQUE LE CHOIX EST BILLATERAL
       if (this.activeDiv === 1 && marker) {
         this.callFetchAgreement(marker.id);
       }
-      
+
       if (marker) {
         this.currentClick = marker.id;
         this.packs.paysBilalSelected = marker.id;
@@ -630,22 +667,23 @@ export default {
       }
     },
 
-    callFetchAgreement(id){
+    callFetchAgreement(id) {
       this.showSpinner = true;
 
       if (this.activeDiv === 1) {
         //RECUPERER LES ACCORD PAR L'ID DU PAYS
-        this.fetchAgreements(null,id);
+        this.fetchAgreements(null, id);
       } else if (this.activeDiv === 2) {
-         //RECUPERER LES ACCORD PAR L'ID DE L'ORGANISATION
-         this.fetchAgreements(id,null);
-      } 
-
+        //RECUPERER LES ACCORD PAR L'ID DE L'ORGANISATION
+        this.fetchAgreements(id, null);
+      }
     },
 
-
     fetchAgreements(organizationId = null, countryId = null) {
-      this.$store.dispatch("getAgreementsByCountryIdOrOrgaId", { orgaId: organizationId, countryId: countryId } );
+      this.$store.dispatch("getAgreementsByCountryIdOrOrgaId", {
+        orgaId: organizationId,
+        countryId: countryId,
+      });
       setTimeout(() => {
         this.showSpinner = false;
       }, 1000);
@@ -655,9 +693,7 @@ export default {
       console.log("*****Je veux voir le libele ", fieldName);
       console.log("****Je veux voir la value ", value);
 
-      if (
-        fieldName === "paysBilalSelected" 
-      ) {
+      if (fieldName === "paysBilalSelected") {
         this.checkDataByCountry(value);
       } else if (fieldName === "orgaRegioSelected") {
         console.log("NOUs sommes ici");
@@ -668,14 +704,10 @@ export default {
     },
 
     checkDataByCountry(val) {
-      const currentCountry = this.markers.find(
-        (item) => item.id === val
-      );
+      const currentCountry = this.markers.find((item) => item.id === val);
       this.checkMarkerDetail(currentCountry);
       console.log("HELLO LES NAZES", currentCountry);
     },
-
-    
 
     handleSideTitleSelection({ item, key }) {
       console.log("VOIR LA KEY ", key);
@@ -732,7 +764,10 @@ export default {
       this.currentPage = page;
 
       if (this.isSwitchCountry) {
-        this.$store.dispatch("getListOfOmc", { page: this.currentPage, size: 7 })
+        this.$store.dispatch("getListOfOmc", {
+          page: this.currentPage,
+          size: 7,
+        });
       } else {
         this.$store.dispatch("SearchAgreements", {
           query: "multilateral",
@@ -740,7 +775,6 @@ export default {
           size: 5,
         });
       }
-      
     },
 
     toSwitchedCountry(value) {
@@ -758,7 +792,9 @@ export default {
       //TELECHARGER UN CERTIFICAT PDF
       this.showSpinner = true;
       const fileName = documentUrl.split("/").pop();
-      const url = `/agreements/download?filename=${encodeURIComponent(fileName)}`;
+      const url = `/agreements/download?filename=${encodeURIComponent(
+        fileName
+      )}`;
       this.downloadFromBackend(url, fileName);
     },
   },
@@ -772,7 +808,7 @@ export default {
     Promise.all([
       this.$store.dispatch("getListOfOrganization"),
       this.$store.dispatch("getBilateralSignedCountries"),
-      this.$store.dispatch("getListOfOmc", { page: 0, size: 7 })
+      this.$store.dispatch("getListOfOmc", { page: 0, size: 7 }),
     ]).then(() => {
       setTimeout(() => {
         this.bilaterauxInput();
@@ -784,7 +820,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .l-map {
   height: 100%;
 }
@@ -807,7 +842,7 @@ export default {
   min-height: 100vh;
 
   .subtitle {
-    color: #ff6b07 !important;
+    color: #FF8300 !important;
     font-weight: bold;
   }
   .header-banner {

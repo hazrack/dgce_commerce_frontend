@@ -1,6 +1,6 @@
 <template>
   <div class="faq-portal">
-    
+     <UnderNavComponent />
     <!-- Section principale -->
     <main class="main-section">
       <div class="page-container">
@@ -59,6 +59,8 @@
 </template>
 
 <script>
+import UnderNavComponent from '@/components/front/UnderNavComponent.vue';
+
 export default {
   data() {
     return {
@@ -98,6 +100,9 @@ export default {
         }
       ]
     }
+  },
+  components:{
+    UnderNavComponent
   },
   methods: {
     toggleAccordion(index) {

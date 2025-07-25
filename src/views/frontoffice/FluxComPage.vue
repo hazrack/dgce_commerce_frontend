@@ -1,4 +1,6 @@
 <template>
+  <div>
+   <UnderNavComponent />
   <div class="container-fluid my-5">
 
     <div class="row">
@@ -47,6 +49,7 @@
     <LoaderBlockComponent :isLoading="showSpinner" :message="loaderMessage" />
 
   </div>
+  </div>
 </template>
 
 <script>
@@ -57,6 +60,7 @@ import NoResultsMessageComponent from "../../components/front/NoResultsMessageCo
 import filterTableMixin from "../../mixins/filterTableMixin.js";
 import LoaderBlockComponent from "../../components/front/LoaderBlockComponent.vue";
 import SearchInputComponent from "../../components/front/SearchInputComponent.vue";
+import UnderNavComponent from "@/components/front/UnderNavComponent.vue";
 
 export default {
   data() {
@@ -78,6 +82,7 @@ export default {
     LoaderBlockComponent,
     SearchInputComponent,
     NoResultsMessageComponent,
+    UnderNavComponent
   },
   methods: {
     checkSearchProduct(value) {

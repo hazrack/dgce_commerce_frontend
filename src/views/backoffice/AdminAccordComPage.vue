@@ -663,7 +663,7 @@ export default {
 }
 
 .drop-btn-accord {
-  background: #ff6b07 !important;
+  background: #FF8300 !important;
   padding: 6px 12px;
   width: 150px;
   border: none;

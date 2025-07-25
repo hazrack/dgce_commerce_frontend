@@ -1,31 +1,34 @@
 <template>
-  <div class="my-5">
-    <div>
-      <div class="mx-4" v-if="tableData.length !== 0">
-        <TableComponent
-          :table-data="tableData"
-          :fields="tablefields"
-          @downloadCoopec="downloadCoopecFile"
-        />
+  <div>
+    <UnderNavComponent />
 
-        <div>
-          <PaginnationComponent 
-            :current-page="currentPage"
-            :total-pages="totalPages"
-            @page-change="checkToPage"
-          />
+    <div class="my-5">
+      <div class="mx-4">
+        <div v-if="tableData.length !== 0">
+          <div class="block-trade-table">
+            <TableComponent
+              :table-data="tableData"
+              :fields="tablefields"
+              @downloadCoopec="downloadCoopecFile"
+            />
+          </div>
+
+          <div>
+            <PaginnationComponent
+              :current-page="currentPage"
+              :total-pages="totalPages"
+              @page-change="checkToPage"
+            />
+          </div>
+        </div>
+
+        <div v-else>
+          <NoResultsMessageComponent :message="filterMessage" />
         </div>
       </div>
 
-      
-      <div v-else>
-        <NoResultsMessageComponent :message="filterMessage" />
-      </div>
+      <LoaderBlockComponent :isLoading="showSpinner" :message="loaderMessage" />
     </div>
-
-     
-
-    <LoaderBlockComponent :isLoading="showSpinner" :message="loaderMessage" />
   </div>
 </template>
 
@@ -36,6 +39,7 @@ import NoResultsMessageComponent from "@/components/front/NoResultsMessageCompon
 import TableComponent from "@/components/front/TableComponent.vue";
 import PaginnationComponent from "@/components/front/PaginnationComponent.vue";
 import actionMixin from "@/mixins/actionMixin";
+import UnderNavComponent from "@/components/front/UnderNavComponent.vue";
 
 export default {
   data() {
@@ -55,13 +59,14 @@ export default {
       tableData: [],
     };
   },
-    mixins: [actionMixin],
+  mixins: [actionMixin],
 
   components: {
     TableComponent,
     LoaderBlockComponent,
     NoResultsMessageComponent,
-    PaginnationComponent
+    PaginnationComponent,
+    UnderNavComponent,
   },
   computed: {
     ...mapGetters(["retlistOfAgreement"]),
@@ -90,7 +95,9 @@ export default {
       console.log("====================================");
       this.showSpinner = true;
       const fileName = documentUrl.split("/").pop();
-      const url = `/agreements/download?filename=${encodeURIComponent(fileName)}`;
+      const url = `/agreements/download?filename=${encodeURIComponent(
+        fileName
+      )}`;
       this.downloadFromBackend(url, fileName);
     },
 
@@ -112,7 +119,7 @@ export default {
 
   mounted() {
     setTimeout(() => {
-              this.$store.dispatch("getListOfAgreement", { page: 0, size: 5 });
+      this.$store.dispatch("getListOfAgreement", { page: 0, size: 5 });
     }, 100);
   },
 };

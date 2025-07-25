@@ -71,7 +71,7 @@ export default {
           total: this.retglobalStats.totalAgreements || 0,
           title: "ACCORDS COMMERCIAUX",
           icon: "accord-trade.svg",
-          color: "#ff6b07",
+          color: "#FF8300",
         },
         {
           total: this.retglobalStats.totalTradeFlow,

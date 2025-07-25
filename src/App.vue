@@ -164,7 +164,7 @@ export default {
 .top-title-block {
   font-size: 32px !important;
   font-weight: 800;
-  color: #ff6b07;
+  color: #FF8300;
   text-shadow: 1px 2px 2px #000;
 }
 
@@ -362,7 +362,7 @@ button.close:hover {
 }
 
 .label-orange {
-  color: #ff6b07;
+  color: #FF8300;
 }
 
 
@@ -491,12 +491,12 @@ p {
     transition: all 0.2s ease;
 
     &:hover {
-      background-color: #ff6b07;
+      background-color: #FF8300;
       color: #fff;
     }
 
     &:active {
-      background-color: #ff6b07;
+      background-color: #FF8300;
     }
   }
 }
@@ -511,7 +511,7 @@ p {
   background: #fff;
 
   &:hover {
-    border-color: #ff6b07;
+    border-color: #FF8300;
     cursor: pointer;
   }
 }
@@ -541,7 +541,7 @@ p {
   .line-title {
     text-transform: uppercase;
     &:hover {
-      color: #ff6b07;
+      color: #FF8300;
     }
   }
   
@@ -596,9 +596,9 @@ p {
     }
   }
   .more-btn {
-    border-color: #ff6b07; // Vert plus foncé
+    border-color: #FF8300; // Vert plus foncé
     &:hover {
-      background: #ff6b07;
+      background: #FF8300;
       color: #fff;
       i {
         transform: scale(1.1);
@@ -634,7 +634,7 @@ p {
 
   .detail-hr {
     height: 7px;
-    background-color: #ff6b07;
+    background-color: #FF8300;
     border: none;
     width: 25%;
     margin: 4px 0;
@@ -858,75 +858,4 @@ p {
 }
 
 
-
-
-//HEADER PAGE
-.official-header {
-  background: linear-gradient(135deg, #FF8C00 0%, #FF7700 100%);
-  color: white;
-  padding: 1.5rem 0;
-  box-shadow: 0 4px 20px rgba(255, 140, 0, 0.3);
-
-  .header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .ministry-brand {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-
-    .coat-of-arms {
-      flex-shrink: 0;
-    }
-
-    .ministry-title {
-      h1 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-bottom: 0.25rem;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      }
-
-      p {
-        font-size: 0.9rem;
-        opacity: 0.9;
-        font-weight: 300;
-      }
-    }
-  }
-
-  .national-motto {
-    font-style: italic;
-    font-size: 0.9rem;
-    opacity: 0.8;
-  }
-}
-
-@media (max-width: 768px) {
-  .official-header {
-    .header-container {
-      flex-direction: column;
-      gap: 1rem;
-      text-align: center;
-    }
-
-    .ministry-brand {
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-  }
-
-  .page-banner {
-    padding: 2rem;
-
-    .banner-content h2 {
-      font-size: 2rem;
-    }
-  }}
 </style>

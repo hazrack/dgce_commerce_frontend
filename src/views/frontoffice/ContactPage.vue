@@ -1,33 +1,6 @@
 <template>
   <div class="ministry-portal">
-    <!-- En-tête officiel -->
-    <!-- <header class="official-header">
-      <div class="header-container">
-        <div class="ministry-brand">
-          <div class="coat-of-arms">
-            <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
-              <circle
-                cx="25"
-                cy="25"
-                r="24"
-                fill="#FF8C00"
-                stroke="#fff"
-                stroke-width="2"
-              />
-              <path d="M25 10L35 20V40H15V20L25 10Z" fill="white" />
-              <rect x="22" y="25" width="6" height="10" fill="#FF8C00" />
-            </svg>
-          </div>
-          <div class="ministry-title">
-            <h1>MINISTÈRE DU COMMERCE</h1>
-            <p>République de Côte d'Ivoire</p>
-          </div>
-        </div>
-        <div class="national-motto">
-          <span>Union - Discipline - Travail</span>
-        </div>
-      </div>
-    </header> -->
+     <UnderNavComponent />
 
     <!-- Section principale -->
     <main class="main-section">
@@ -209,6 +182,7 @@
 import LoaderBlockComponent from "@/components/front/LoaderBlockComponent.vue";
 import axios from "../../services/loginAndRegistration.js";
 import Swal from "sweetalert2";
+import UnderNavComponent from "@/components/front/UnderNavComponent.vue";
 
 export default {
   data() {
@@ -221,6 +195,7 @@ export default {
   },
   components: {
     LoaderBlockComponent,
+    UnderNavComponent
   },
   methods: {
     getFieldsReformDaata() {

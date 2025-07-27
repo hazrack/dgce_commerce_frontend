@@ -89,6 +89,9 @@
                 </li>
               </ul>
             </nav>
+             <div>
+            <SearchCustomComponent />
+        </div>
           </Slide>
           </div>
           <div>

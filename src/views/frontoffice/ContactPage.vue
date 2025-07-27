@@ -230,9 +230,6 @@ export default {
       console.log("LES DONNEE PASSEE : ", this.packs);
       this.showSpinner = true;
 
-      setTimeout(() => {
-        this.showSpinner = false;
-      }, 3000);
 
       axios
         .post("/contact/submit-client", this.packs)
@@ -247,13 +244,15 @@ export default {
             showConfirmButton: false,
           });
 
+          this.showSpinner = false;
+
           setTimeout(() => {
             this.getDefaultPacksData();
           }, 100);
         })
         .catch((error) => {
           console.log("ERREUR ", error.response);
-
+        this.showSpinner = false;
           Swal.fire({
             icon: "error",
             title: "Erreur rencontré !",

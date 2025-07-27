@@ -2,7 +2,14 @@
   <div>
     <div v-if="showAllNav" class="container-fluid p-0">
       <div class="top-head-civ fw-bold text-light text-center py-3">
-        <p >MINISTÈRE DU COMMERCE ET DE L'INDUSTRIE</p>
+        
+        <div class="marquee-container">
+          <div class="marquee-content">
+            <p>🏛️ BIENVENUE SUR LA PLATEFORME OFFICIELLE DU MINISTÈRE DU COMMERCE ET DE L'INDUSTRIE 📊 CARTOGRAPHIE DES ACCORDS ET FLUX COMMERCIAUX DE LA CÔTE D'IVOIRE 🌍 UNION - DISCIPLINE - TRAVAIL 🤝 RENFORCEMENT DES RELATIONS COMMERCIALES INTERNATIONALES 📈</p>
+          </div>
+        </div>
+
+
       </div>
 
       <div class="py-2">
@@ -53,14 +60,10 @@
             </ul>
           </nav>
         </div>
+      
 
         <div>
-          <img
-              src="../assets/icons/amoirie-civ.png"
-              width="80"
-              class="little-img"
-              alt=""
-            />
+            <SearchCustomComponent />
         </div>
 
       </div>
@@ -106,9 +109,9 @@
 </template>
 
 <script>
-import axios from "../services/index.js";
 import { mapGetters } from "vuex";
 import { Slide } from 'vue3-burger-menu'
+import SearchCustomComponent from "./front/SearchCustomComponent.vue";
 
 export default {
   data() {
@@ -130,11 +133,13 @@ export default {
 
   components: {
     Slide,
+    SearchCustomComponent
   },
 
   computed: {
     ...mapGetters(["retLogUser"]),
   },
+  
 
   methods: {
     handleResize() {
@@ -353,5 +358,26 @@ export default {
     justify-content: space-between;
 }
 
-  
+  .marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  color: #fff;
+  font-weight: bold;
+}
+
+.marquee-content {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll-text 80s linear infinite;
+}
+
+@keyframes scroll-text {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 </style>

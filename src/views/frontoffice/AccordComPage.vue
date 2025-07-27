@@ -69,7 +69,6 @@
                 <div
                   class="top-multi-block-info d-flex align-items-center justify-content-end"
                 >
-                  <!-- <SearchInputComponent @search="performSearch" /> -->
 
                   <SwitchBlockComponent
                     :options="switchOptions"
@@ -137,7 +136,7 @@
                   id="modal-multi-flux"
                   hide-footer
                   v-model="showMultilateralModal"
-                >
+                  >
                   <template #header>
                     <div class="d-flex justify-content-between w-100">
                       <div>
@@ -751,15 +750,6 @@ export default {
       this.showMultilateralModal = true;
     },
 
-    // performSearch(query) {
-    //   console.log("Recherche dans le parent:", query);
-    //   console.log("la longueur du query :", query.length);
-
-    //   if (query.length > 2) {
-    //     //DEBUTONS LE FILTRE VIA L'api
-    //   }
-    // },
-
     checkToPage(page) {
       this.currentPage = page;
 
@@ -842,7 +832,7 @@ export default {
   min-height: 100vh;
 
   .subtitle {
-    color: #FF8300 !important;
+    color: #ff6b07 !important;
     font-weight: bold;
   }
   .header-banner {

@@ -663,7 +663,7 @@ export default {
 }
 
 .drop-btn-accord {
-  background: #FF8300 !important;
+  background: #ff6b07 !important;
   padding: 6px 12px;
   width: 150px;
   border: none;
@@ -674,17 +674,6 @@ export default {
     border: none;
   }
 }
-
-// .espace-listing {
-//   height: 450px;
-//   overflow-y: auto; /* Permet le défilement */
-//   scrollbar-width: none;
-//   -ms-overflow-style: none;
-
-//   &::-webkit-scrollbar {
-//     display: none;
-//   }
-// }
 
 @keyframes pencil-pulse {
   0%,

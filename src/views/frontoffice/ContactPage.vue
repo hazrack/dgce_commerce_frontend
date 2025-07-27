@@ -1,6 +1,6 @@
 <template>
   <div class="ministry-portal">
-     <UnderNavComponent />
+    <UnderNavComponent />
 
     <!-- Section principale -->
     <main class="main-section">
@@ -43,7 +43,7 @@
                 </div>
                 <div class="contact-text">
                   <strong>Adresse</strong>
-                  <span>Abidjan, Plateau - Côte d'Ivoire</span>
+                  <span>Abidjan, Plateau </span>
                 </div>
               </div>
 
@@ -62,28 +62,11 @@
                 </div>
                 <div class="contact-text">
                   <strong>Téléphone</strong>
-                  <span>+225 XX XX XX XX</span>
+                  <span>+225 07 49 66 13 96</span>
                 </div>
               </div>
 
-              <div class="contact-detail">
-                <div class="contact-icon">
-                  <svg
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
-                    />
-                  </svg>
-                </div>
-                <div class="contact-text">
-                  <strong>Email</strong>
-                  <span>contact@commerce.gouv.ci</span>
-                </div>
-              </div>
+             
             </div>
 
             <div class="service-hours">
@@ -195,7 +178,7 @@ export default {
   },
   components: {
     LoaderBlockComponent,
-    UnderNavComponent
+    UnderNavComponent,
   },
   methods: {
     getFieldsReformDaata() {

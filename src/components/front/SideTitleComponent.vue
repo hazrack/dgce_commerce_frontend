@@ -73,7 +73,7 @@
   }
 
   &.active {
-    background: #FF8300 !important;
+    background: #ff6b07 !important;
     color: #fff;
   }
 
@@ -85,7 +85,7 @@
     left: 50% !important;
     width: 0;
     height: 100%;
-    background: #FF8300; /* Orange */
+    background: #ff6b07; /* Orange */
     transition: width 0.5s ease-in-out;
     z-index: 1;
     transform: translateX(-50%);

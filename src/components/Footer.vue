@@ -96,7 +96,7 @@
       text-transform: uppercase;
     }
     .foot-hr{
-      background: #FF8300;
+      background: #FF6B07;
       height: 7px;
       opacity: 1;
       width: 25%;
@@ -124,7 +124,7 @@
         }
   
         &:hover {
-          color: #FF8300;
+          color: #ff6b07;
         }
       }
     }
@@ -148,7 +148,7 @@
         i {
           margin-right: 8px;
           font-size: 16px;
-          color: #FF8300;
+          color: #ff6b07;
         }
       }
     }
@@ -173,7 +173,7 @@
         transition: color 0.3s;
   
         &:hover {
-          color: #FF8300;
+          color: #ff6b07;
         }
       }
     }

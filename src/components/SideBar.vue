@@ -438,7 +438,7 @@ border-radius: 50%;
   font-weight: bold; /* Texte en gras */
   font-family: 'Poppins', sans-serif; /* Police stylée */
   text-transform: uppercase; /* Majuscules */
-  background: linear-gradient(45deg, #FF8300, #fff); /* Dégradé */
+  background: linear-gradient(45deg, #ff6b07, #fff); /* Dégradé */
   background-clip: text; /* propriété standard */
   -webkit-background-clip: text; /* fallback pour WebKit (Chrome, Safari) */  -webkit-text-fill-color: transparent; /* Effet de texte en dégradé */
   letter-spacing: 2px; /* Espacement des lettres */

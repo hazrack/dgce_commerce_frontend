@@ -46,7 +46,7 @@
 
 
 
-        <div class="admin-menu">
+        <div class="admin-menu" v-if="retLogUser.roles=='admin'">
         <div 
           class="obk-liens"
           @click="toggleAdminMenu"
@@ -173,7 +173,14 @@ export default {
           icon: "earth-grid.svg",
           text: "O M C",
           url: "/administration/etat-membres",
-        },    
+        },
+        {
+          blueIcon: "earth-grid.svg",
+          icon: "earth-grid.svg",
+          text: "Coopération",
+          url: "/administration/cooperation",
+        },
+            
 
         
       ],
@@ -198,9 +205,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters([
-      ""
-      ]),
+        ...mapGetters(["retLogUser"]),
   },
   methods: {
     toggleAdminMenu() {
@@ -425,7 +430,7 @@ border-radius: 50%;
 
   .logo-obk {
     text-align: center;
-    margin: 30px auto;
+    margin: 20px auto;
 
     &:hover {
       cursor: pointer;

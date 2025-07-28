@@ -44,7 +44,7 @@
     </div>
 
     <div class="area-form">
-      <b-modal id="modal-global-form" v-model="showOmcForm">
+      <b-modal id="modal-global-form" hide-footer  v-model="showOmcForm">
         <template #header>
           <p class="suffix-clicked">
             <span>Ajouter un pays </span>

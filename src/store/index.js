@@ -29,6 +29,7 @@ export const store = createStore({
     countryTradeRankings: null,
     continentSelect: null,
     statsSeriesHistory: null,
+    cooperationList:null
   },
   mutations: {
     MutLogedUser(state, payload) {
@@ -100,6 +101,10 @@ export const store = createStore({
     },
     MutStatsSeriesHistory(state, payload) {
       state.statsSeriesHistory = payload;
+    },
+
+    MutListCooperation(state, payload) {
+      state.cooperationList = payload;
     },
   },
   actions: {
@@ -332,6 +337,32 @@ export const store = createStore({
             });
       },
 
+      getListOfCooperation({ commit }, { page, size }) {
+         axios.get(`/cooperations?page=${page}&size=${size}`)
+            .then((response) => {
+
+               commit("MutListCooperation", response.data);
+            })
+            .catch((error) => {
+               if (error.response && error.response.status === 401) {
+                  commit("mutLogin", false);
+                  localStorage.clear();
+               }
+            });
+      },
+      SearchCooperations({commit}, {value}){
+         axios.get(`/cooperations/search?q=${value}`)
+         .then((response) => {
+            commit("MutListCooperation", response.data);
+         })
+         .catch((error) => {
+            if (error.response.status == 401) {
+            commit("mutLogin", false);
+            localStorage.clear();
+            }
+         });
+      },
+
 
       getListOfAgreement({ commit }, { page, size }) {
          axios.get(`/agreements?page=${page}&size=${size}`)
@@ -347,7 +378,7 @@ export const store = createStore({
             });
       },
 
-      SearchAgreements({commit}, {query, page, size}){
+      SearchAgreements({commit}, {query, page=0, size=18}){
          axios.get(`/agreements/search?q=${query}&page=${page}&size=${size}`)
          .then((response) => {
             commit("MutGlobalAgreement", response.data);
@@ -535,5 +566,8 @@ export const store = createStore({
     retstatsSeriesHistory(state) {
       return state.statsSeriesHistory || [];
     },
+    retcooperationList(state) {
+      return state.cooperationList || [];
+    }, 
   }
 });

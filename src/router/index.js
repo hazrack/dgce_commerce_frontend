@@ -16,6 +16,7 @@ import AdminUserPage from '../views/backoffice/adminUserPage.vue';
 import ContactPage from '@/views/frontoffice/ContactPage.vue';
 import FaqPage from '@/views/frontoffice/FaqPage.vue';
 import CooperationPage from '@/views/frontoffice/CooperationPage.vue';
+import AdminCooperationPage from '@/views/backoffice/adminCooperationPage.vue';
 
 const routes = [
   { path: '/', redirect: '/accueil', meta: { guest: true } },
@@ -28,6 +29,7 @@ const routes = [
   { path: '/administration/organisation', component: AdminOrganisationPage, name: 'Organisation', meta: { title: 'Les Organisations', requiresAuth: true } },
   { path: '/administration/list-produits', component: AdminProduitListPage, name: 'Espaces Produits', meta: { title: 'Liste de nos produits', requiresAuth: true } },
   { path: '/administration/etat-membres', component: AdminOmcPage, name: 'OMC', meta: { title: 'ORGANISATION MONDIALE DU COMMERCE', requiresAuth: true } },
+  { path: '/administration/cooperation', component: AdminCooperationPage, name: 'Cooperation', meta: { title: 'POINT DE COOPERATION', requiresAuth: true } },
   { path: '/administration/utilisateurs', component: AdminUserPage, name: 'user-page', meta: { title: 'Espace Utilisateur', requiresAuth: true } },
   { path: '/accord-commercial', component: AccordComPage, name: 'Accord Commercial', meta: { title: 'Commerciaux', guest: true } },
   { path: '/flux-commercial', component: FluxComPage, name: 'Flux Commercial', meta: { title: 'Flux Commerciaul', guest: true } },

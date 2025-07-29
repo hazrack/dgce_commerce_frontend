@@ -69,10 +69,10 @@ export default {
     UnderNavComponent,
   },
   computed: {
-    ...mapGetters(["retlistOfAgreement"]),
+    ...mapGetters(["retcooperationList"]),
   },
   watch: {
-    retlistOfAgreement: {
+    retcooperationList: {
       immediate: true, // Exécute dès le montage
       handler(newValue) {
         if (
@@ -95,31 +95,32 @@ export default {
       console.log("====================================");
       this.showSpinner = true;
       const fileName = documentUrl.split("/").pop();
-      const url = `/agreements/download?filename=${encodeURIComponent(
+      const url = `/cooperations/download?filename=${encodeURIComponent(
         fileName
       )}`;
       this.downloadFromBackend(url, fileName);
     },
 
     initCooperation() {
-      this.currentPage = this.retlistOfAgreement.currentPage;
-      this.totalPages = this.retlistOfAgreement.totalPages;
-      this.tableData = this.retlistOfAgreement.datas;
+      this.currentPage = this.retcooperationList.currentPage;
+      this.totalPages = this.retcooperationList.totalPages;
+      this.tableData = this.retcooperationList.datas;
       this.showSpinner = false;
       console.log("LE COOPEC", this.tableData);
     },
     checkToPage(page) {
+    this.showSpinner = true;
       this.currentPage = page;
-      this.$store.dispatch("getListOfAgreement", {
+      this.$store.dispatch("getListOfCooperation", {
         page: this.currentPage,
-        size: 5,
+        size: 10,
       });
     },
   },
 
   mounted() {
     setTimeout(() => {
-      this.$store.dispatch("getListOfAgreement", { page: 0, size: 5 });
+      this.$store.dispatch("getListOfCooperation", { page: 0, size: 10 });
     }, 100);
   },
 };

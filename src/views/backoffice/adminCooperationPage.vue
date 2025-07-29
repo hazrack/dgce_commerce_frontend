@@ -257,6 +257,7 @@ export default {
       console.log("LE COOPEC", this.tableData);
     },
     checkToPage(page) {
+      this.showSpinner = true;
       this.currentPage = page;
       this.$store.dispatch("getListOfCooperation", {
         page: this.currentPage,
@@ -320,7 +321,7 @@ export default {
             timer: 2500,
             showConfirmButton: false,
           });
-          this.$store.dispatch("getListOfCooperation", { page: 0, size: 5 });
+          this.$store.dispatch("getListOfCooperation", { page: 0, size: 12 });
 
           setTimeout(() => {
             this.showSpinner = false;

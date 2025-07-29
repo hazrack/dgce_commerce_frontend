@@ -50,10 +50,13 @@
 
       
       <template #cell(documentUrl)="data">
-        <div class="action-btn">
+        <div class="action-btn" v-if="data.item.documentUrl !== null">
             <button class="btn-action edit" @click="$emit('downloadCoopec', data.item.documentUrl)">
             <i class="bi bi-arrow-down"></i>
           </button>
+        </div>
+        <div class="action-btn" v-else>
+            <i class="bi bi-x-circle"></i>
         </div>
       </template>
 

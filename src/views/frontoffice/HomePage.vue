@@ -7,12 +7,12 @@
           <div class="details-text">
             <p>
               Les Accords commerciaux constituent un fondement essentiel pour le
-              développement des relations commerciales internationales. Ces
+              développement des relations commerciales internationales. <br> Ces
               Accords facilitent le déploiement de la politique commerciale des
               Etats. Ils visent à créer de meilleures opportunités d'affaires
               pour les entreprises, en leur assurant plus de prévisibilité dans
               le développement de leurs partenariats et dans la surmontée des
-              obstacles au commerce. Cette cartographie fournit des
+              obstacles au commerce. <br> Cette cartographie fournit des
               renseignements clés sur les Accords commerciaux préférentiels et
               non préférentiels signés par la Côte d'Ivoire, ainsi que sur les
               flux commerciaux qui dynamisent ses relations avec les partenaires
@@ -21,6 +21,51 @@
           </div>
         </div>
       </div>
+    </div>
+
+
+    <!-- Section Ministre -->
+    <div class="ministre-section">
+      <div class="container">
+        <div class="ministre-content">
+          <div class="ministre-image-wrapper">
+            <div class="ministre-image-container">
+              <img 
+                src="https://www.commerce.gouv.ci/uploads/ministre/172207090057.jpg" 
+                alt="Ministre du Commerce" 
+                class="ministre-photo"
+              />
+              <div class="ministre-badge">
+                <span>Souleymane DIARRASSOUBA</span>
+              </div>
+            </div>
+          </div>
+          <div class="ministre-info">
+            <div class="ministre-header">
+              <h3 class="ministre-title">Message du Ministre</h3>
+              <div class="ministre-divider"></div>
+            </div>
+            <div class="ministre-text">
+              <p class="ministre-quote">
+                "Le développement du commerce extérieur de la Côte d'Ivoire constitue 
+                l'une des priorités majeures de notre Pays. Nous nous engageons 
+                à faciliter les échanges commerciaux internationaux et à créer un 
+                environnement propice aux affaires."
+              </p>
+              <div class="ministre-signature">
+                <p class="signature-name">Ministre du Commerce et de l'Industrie</p>
+                <p class="signature-title">République de Côte d'Ivoire</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="my-5 text-center">
+      <div class="ministre-header">
+              <h3 class="ministre-title">Statistiques Commerciales</h3>
+            </div>
     </div>
 
     <div class="espace-stats container my-5">
@@ -51,12 +96,12 @@
       <BarChart :labels="labelsParAnnee" :datasets="barChartData" />
     </div>
 
-    <div class="home-partenaire-block default-space">
+    <div class="default-space">
       <div class="text-center">
         <h2 class="top-title-block">STRUCTURES</h2>
       </div>
-
       <PartenaireComponent />
+
     </div>
 
     <LoaderBlockComponent :isLoading="showSpinner" :message="loaderMessage" />
@@ -267,25 +312,290 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.homepage-space {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+
+
+// Section DGCE existante
 .home-apropos-block {
   .details-apropos {
-    padding: 20px;
-    background: #f8f9fa; // Légère teinte pour ressortir
-    border-radius: 15px;
-    box-shadow: 0px 4px 10px #0000008f;
+    padding: 40px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 102, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #FF6600 0%, #008C00 100%);
+    }
+
+    .top-title-block {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(90deg, #FF6600 0%, #008C00 100%);
+        border-radius: 2px;
+      }
+    }
 
     .details-text {
-      font-size: 16px;
-      line-height: 1.6;
+      font-size: 18px;
+      line-height: 1.8;
       color: #555;
-      margin-bottom: 20px;
+      text-align: justify;
+      margin-bottom: 0;
+      
+      p {
+        margin: 0;
+      }
     }
   }
+}
+
+
+
+.ministre-section {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  padding: 4rem 0;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(255, 102, 0, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(0, 140, 0, 0.05) 0%, transparent 50%);
+  }
+}
+
+.ministre-content {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.ministre-image-wrapper {
+  flex: 0 0 300px;
+}
+
+.ministre-image-container {
+  position: relative;
+  
+  .ministre-photo {
+    width: 280px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    border: 5px solid white;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  .ministre-badge {
+    position: absolute;
+    bottom: -20px;
+    left: 47%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #FF6600 0%, #e55a00 100%);
+    color: white;
+    width: 80%;
+    text-align: center;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 25px rgba(255, 102, 0, 0.3);
+    
+    span {
+      position: relative;
+      z-index: 1;
+    }
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, #008C00 0%, #006600 100%);
+      border-radius: 25px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+}
+
+.ministre-info {
+  flex: 1;
+}
+
+.ministre-header {
+  margin-bottom: 2rem;
+  
+  .ministre-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-shadow: 1px 1px 1px #000;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+  }
+  
+  .ministre-divider {
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #FF6600 0%, #008C00 100%);
+    border-radius: 2px;
+  }
+}
+
+.ministre-text {
+  .ministre-quote {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #555;
+    font-style: italic;
+    margin: 0 0 2rem 0;
+    padding: 2rem;
+    background: rgba(255, 102, 0, 0.05);
+    border-left: 5px solid #FF6600;
+    border-radius: 0 15px 15px 0;
+    position: relative;
+    
+    &::before {
+      content: '"';
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      font-size: 3rem;
+      color: #FF6600;
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    
+    &::after {
+      content: '"';
+      position: absolute;
+      bottom: 10px;
+      right: 15px;
+      font-size: 3rem;
+      color: #FF6600;
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+  }
+  
+  .ministre-signature {
+    .signature-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin: 0 0 0.5rem 0;
+    }
+    
+    .signature-title {
+      font-size: 1rem;
+      color: #666;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
+}
+
+
+
+
+// Responsive
+@media (max-width: 968px) {
+  .ministre-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+  }
+  
+  .ministre-image-wrapper {
+    flex: none;
+  }
+  
+  .ministre-header .ministre-divider {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .ministre-image-container .ministre-photo {
+    width: 250px;
+    height: 300px;
+  }
+  
+  .ministre-header .ministre-title {
+    font-size: 2rem;
+  }
+  
+  .ministre-text .ministre-quote {
+    font-size: 1.1rem;
+    padding: 1.5rem;
+  }
+  
+  .home-apropos-block .details-apropos {
+    padding: 25px;
+  }
+  
+  .home-apropos-block .details-apropos .top-title-block {
+    font-size: 2rem;
+  }
+  
 }
 
 .head-stats {
   text-transform: uppercase;
   font-size: 20px !important;
+  color: #2c3e50;
+  text-shadow: 1px 1px 1px #000;
 }
 </style>
 

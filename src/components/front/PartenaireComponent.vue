@@ -3,7 +3,7 @@
     <div class="container">
       <div class="p-4">
         <div class="partnaire-central">
-          <div v-for="(step, index) in partenaireInfos" :key="index" class="logo-central-item">
+          <div v-for="(step, index) in partenaireInfos" :key="index" class="logo-central-item my-4">
             <div class="logo-img-block">
               <img :src="step.image" class="logo-img-simple" />
             </div>
@@ -38,6 +38,7 @@ export default {
   .partnaire-central {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap; 
     gap: 20px;
   }
 
@@ -49,4 +50,21 @@ export default {
 
   
 }
+
+// Responsive styles
+@media (max-width: 768px) {
+  .logo-central-item {
+    width: 120px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-central-item {
+    width: 100px;
+    height: 70px;
+  }
+}
+
+
 </style>

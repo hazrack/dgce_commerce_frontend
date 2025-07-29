@@ -164,8 +164,8 @@ export default {
 .top-title-block {
   font-size: 32px !important;
   font-weight: 800;
-  color: #FF8300;
-  text-shadow: 1px 2px 2px #000;
+  color: #2c3e50 !important;
+  text-shadow: 1px 1px 1px #000;
 }
 
 .logo-img-block {
@@ -362,7 +362,7 @@ button.close:hover {
 }
 
 .label-orange {
-  color: #FF8300;
+  color: #FF6B07;
 }
 
 
@@ -491,12 +491,12 @@ p {
     transition: all 0.2s ease;
 
     &:hover {
-      background-color: #FF8300;
+      background-color: #FF6B07;
       color: #fff;
     }
 
     &:active {
-      background-color: #FF8300;
+      background-color: #FF6B07;
     }
   }
 }
@@ -511,7 +511,7 @@ p {
   background: #fff;
 
   &:hover {
-    border-color: #FF8300;
+    border-color: #FF6B07;
     cursor: pointer;
   }
 }
@@ -541,7 +541,7 @@ p {
   .line-title {
     text-transform: uppercase;
     &:hover {
-      color: #FF8300;
+      color: #FF6B07;
     }
   }
   
@@ -596,9 +596,9 @@ p {
     }
   }
   .more-btn {
-    border-color: #FF8300; // Vert plus foncé
+    border-color: #FF6B07; // Vert plus foncé
     &:hover {
-      background: #FF8300;
+      background: #FF6B07;
       color: #fff;
       i {
         transform: scale(1.1);
@@ -634,7 +634,7 @@ p {
 
   .detail-hr {
     height: 7px;
-    background-color: #FF8300;
+    background-color: #FF6B07;
     border: none;
     width: 25%;
     margin: 4px 0;

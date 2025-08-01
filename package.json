@@ -6,6 +6,10 @@
   "private": true,
   "scripts": {
     "dev": "vite",
+    "dev:preprod": "vite --mode preprod",
+    "dev:staging": "vite --mode staging",
+    "build:preprod": "vite build --mode preprod",
+    "build:staging": "vite build --mode staging",
     "build": "vite build",
     "preview": "vite preview"
   },

@@ -1,110 +1,122 @@
 <template>
-  <div class="homepage-space">
-    <div class="home-apropos-block my-5">
-      <div class="container">
-        <div class="details-apropos">
-          <h2 class="top-title-block">D G C E</h2>
-          <div class="details-text">
-            <p>
-              Les Accords commerciaux constituent un fondement essentiel pour le
-              développement des relations commerciales internationales. <br> Ces
-              Accords facilitent le déploiement de la politique commerciale des
-              Etats. Ils visent à créer de meilleures opportunités d'affaires
-              pour les entreprises, en leur assurant plus de prévisibilité dans
-              le développement de leurs partenariats et dans la surmontée des
-              obstacles au commerce. <br> Cette cartographie fournit des
-              renseignements clés sur les Accords commerciaux préférentiels et
-              non préférentiels signés par la Côte d'Ivoire, ainsi que sur les
-              flux commerciaux qui dynamisent ses relations avec les partenaires
-              internationaux.
-            </p>
-          </div>
-        </div>
-      </div>
+  <div>
+    <div class="show-on-mobile">
+          <UnderNavComponent />
     </div>
-
-
-    <!-- Section Ministre -->
-    <div class="ministre-section">
-      <div class="container">
-        <div class="ministre-content">
-          <div class="ministre-image-wrapper">
-            <div class="ministre-image-container">
-              <img 
-                src="https://www.commerce.gouv.ci/uploads/ministre/172207090057.jpg" 
-                alt="Ministre du Commerce" 
-                class="ministre-photo"
-              />
-              <div class="ministre-badge">
-                <span>Souleymane DIARRASSOUBA</span>
-              </div>
-            </div>
-          </div>
-          <div class="ministre-info">
-            <div class="ministre-header">
-              <h3 class="ministre-title">Message du Ministre</h3>
-              <div class="ministre-divider"></div>
-            </div>
-            <div class="ministre-text">
-              <p class="ministre-quote">
-                "Le développement du commerce extérieur de la Côte d'Ivoire constitue 
-                l'une des priorités majeures de notre Pays. Nous nous engageons 
-                à faciliter les échanges commerciaux internationaux et à créer un 
-                environnement propice aux affaires."
+    <div class="homepage-space">
+      <div class="home-apropos-block my-5">
+        <div class="container">
+          <div class="details-apropos">
+            <h2 class="top-title-block">D G C E</h2>
+            <div class="details-text">
+              <p>
+                Les Accords commerciaux constituent un fondement essentiel pour
+                le développement des relations commerciales internationales.
+                <br />
+                Ces Accords facilitent le déploiement de la politique
+                commerciale des Etats. Ils visent à créer de meilleures
+                opportunités d'affaires pour les entreprises, en leur assurant
+                plus de prévisibilité dans le développement de leurs
+                partenariats et dans la surmontée des obstacles au commerce.
+                <br />
+                Cette cartographie fournit des renseignements clés sur les
+                Accords commerciaux préférentiels et non préférentiels signés
+                par la Côte d'Ivoire, ainsi que sur les flux commerciaux qui
+                dynamisent ses relations avec les partenaires internationaux.
               </p>
-              <div class="ministre-signature">
-                <p class="signature-name">Ministre du Commerce et de l'Industrie</p>
-                <p class="signature-title">République de Côte d'Ivoire</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Ministre -->
+      <div class="ministre-section">
+        <div class="container">
+          <div class="ministre-content">
+            <div class="ministre-image-wrapper">
+              <div class="ministre-image-container">
+                <img
+                  src="../../assets/images/img-ministre.jpg"
+                  alt="Ministre du Commerce"
+                  class="ministre-photo"
+                />
+                <div class="ministre-badge">
+                  <span>Souleymane DIARRASSOUBA</span>
+                </div>
+              </div>
+            </div>
+            <div class="ministre-info">
+              <div class="ministre-header">
+                <h3 class="ministre-title">Message du Ministre</h3>
+                <div class="ministre-divider"></div>
+              </div>
+              <div class="ministre-text">
+                <p class="ministre-quote">
+                  "Le développement du commerce extérieur de la Côte d'Ivoire
+                  constitue l'une des priorités majeures de notre Pays. Nous
+                  nous engageons à faciliter les échanges commerciaux
+                  internationaux et à créer un environnement propice aux
+                  affaires."
+                </p>
+                <div class="ministre-signature">
+                  <p class="signature-name">
+                    Ministre du Commerce et de l'Industrie
+                  </p>
+                  <p class="signature-title">République de Côte d'Ivoire</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="my-5 text-center">
-      <div class="ministre-header">
-              <h3 class="ministre-title">Statistiques Commerciales</h3>
+      <div class="my-5 text-center big-screen-second-chart">
+          <h3 class="ministre-title">Statistiques Commerciales</h3>
+        <div class="center-divider">
+          <div class="ministre-divider"></div>
+        </div>
+      </div>
+
+      <div class="espace-stats container my-5 big-screen-second-chart">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="px-5 fw-bold my-4">
+              <p class="head-stats">Accords commerciaux</p>
             </div>
-    </div>
-
-    <div class="espace-stats container my-5">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="px-5 fw-bold my-4">
-            <p class="head-stats">Accords commerciaux</p>
+            <DonutInteractive
+              v-if="donutData.length > 0"
+              :dataParsed="donutData"
+            />
           </div>
-          <DonutInteractive
-            v-if="donutData.length > 0"
-            :dataParsed="donutData"
-          />
-        </div>
 
-        <div class="col-md-6">
-          <div class="text-center fw-bold my-4 espace-stats-head">
-            <p class="head-stats">Flux d'échange commerciaux</p>
+          <div class="col-md-6">
+            <div class="text-center fw-bold my-4 espace-stats-head">
+              <p class="head-stats">Flux d'échange commerciaux</p>
+            </div>
+            <BarChart
+              :labels="labelsParContinent"
+              :datasets="barChartDataParContinent"
+            />
           </div>
-          <BarChart
-            :labels="labelsParContinent"
-            :datasets="barChartDataParContinent"
-          />
         </div>
       </div>
-    </div>
 
-    <div class="w-50 mx-auto">
-      <BarChart :labels="labelsParAnnee" :datasets="barChartData" />
-    </div>
-
-    <div class="default-space">
-      <div class="text-center">
-        <h2 class="top-title-block">STRUCTURES</h2>
+      <div class="w-50 my-5 mx-auto big-screen-second-chart">
+        <BarChart :labels="labelsParAnnee" :datasets="barChartData" />
       </div>
-      <PartenaireComponent />
 
+      <div>
+        <div class="text-center">
+          <h2 class="top-title-block">STRUCTURES</h2>
+          <div class="center-divider">
+          <div class="ministre-divider"></div>
+        </div>
+        </div>
+        <PartenaireComponent />
+      </div>
+
+      <LoaderBlockComponent :isLoading="showSpinner" :message="loaderMessage" />
     </div>
-
-    <LoaderBlockComponent :isLoading="showSpinner" :message="loaderMessage" />
   </div>
 </template>
 
@@ -114,6 +126,7 @@ import PartenaireComponent from "../../components/front/PartenaireComponent.vue"
 import DonutInteractive from "../../components/stats/DonutInteractive.vue";
 import LoaderBlockComponent from "../../components/front/LoaderBlockComponent.vue";
 import BarChart from "../../components/stats/BarsChart.vue";
+import UnderNavComponent from "@/components/front/UnderNavComponent.vue";
 
 export default {
   data() {
@@ -132,6 +145,7 @@ export default {
     DonutInteractive,
     BarChart,
     LoaderBlockComponent,
+    UnderNavComponent,
   },
 
   computed: {
@@ -161,19 +175,17 @@ export default {
     },
 
     retstatsSeriesHistory: {
-    immediate: true,
-    handler(newValue) {
-      if (Array.isArray(newValue) && newValue.length > 0) {
-        this.initStatsSeriesHistory();
-      }
+      immediate: true,
+      handler(newValue) {
+        if (Array.isArray(newValue) && newValue.length > 0) {
+          this.initStatsSeriesHistory();
+        }
+      },
     },
-  },
   },
 
   methods: {
     initStatsBlock() {
-
-     
       this.donutData = [
         {
           name: "BILATERAUX",
@@ -196,8 +208,6 @@ export default {
     initStatsSeriesHistory() {
       console.log("LE retour des stats", this.retstatsSeriesHistory[0].label);
       // console.log("LE retour des stats", this.retstatsSeriesHistory);
-
-
 
       const colors = [
         "#1f77b4",
@@ -304,8 +314,8 @@ export default {
     this.showSpinner = true;
 
     setTimeout(() => {
-          //LOAD DATA
-          this.loadData();
+      //LOAD DATA
+      this.loadData();
     }, 1000);
   },
 };
@@ -317,7 +327,6 @@ export default {
   min-height: 100vh;
   padding: 2rem 0;
 }
-
 
 // Section DGCE existante
 .home-apropos-block {
@@ -331,13 +340,13 @@ export default {
     overflow: hidden;
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       height: 4px;
-      background: linear-gradient(90deg, #FF6600 0%, #008C00 100%);
+      background: linear-gradient(90deg, #ff6600 0%, #008c00 100%);
     }
 
     .top-title-block {
@@ -346,16 +355,16 @@ export default {
       margin-bottom: 2rem;
       text-align: center;
       position: relative;
-      
+
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: -10px;
         left: 50%;
         transform: translateX(-50%);
         width: 80px;
         height: 3px;
-        background: linear-gradient(90deg, #FF6600 0%, #008C00 100%);
+        background: linear-gradient(90deg, #ff6600 0%, #008c00 100%);
         border-radius: 2px;
       }
     }
@@ -366,7 +375,7 @@ export default {
       color: #555;
       text-align: justify;
       margin-bottom: 0;
-      
+
       p {
         margin: 0;
       }
@@ -374,23 +383,28 @@ export default {
   }
 }
 
-
-
 .ministre-section {
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
   padding: 4rem 0;
   position: relative;
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
-      radial-gradient(circle at 20% 50%, rgba(255, 102, 0, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(0, 140, 0, 0.05) 0%, transparent 50%);
+    background-image: radial-gradient(
+        circle at 20% 50%,
+        rgba(255, 102, 0, 0.05) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        rgba(0, 140, 0, 0.05) 0%,
+        transparent 50%
+      );
   }
 }
 
@@ -411,7 +425,7 @@ export default {
 
 .ministre-image-container {
   position: relative;
-  
+
   .ministre-photo {
     width: 280px;
     height: 350px;
@@ -420,19 +434,19 @@ export default {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
     border: 5px solid white;
     transition: all 0.3s ease;
-    
+
     &:hover {
       transform: translateY(-5px);
       box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
     }
   }
-  
+
   .ministre-badge {
     position: absolute;
     bottom: -20px;
     left: 47%;
     transform: translateX(-50%);
-    background: linear-gradient(135deg, #FF6600 0%, #e55a00 100%);
+    background: linear-gradient(135deg, #ff6600 0%, #e55a00 100%);
     color: white;
     width: 80%;
     text-align: center;
@@ -443,25 +457,25 @@ export default {
     text-transform: uppercase;
     letter-spacing: 1px;
     box-shadow: 0 8px 25px rgba(255, 102, 0, 0.3);
-    
+
     span {
       position: relative;
       z-index: 1;
     }
-    
+
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, #008C00 0%, #006600 100%);
+      background: linear-gradient(135deg, #008c00 0%, #006600 100%);
       border-radius: 25px;
       opacity: 0;
       transition: opacity 0.3s ease;
     }
-    
+
     &:hover::before {
       opacity: 1;
     }
@@ -474,24 +488,27 @@ export default {
 
 .ministre-header {
   margin-bottom: 2rem;
-  
-  .ministre-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #2c3e50;
-    text-shadow: 1px 1px 1px #000;
-    margin: 0 0 1rem 0;
-    line-height: 1.2;
-  }
-  
-  .ministre-divider {
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, #FF6600 0%, #008C00 100%);
-    border-radius: 2px;
-  }
+}
+.ministre-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-shadow: 1px 1px 1px #000;
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
 }
 
+.ministre-divider {
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6600 0%, #008c00 100%);
+  border-radius: 2px;
+}
+.center-divider{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .ministre-text {
   .ministre-quote {
     font-size: 1.25rem;
@@ -501,33 +518,33 @@ export default {
     margin: 0 0 2rem 0;
     padding: 2rem;
     background: rgba(255, 102, 0, 0.05);
-    border-left: 5px solid #FF6600;
+    border-left: 5px solid #ff6600;
     border-radius: 0 15px 15px 0;
     position: relative;
-    
+
     &::before {
       content: '"';
       position: absolute;
       top: 10px;
       left: 15px;
       font-size: 3rem;
-      color: #FF6600;
+      color: #ff6600;
       font-family: Georgia, serif;
       line-height: 1;
     }
-    
+
     &::after {
       content: '"';
       position: absolute;
       bottom: 10px;
       right: 15px;
       font-size: 3rem;
-      color: #FF6600;
+      color: #ff6600;
       font-family: Georgia, serif;
       line-height: 1;
     }
   }
-  
+
   .ministre-signature {
     .signature-name {
       font-size: 1.1rem;
@@ -535,7 +552,7 @@ export default {
       color: #2c3e50;
       margin: 0 0 0.5rem 0;
     }
-    
+
     .signature-title {
       font-size: 1rem;
       color: #666;
@@ -546,9 +563,6 @@ export default {
   }
 }
 
-
-
-
 // Responsive
 @media (max-width: 968px) {
   .ministre-content {
@@ -556,11 +570,11 @@ export default {
     text-align: center;
     gap: 3rem;
   }
-  
+
   .ministre-image-wrapper {
     flex: none;
   }
-  
+
   .ministre-header .ministre-divider {
     margin: 0 auto;
   }
@@ -571,24 +585,29 @@ export default {
     width: 250px;
     height: 300px;
   }
-  
+  .big-screen-second-chart {
+    display: none;
+  }
+
   .ministre-header .ministre-title {
     font-size: 2rem;
   }
-  
+
   .ministre-text .ministre-quote {
     font-size: 1.1rem;
     padding: 1.5rem;
   }
-  
+
   .home-apropos-block .details-apropos {
     padding: 25px;
   }
-  
+
   .home-apropos-block .details-apropos .top-title-block {
     font-size: 2rem;
   }
-  
+  .show-on-mobile{
+    display: block !important;
+  }
 }
 
 .head-stats {
@@ -596,6 +615,10 @@ export default {
   font-size: 20px !important;
   color: #2c3e50;
   text-shadow: 1px 1px 1px #000;
+}
+
+.show-on-mobile{
+  display: none;
 }
 </style>
 

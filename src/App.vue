@@ -79,13 +79,6 @@ export default {
   // font-family: Arial, Helvetica, sans-serif;
 }
 
-.bm-burger-bars {
-  background-color: #fff;
-}
-
-.bm-burger-button {
-    top: 56px !important;
-  }
 .app-box-shadow-block {
   box-shadow: 0px 3px 12px #0000008c;
 }
@@ -858,4 +851,38 @@ p {
 }
 
 
+
+//MOBILE NAVIGATION SLIDE
+
+
+.bm-burger-button {
+  .bm-burger-bars{
+      background-color: #fff !important;
+  }
+  }
+
+.bm-item-list{
+  color: #fff !important;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  
+}
+ .bm-item-list li.nav-item {
+    margin-bottom: 16px; /* plus d’espace sur petits écrans */
+  }
+
+  .bm-item-list a.nav-link {
+    font-size: 16px;
+    padding: 2px 12px;
+    display: block;
+  }
+.bm-cross{
+      width: 5px !important;
+    height: 25px !important;
+}
 </style>

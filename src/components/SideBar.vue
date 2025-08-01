@@ -463,18 +463,6 @@ border-radius: 50%;
   }
 }
 
-  
-  // Animation pour le sous-menu
-  .slide-enter-active, .slide-leave-active {
-    transition: all 0.3s ease;
-    max-height: 300px;
-  }
-  
-  .slide-enter, .slide-leave-to {
-    opacity: 0;
-    max-height: 0;
-    transform: translateY(-10px);
-  }
 
   .admin-menu {
     span{

@@ -15,7 +15,7 @@
 
             <div class="col-md-9 mt-4">
               <div v-if="!showMultilateralBlock">
-                <div class="w-50">
+                <div class="select-flux">
                   <FormComponent
                     :fields="selectAccordDatas"
                     :initial-values="packs"
@@ -854,6 +854,16 @@ export default {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.select-flux{
+  width: 50%;
+}
+
+@media (max-width: 576px) {
+  .select-flux{
+  width: 100%;
+}
 }
 </style>
 

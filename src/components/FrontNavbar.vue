@@ -2,14 +2,16 @@
   <div>
     <div v-if="showAllNav" class="container-fluid p-0">
       <div class="top-head-civ fw-bold text-light text-center py-3">
-        
         <div class="marquee-container">
           <div class="marquee-content">
-            <p>🏛️ BIENVENUE SUR LA PLATEFORME OFFICIELLE DU MINISTÈRE DU COMMERCE ET DE L'INDUSTRIE 📊 CARTOGRAPHIE DES ACCORDS ET FLUX COMMERCIAUX DE LA CÔTE D'IVOIRE 🌍 UNION - DISCIPLINE - TRAVAIL 🤝 RENFORCEMENT DES RELATIONS COMMERCIALES INTERNATIONALES 📈</p>
+            <p>
+              🏛️ BIENVENUE SUR LA PLATEFORME OFFICIELLE DU MINISTÈRE DU COMMERCE
+              ET DE L'INDUSTRIE 📊 CARTOGRAPHIE DES ACCORDS ET FLUX COMMERCIAUX
+              DE LA CÔTE D'IVOIRE 🌍 UNION - DISCIPLINE - TRAVAIL 🤝
+              RENFORCEMENT DES RELATIONS COMMERCIALES INTERNATIONALES 📈
+            </p>
           </div>
         </div>
-
-
       </div>
 
       <div class="py-2">
@@ -18,8 +20,6 @@
             <p>MINISTÈRE DU COMMERCE ET DE L'INDUSTRIE</p>
             <hr class="black-line" />
             <p class="pb-3">DIRECTION GENERALE DU COMMERCE EXTERIEUR</p>
-            
-          
           </div>
 
           <div class="repub-central-img col-md-4 text-center">
@@ -35,18 +35,17 @@
             <p class="color-text">
               CARTOGRAPHIE DES ACCORDS ET FLUX COMMERCIAUX
             </p>
-            <p>Vue d'ensemble des relations commerciales entre
-              la Côte d'Ivoire et ses partenaires d'affaires</p>
+            <p>
+              Vue d'ensemble des relations commerciales entre la Côte d'Ivoire
+              et ses partenaires d'affaires
+            </p>
           </div>
         </div>
       </div>
 
-
-      <div class="full-navbar-space px-3 py-2" >
-        
-
+      <div class="full-navbar-space px-3 py-2">
         <div :class="isSticky ? 'bar-fixed-top' : 'bar-static-top'">
-          <nav >
+          <nav>
             <ul class="nav">
               <li v-for="route in routes" :key="route.path" class="nav-item">
                 <router-link
@@ -60,24 +59,19 @@
             </ul>
           </nav>
         </div>
-      
 
         <div>
-            <SearchCustomComponent />
+          <SearchCustomComponent />
         </div>
-
       </div>
-
     </div>
 
-
-     <div v-if="!showAllNav" >
-        <div class="my-3 py-3 mobil-nav">
-
-          <div class="space-slide">
+    <div v-if="!showAllNav">
+      <div class="mobil-nav">
+        <div class="space-slide">
           <Slide left>
             <nav>
-              <ul >
+              <ul>
                 <li v-for="route in routes" :key="route.path" class="nav-item">
                   <router-link
                     :to="route.path"
@@ -89,60 +83,43 @@
                 </li>
               </ul>
             </nav>
-             <div>
-            <SearchCustomComponent />
-        </div>
+            
           </Slide>
-          </div>
-          <div>
-            <div>
-            <img
-              src="../assets/icons/amoirie-civ.png"
-              width="100"
-              class="normal-zone-img"
-              alt=""
-            />
-            </div>
-          </div>
         </div>
-        </div>
-
-        </div>
-
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import { Slide } from 'vue3-burger-menu'
+import { Slide } from "vue3-burger-menu";
 import SearchCustomComponent from "./front/SearchCustomComponent.vue";
 
 export default {
   data() {
     return {
       showAllNav: window.innerWidth > 700,
-      isSticky: false, 
+      isSticky: false,
       routes: [
         { name: "Accueil", path: "/accueil" },
         { name: "Accord commerciaux", path: "/accord-commercial" },
         { name: "Flux commerciaux", path: "/flux-commercial" },
         { name: "Point Cooperation", path: "/point-cooperations" },
         { name: "Faqs", path: "/faq" },
-        { name: "Contact", path: "/contact" }
+        { name: "Contact", path: "/contact" },
       ],
     };
   },
 
-
-
   components: {
     Slide,
-    SearchCustomComponent
+    SearchCustomComponent,
   },
 
   computed: {
     ...mapGetters(["retLogUser"]),
   },
-  
 
   methods: {
     handleResize() {
@@ -150,29 +127,26 @@ export default {
     },
     handleScroll() {
       const scrollTop = window.scrollY;
-      this.isSticky = scrollTop >= 315; 
+      this.isSticky = scrollTop >= 315;
     },
   },
   mounted() {
     window.addEventListener("resize", this.handleResize);
     window.addEventListener("scroll", this.handleScroll);
-
   },
 
   beforeUnmount() {
     window.removeEventListener("resize", this.handleResize); // Nettoyage de l'écouteur
     window.addEventListener("scroll", this.handleScroll);
-
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.top-head-civ{
+.top-head-civ {
   background: #008c00;
 }
 .republic-head {
-
   align-items: center;
 
   hr.black-line {
@@ -182,32 +156,28 @@ export default {
     width: 70%;
     margin: 10px auto;
     border: none;
+  }
 
-}
-
-.repub-right-text {
+  .repub-right-text {
     text-transform: uppercase;
     font-weight: bold;
+  }
 }
 
-}
-
-.bar-fixed-top{
+.bar-fixed-top {
   position: fixed !important;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1001;
-  background-color: white; 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 8px 0;
 
- 
   .active {
     text-decoration: underline;
-    color: #FF6B07 !important; /* Souligne le lien actif */
+    color: #ff6b07 !important; /* Souligne le lien actif */
   }
-
 }
 
 //////////////////////////////////////@at-root/////////////////@at-root/@at-root
@@ -337,7 +307,7 @@ export default {
 
 .zone-small-screen {
   ul.nav.small-screen {
-    display: block ;
+    display: block;
   }
 }
 
@@ -349,19 +319,18 @@ export default {
 
   .active {
     text-decoration: none;
-    color: #FF6B07 !important; 
+    color: #ff6b07 !important;
   }
-  
 }
 
-.mobil-nav{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.mobil-nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-  .marquee-container {
+.marquee-container {
   overflow: hidden;
   white-space: nowrap;
   color: #fff;
@@ -382,5 +351,4 @@ export default {
     transform: translateX(-100%);
   }
 }
-
 </style>

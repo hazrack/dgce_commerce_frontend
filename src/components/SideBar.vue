@@ -175,8 +175,8 @@ export default {
           url: "/administration/etat-membres",
         },
         {
-          blueIcon: "earth-grid.svg",
-          icon: "earth-grid.svg",
+          blueIcon: "collaboration.png",
+          icon: "collaboration.png",
           text: "Coopération",
           url: "/administration/cooperation",
         },

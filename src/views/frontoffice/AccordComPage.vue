@@ -731,7 +731,6 @@ export default {
         this.isSwitchCountry = false;
       } else if (key === 3) {
         this.showMultilateralBlock = true;
-        this.showSpinner = true;
         this.$store.dispatch("SearchAgreements", {
           query: "multilateral",
           page: 0,

@@ -284,6 +284,7 @@ export default {
   },
   mounted() {
     this.showSpinner = true;
+    this.$store.dispatch("checkValidateToken");
     this.$store.dispatch("getListOfUsers", { page: 0, size: 10 }).then(() => {
       this.$nextTick(() => {
         this.showSpinner = false;

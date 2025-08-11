@@ -331,7 +331,8 @@ export default {
 
   mounted() {
     this.showSpinner = true;
-    this.$store.dispatch("getListOfCountries"),
+    this.$store.dispatch("checkValidateToken");
+    this.$store.dispatch("getListOfCountries");
     this.$store.dispatch("getListOfOrganization").then(() => {
       this.$nextTick(() => {
         this.showSpinner = false;

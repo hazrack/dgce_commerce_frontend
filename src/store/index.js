@@ -477,6 +477,21 @@ export const store = createStore({
          });
       },
 
+      checkValidateToken({commit}){
+         axios.get(`/users/validate-token`)
+         .then((response) => {
+            console.log('====================================');
+            console.log("intercept token",response);
+            console.log('====================================');
+         })
+         .catch((error) => {
+            if (error.response.status == 401) {
+            commit("mutLogin", false);
+            localStorage.clear();
+            }
+         });
+      },
+
       getStatsSeriesHistory({commit}){
          axios.get(`/stats/continent/series`)
          .then((response) => {

@@ -639,6 +639,7 @@ export default {
     this.showSpinner = true;
     this.$store.dispatch("getListOfOrganization");
     this.$store.dispatch("getListOfCountries");
+    this.$store.dispatch("checkValidateToken");
     this.$store.dispatch("getListOfAgreement", { page: 0, size: 5 })
       .then(() => {
         this.$nextTick(() => {

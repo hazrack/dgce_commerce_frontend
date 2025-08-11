@@ -234,7 +234,7 @@ export default {
   },
 
   mounted() {
-    console.log("le premoer moutend");
+    this.$store.dispatch("checkValidateToken");
   },
 };
 </script>

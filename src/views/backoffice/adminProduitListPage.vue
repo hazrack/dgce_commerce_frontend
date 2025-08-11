@@ -284,6 +284,7 @@ export default {
 
   mounted() {
     this.showSpinner = true;
+    this.$store.dispatch("checkValidateToken");
     this.$store
       .dispatch("getListOfProducts", { page: 0, size: 12 })
       .then(() => {

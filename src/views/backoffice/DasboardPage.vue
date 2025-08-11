@@ -100,6 +100,7 @@ export default {
   },
   mounted() {
     this.showSpinner = true;
+    this.$store.dispatch("checkValidateToken");
     this.$store.dispatch("getGlobalStats").then(() => {
       this.$nextTick(() => {
         this.showSpinner = false;

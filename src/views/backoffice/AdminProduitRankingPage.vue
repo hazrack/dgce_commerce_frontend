@@ -271,6 +271,7 @@ export default {
     this.filterYear = new Date().getFullYear() - 1;
     this.showSpinner = true;
     this.initSelectFilter();
+    this.$store.dispatch("checkValidateToken");
     this.$store.dispatch("getListOfCountries");
     this.$store
       .dispatch("getTradeFlowProductRanking", {

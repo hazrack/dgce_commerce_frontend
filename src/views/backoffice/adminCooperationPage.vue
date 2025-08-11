@@ -347,6 +347,7 @@ export default {
   mounted() {
     this.showSpinner = true;
     this.addAdminActionsColumn();
+    this.$store.dispatch("checkValidateToken");
     this.$store
       .dispatch("getListOfCooperation", { page: 0, size: 12 })
       .then(() => {

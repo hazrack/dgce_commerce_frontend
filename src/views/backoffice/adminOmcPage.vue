@@ -243,6 +243,7 @@ export default {
 
   mounted() {
     this.showSpinner = true;
+    this.$store.dispatch("checkValidateToken");
     this.$store.dispatch("getListOfOmc", { page: 0, size: 12 }).then(() => {
       this.$nextTick(() => {
         this.showSpinner = false;

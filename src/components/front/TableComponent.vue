@@ -101,7 +101,7 @@ export default {
     addSeparatorNumber(value) {
       if (value === 0) return '0';
       if (!value) return '';
-      return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+      return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
     },
 
     calculateBalance(item) {

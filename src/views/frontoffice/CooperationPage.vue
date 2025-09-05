@@ -52,8 +52,8 @@ export default {
 
       tablefields: [
         { key: "title", label: "Titre de la cooperation" },
-        { key: "signCountry", label: "Lieu de signature" },
-        { key: "signDate", label: "Date de signature" },
+        { key: "signCountry", label: "Pays Partenaire" },
+        // { key: "signDate", label: "Date de signature" },
         { key: "documentUrl", label: "Telecharger" },
       ],
       tableData: [],

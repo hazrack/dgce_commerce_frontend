@@ -99,6 +99,8 @@ export default {
     },
   },
   mounted() {
+    setTimeout(() => {
+      
     this.showSpinner = true;
     this.$store.dispatch("checkValidateToken");
     this.$store.dispatch("getGlobalStats").then(() => {
@@ -106,6 +108,8 @@ export default {
         this.showSpinner = false;
       });
     });
+
+    }, 1500);
 
    
   },

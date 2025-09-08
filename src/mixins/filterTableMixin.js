@@ -5,6 +5,7 @@ export default {
         return {
             selectFluxDatas: [],
             formFields: [],
+            loaderMessage: "Chargement...",
             filterMessage: "Pas de données disponibles pour les critères sélectionnés.",
             packTrade: this.getDefaultFilters(),
             filterByType: "both",
@@ -54,6 +55,7 @@ export default {
                 if (newValue && Array.isArray(newValue.datas) && newValue.datas.length > 0) {
                     this.initCountryTradeTableRanking();
                 } else {
+                    this.showSpinner = false;
                     this.tableData = [];
                 }
             },
@@ -120,6 +122,7 @@ export default {
         },
 
         fetchTradeRanking() {
+            this.loaderMessage="Chargement et Calcul en Cours ..."
             this.$store.dispatch("getTradeFlowCountryRanking", {
                 year: this.filterYear,
                 page: this.currentPage,
@@ -160,9 +163,9 @@ export default {
             this.currentPage = 0;
             this.fetchTradeRanking();
 
-            setTimeout(() => {
-                this.showSpinner = false;
-            }, 500);
+            // setTimeout(() => {
+            //     this.showSpinner = false;
+            // }, 500);
         },
 
         initSelectFilter() {

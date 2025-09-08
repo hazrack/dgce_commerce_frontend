@@ -23,7 +23,14 @@
           </div>
 
           <div class="repub-central-img col-md-4 text-center">
+           
             <img
+              src="../assets/images/comex-map-icon.jpeg"
+              width="170"
+              class="normal-zone-img"
+              alt=""
+            />
+             <img
               src="../assets/icons/amoirie-civ.png"
               width="170"
               class="normal-zone-img"

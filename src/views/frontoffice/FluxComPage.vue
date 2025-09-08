@@ -66,7 +66,6 @@ export default {
   data() {
     return {
 
-      loaderMessage: "Chargement...",
       showSearch:false,
 
 

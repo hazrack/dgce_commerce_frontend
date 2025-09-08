@@ -4,7 +4,7 @@
       <div class="py-2 px-2">
         <div class="logo-obk">
           <h4>COMEX MAP</h4>
-          <img src="../assets/icons/amoirie-civ.png" class="img-logo-size" alt="" />
+          <img src="../assets/images/comex-map-icon.jpeg" class="img-logo-size" alt="" />
         </div>
 
         <b-overlay :show="show" rounded="sm" class="product-loader">

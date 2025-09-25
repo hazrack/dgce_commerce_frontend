@@ -117,8 +117,10 @@ export default {
           newValue.datas.length > 0
         ) {
           this.initProductTableRanking();
+          this.showSpinner = false;
         } else {
           this.tableData = [];
+          this.showSpinner = false;
         }
       },
     },
@@ -162,6 +164,7 @@ export default {
     },
 
     checkToPage(page) {
+      this.showSpinner = true;
       this.currentPage = page;
       this.$store.dispatch("getTradeFlowProductRanking", {
         year: this.filterYear,
@@ -173,6 +176,8 @@ export default {
     },
 
     handleAdminFieldFluxChange({ fieldName, value }) {
+      this.showSpinner = true;
+
       switch (fieldName) {
         case "choosedYear":
           this.filterYear = value;
@@ -197,6 +202,7 @@ export default {
         countryCode2: this.filterByCountryCode,
         productId: this.filterByProductId,
       });
+
     },
 
     refreshData() {
@@ -270,8 +276,11 @@ export default {
   mounted() {
     this.filterYear = new Date().getFullYear() - 1;
     this.showSpinner = true;
+    
     this.initSelectFilter();
-    this.$store.dispatch("checkValidateToken");
+
+setTimeout(() => {
+  this.$store.dispatch("checkValidateToken");
     this.$store.dispatch("getListOfCountries");
     this.$store
       .dispatch("getTradeFlowProductRanking", {
@@ -284,6 +293,9 @@ export default {
           this.showSpinner = false;
         });
       });
+}, 1500);
+
+    
   },
 };
 </script>

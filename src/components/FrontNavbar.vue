@@ -22,20 +22,20 @@
             <p class="pb-3">DIRECTION GENERALE DU COMMERCE EXTERIEUR</p>
           </div>
 
-          <div class="repub-central-img col-md-4 text-center">
+          <div class="repub-central-img col-md-4 my-3 text-center">
            
             <img
-              src="../assets/images/comex-map-icon.jpeg"
-              width="170"
+              src="../assets/icons/comexmap.png"
+              width="300"
               class="normal-zone-img"
               alt=""
             />
-             <img
+             <!-- <img
               src="../assets/icons/amoirie-civ.png"
               width="170"
               class="normal-zone-img"
               alt=""
-            />
+            /> -->
           </div>
 
           <div class="repub-right-text col-md-4 text-center">

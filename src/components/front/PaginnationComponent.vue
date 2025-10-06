@@ -1,5 +1,11 @@
 <template>
     <div class="pagination">
+      
+      <!-- Bouton Début -->
+      <button @click="goToPage(0)" :disabled="currentPage === 0">
+        Début
+      </button>
+
       <button @click="goToPage(currentPage - 1)" :disabled="currentPage === 0">
         Précédent
       </button>
@@ -13,6 +19,10 @@
       </button>
       <button @click="goToPage(currentPage + 1)" :disabled="currentPage === totalPages - 1">
         Suivant
+      </button>
+
+      <button @click="goToPage(totalPages - 1)" :disabled="currentPage === totalPages - 1">
+        Fin
       </button>
     </div>
   </template>

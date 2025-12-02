@@ -1,5 +1,7 @@
 <template>
   <div>
+    <WelcomeModal />
+    
     <div class="show-on-mobile">
           <UnderNavComponent />
     </div>
@@ -127,6 +129,7 @@ import DonutInteractive from "../../components/stats/DonutInteractive.vue";
 import LoaderBlockComponent from "../../components/front/LoaderBlockComponent.vue";
 import BarChart from "../../components/stats/BarsChart.vue";
 import UnderNavComponent from "@/components/front/UnderNavComponent.vue";
+import WelcomeModal from "@/components/front/WelcomModalComponent.vue";
 
 export default {
   data() {
@@ -146,6 +149,7 @@ export default {
     BarChart,
     LoaderBlockComponent,
     UnderNavComponent,
+    WelcomeModal
   },
 
   computed: {

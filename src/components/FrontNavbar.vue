@@ -17,9 +17,13 @@
       <div class="py-2">
         <div class="row px-4 republic-head">
           <div class="repub-left-text fw-bold col-md-4 text-center">
-            <p>MINISTÈRE DU COMMERCE ET DE L'INDUSTRIE</p>
-            <hr class="black-line" />
-            <p class="pb-3">DIRECTION GENERALE DU COMMERCE EXTERIEUR</p>
+           
+            <img
+              src="../assets/images/mci.png"
+              width="300"
+              class="normal-zone-img"
+              alt=""
+            />
           </div>
 
           <div class="repub-central-img col-md-4 my-3 text-center">
@@ -30,22 +34,17 @@
               class="normal-zone-img"
               alt=""
             />
-             <!-- <img
-              src="../assets/icons/amoirie-civ.png"
-              width="170"
-              class="normal-zone-img"
-              alt=""
-            /> -->
+            
           </div>
 
           <div class="repub-right-text col-md-4 text-center">
             <p class="color-text">
-              CARTOGRAPHIE DES ACCORDS ET FLUX COMMERCIAUX
+              Cartographie des accords et des fleux commerciaux
             </p>
-            <p>
+            <!-- <p>
               Vue d'ensemble des relations commerciales entre la Côte d'Ivoire
               et ses partenaires d'affaires
-            </p>
+            </p> -->
           </div>
         </div>
       </div>

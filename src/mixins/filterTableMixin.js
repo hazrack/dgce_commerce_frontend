@@ -11,25 +11,44 @@ export default {
             filterByType: "both",
             filterByCountryCode: "",
             filterByProductId: "",
-            filterByContinent:"",
+            filterByContinent: "",
             filterYear: null,
             listOfSelectProduct: [],
             tableData: [],
             tablefields: [
-                { key: "year", label: "ANNÉE" },
-                { key: "rank", label: "Rang Global" },
-                { key: "countryLabel", label: "Pays" },
-                { key: "totalAmount", label: "E. Billatéraux (Fcfa)" },
-                { key: "exportAmount", label: "Montant Export (Fcfa)" },
-                { key: "importAmount", label: "Montant Import (Fcfa)" },
-                { key: "balance", label: "Balance Commerciale" },
-                { key: "part", label: "Part Globaux (%)" },
-                { key: "importWeight", label: "Poids Import (Kg)" },
-                { key: "exportWeight", label: "Poids Export (Kg)" },
-                { key: "totalWeight", label: "Poids Global (Kg)" },
-                { key: "customerRank", label: "Rang Client" },
-                { key: "supplierRank", label: "Rang Fournisseur" },
             ],
+
+            tableFieldsGlobal: [
+                { key: "year", label: "ANNÉE" },
+                { key: "rank", label: "RANG GLOBAL" },
+                { key: "countryLabel", label: "PAYS" },
+                { key: "totalAmount", label: "ÉCHANGES BILATÉRAUX (CFA)" },
+                { key: "balance", label: "BALANCE COMMERCIALE" },
+                { key: "part", label: "PART / ÉCHANGES GLOBAUX (%)" },
+                { key: "totalWeight", label: "QUANTITÉ GLOBALE (KG)" },
+            ],
+
+            tableFieldsImport: [
+                { key: "year", label: "ANNÉE" },
+                { key: "rank", label: "RANG FOURNISSEUR" },
+
+                // { key: "supplierRank", label: "RANG FOURNISSEUR" },
+                { key: "countryLabel", label: "PAYS" },
+                { key: "importAmount", label: "VALEURS IMPORTATIONS (CFA)" },
+                { key: "part", label: "PART / IMPORTATIONS GLOBALES (%)" },
+                { key: "importWeight", label: "QUANTITÉ IMPORTÉE (TONNE)" },
+            ],
+
+            tableFieldsExport: [
+                { key: "year", label: "ANNÉE" },
+                { key: "rank", label: "RANG CLIENT" },
+                // { key: "customerRank", label: "RANG CLIENT" },
+                { key: "countryLabel", label: "PAYS" },
+                { key: "exportAmount", label: "VALEURS EXPORTATIONS (CFA)" },
+                { key: "part", label: "PART / EXPORTATIONS GLOBALES (%)" },
+                { key: "exportWeight", label: "QUANTITÉ EXPORTÉE (TONNE)" },
+            ],
+
             currentPage: 0,
             totalPages: 1,
             maxVisiblePages: 5,
@@ -84,6 +103,16 @@ export default {
             };
         },
 
+        updateTableFields() {
+            if (this.filterByType === "import") {
+                this.tablefields = this.tableFieldsImport;
+            } else if (this.filterByType === "export") {
+                this.tablefields = this.tableFieldsExport;
+            } else {
+                this.tablefields = this.tableFieldsGlobal;
+            }
+        },
+
         performSearch(query) {
             this.showSpinner = true;
 
@@ -122,7 +151,7 @@ export default {
         },
 
         fetchTradeRanking() {
-            this.loaderMessage="Chargement et Calcul en Cours ..."
+            this.loaderMessage = "Chargement et Calcul en Cours ..."
             this.$store.dispatch("getTradeFlowCountryRanking", {
                 year: this.filterYear,
                 page: this.currentPage,
@@ -139,7 +168,7 @@ export default {
 
             console.log('le type ', fieldName);
             console.log('la valeur ', value);
-            
+
 
             switch (fieldName) {
                 case "choosedYear":
@@ -147,6 +176,8 @@ export default {
                     break;
                 case "choosedTrade":
                     this.filterByType = value;
+                    this.updateTableFields();
+
                     break;
                 case "checkByCountry":
                     this.filterByCountryCode = value;
@@ -157,7 +188,7 @@ export default {
                 case "continentSelected":
                     this.filterByContinent = value;
                     break;
-                    
+
             }
 
             this.currentPage = 0;
@@ -216,7 +247,7 @@ export default {
     mounted() {
         console.log("le sencde moutend");
 
-
+        this.updateTableFields();
         this.showSpinner = true;
 
 
@@ -225,21 +256,21 @@ export default {
 
         setTimeout(() => {
             Promise.all([
-            this.$store.dispatch("getListOfCountries"),
-            this.$store.dispatch("getListOfContinents"),
-            this.$store.dispatch("getListOfProducts", { page: 0, size: 16 }),
-            this.$store.dispatch("getTradeFlowCountryRanking", {
-                year: this.filterYear,
-                page: 0,
-                size: 12,
-            }),
-        ]).then(() => {
-            setTimeout(() => {
-                this.showSpinner = false;
-            }, 100);
-        });
+                this.$store.dispatch("getListOfCountries"),
+                this.$store.dispatch("getListOfContinents"),
+                this.$store.dispatch("getListOfProducts", { page: 0, size: 16 }),
+                this.$store.dispatch("getTradeFlowCountryRanking", {
+                    year: this.filterYear,
+                    page: 0,
+                    size: 12,
+                }),
+            ]).then(() => {
+                setTimeout(() => {
+                    this.showSpinner = false;
+                }, 100);
+            });
         }, 1500);
 
-        
+
     },
 };

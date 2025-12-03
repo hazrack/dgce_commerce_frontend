@@ -9,7 +9,7 @@
       <div class="home-apropos-block my-5">
         <div class="container">
           <div class="details-apropos">
-            <h2 class="top-title-block">DIRECTION GÉNÉRALE DU COMMERCE EXTERIEUR (DGCE)</h2>
+            <h2 class="top-title-block">DIRECTION GÉNÉRALE DU COMMERCE EXTÉRIEUR (DGCE)</h2>
             <div class="details-text">
               <p>
                 Les Accords commerciaux constituent un fondement essentiel pour
@@ -93,7 +93,7 @@
 
           <div class="col-md-6">
             <div class="text-center fw-bold my-4 espace-stats-head">
-              <p class="head-stats">Flux d'échange commerciaux</p>
+              <p class="head-stats">Flux d'échanges commerciaux</p>
             </div>
             <BarChart
               :labels="labelsParContinent"
@@ -109,7 +109,7 @@
 
       <div>
         <div class="text-center">
-          <h2 class="ministre-title">Structures partenaires</h2>
+          <h2 class="ministre-title">Structures parténaires</h2>
           <div class="center-divider">
           <div class="ministre-divider"></div>
         </div>
@@ -458,7 +458,6 @@ export default {
     border-radius: 25px;
     font-weight: 600;
     font-size: 14px;
-    text-transform: uppercase;
     letter-spacing: 1px;
     box-shadow: 0 8px 25px rgba(255, 102, 0, 0.3);
 

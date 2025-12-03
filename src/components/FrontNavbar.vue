@@ -16,7 +16,7 @@
 
       <div class="py-2">
         <div class="row px-4 republic-head">
-          <div class="repub-left-text fw-bold col-md-4 text-center">
+          <div class="repub-left-text fw-bold col-md-4">
            
             <img
               src="../assets/images/mci.png"
@@ -37,7 +37,7 @@
             
           </div>
 
-          <div class="repub-right-text col-md-4 text-center">
+          <div class="repub-right-text col-md-4">
             <img
               src="../assets/images/dgce.png"
               width="200"
@@ -113,7 +113,7 @@ export default {
         { name: "Flux commerciaux", path: "/flux-commercial" },
         { name: "Points de coopérations", path: "/point-cooperations" },
         { name: "Faq", path: "/faq" },
-        { name: "Contact", path: "/contact" },
+        { name: "Contacts", path: "/contact" },
       ],
     };
   },
@@ -167,6 +167,7 @@ export default {
   .repub-right-text {
     text-transform: uppercase;
     font-weight: bold;
+    text-align: right;
   }
 }
 
@@ -274,10 +275,22 @@ export default {
   }
 
   .nav-link {
-    color: #86838c; /* Texte en blanc */
     text-decoration: none; /* Supprime le soulignement */
     padding: 10px 15px;
     border-radius: 5px;
+  }
+
+  .bar-fixed-top {
+    .nav-link {
+          color: #86838c;
+
+    }
+  }
+  .bar-static-top{
+    .nav-link {
+          color: #fff;
+
+    }
   }
 
   .nav-link:hover {

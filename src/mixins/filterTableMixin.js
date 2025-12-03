@@ -11,7 +11,7 @@ export default {
             filterByType: "both",
             filterByCountryCode: "",
             filterByProductId: "",
-            filterByContinent: "",
+            filterByContinent: "", 
             filterYear: null,
             listOfSelectProduct: [],
             tableData: [],
@@ -166,8 +166,15 @@ export default {
         handleFieldFluxChange({ fieldName, value }) {
             this.showSpinner = true;
 
-            console.log('le type ', fieldName);
+            console.log('le type clické', fieldName);
             console.log('la valeur ', value);
+
+            //value = 0 => LE CLICK SUR ( Tous les continents, pays, produit )
+            if(value == 0) {
+                //on passe la value a null afin de sortir du filtre vers le backend au niveau du fetchTradeRanking
+                //si la value est different de 0 alors on filtre avec la valeur
+                value = null;
+            }
 
 
             switch (fieldName) {
@@ -199,7 +206,31 @@ export default {
             // }, 500);
         },
 
+
+
         initSelectFilter() {
+
+            const countriesDatas = [...this.retcountryByAlphaCode2Select];
+            const countriesWithAll = [
+                { label: "Tous les pays", value: "0" },
+                ...countriesDatas
+            ];
+
+            const continentDatas = [...this.retcontinentSelect];
+            const continentWithAll = [
+                { label: "Tous les continents", value: "0" },
+                ...continentDatas
+            ];
+
+            const productDatas = [...this.listOfSelectProduct];
+            const productWithAll = [
+                { label: "Tous les produits", value: "0" },
+                ...productDatas
+            ];
+
+
+
+
             this.selectFluxDatas = [
                 {
                     label: "Année",
@@ -224,21 +255,21 @@ export default {
                     type: "select",
                     model: "continentSelected",
                     required: true,
-                    options: this.retcontinentSelect
+                    options: continentWithAll
                 },
                 {
                     label: "Pays",
                     type: "select",
                     model: "checkByCountry",
                     required: true,
-                    options: this.retcountryByAlphaCode2Select,
+                    options: countriesWithAll,
                 },
                 {
                     label: "Produit",
                     type: "select",
                     model: "productSelected",
                     required: true,
-                    options: this.listOfSelectProduct,
+                    options: productWithAll,
                 },
             ];
         },

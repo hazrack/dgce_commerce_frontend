@@ -22,7 +22,9 @@ export default {
         { image: new URL('../../assets/images/img-cci.png', import.meta.url).href },
         { image: new URL('../../assets/images/img-guce.png', import.meta.url).href },
         { image: new URL('../../assets/images/img-gude.png', import.meta.url).href },
-        // { image: new URL('../../assets/images/copv.jpg', import.meta.url).href },
+        { image: new URL('../../assets/images/img-export.jpeg', import.meta.url).href },
+        { image: new URL('../../assets/images/img-cepici.jpeg', import.meta.url).href },
+        { image: new URL('../../assets/images/img-ocpv.jpeg', import.meta.url).href },
       ]
     }
   }
@@ -39,7 +41,7 @@ export default {
     display: flex;
     justify-content: center;
     flex-wrap: wrap; 
-    gap: 20px;
+    gap: 30px;
   }
 
   .logo-central-item {

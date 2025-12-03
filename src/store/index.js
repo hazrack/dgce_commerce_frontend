@@ -4,111 +4,111 @@ import axios from '../services/index.js';
 import _ from 'lodash';
 
 export const store = createStore({
-  plugins: [createPersistedState()],
-  state: {
-    userLogStatus: false,
-    logedUser: null,
-    listOfUsers: null,
-    listOfOmcs: null,
-    listOfProducts: null,
-    listOfCountries: null,
-    listOfSimpleCountryLabel: null,
-    listOfYearBetw95ToNow: null,
-    listOfOrganization: null,
-    countrySelectData: null,
-    orgaSelectData: null,
-    listOfAgreement: null,
-    filterCountryOrOrgaAgreem: null,
-    agreemBilatMapSelect: null,
-    agreemBilatMapData: null,
-    agreemRegionalMapSelect: null,
-    agreemRegionalMapData: null,
-    globalStats: null,
-    productRankings: null,
-    countryByAlphaCode2Select: null,
-    countryTradeRankings: null,
-    continentSelect: null,
-    statsSeriesHistory: null,
-    cooperationList:null
-  },
-  mutations: {
-    MutLogedUser(state, payload) {
-      state.logedUser = payload;
-    },
-    mutLogin(state, payload) {
-      state.userLogStatus = payload;
-      window.location.reload();
-    },
-    MutGlobalListOfUsers(state, payload) {
-      state.listOfUsers = payload;
-    },
-    MutGlobalListOfOmcs(state, payload) {
-      state.listOfOmcs = payload;
-    },
-    MutGlobalListOfProducts(state, payload) {
-      state.listOfProducts = payload;
-    },
-    MutGlobalCountries(state, payload) {
-      state.listOfCountries = payload;
-    },
-    MutSimpleCountryLabel(state, payload) {
-      state.listOfSimpleCountryLabel = payload;
-    },
-    MutListOfYearBetw95ToNow(state, payload) {
-      state.listOfYearBetw95ToNow = payload;
-    },
-    MutGlobalOrganization(state, payload) {
-      state.listOfOrganization = payload;
-    },
-    MutCountrySelectData(state, payload) {
-      state.countrySelectData = payload;
-    },
-    MutCountryByAlphaCode2Select(state, payload) {
-      state.countryByAlphaCode2Select = payload;
-    },
-    MutOrgaSelectData(state, payload) {
-      state.orgaSelectData = payload;
-    },
-    MutGlobalAgreement(state, payload) {
-      state.listOfAgreement = payload;
-    },
-    MutCountryOrOrgaAgreement(state, payload) {
-      state.filterCountryOrOrgaAgreem = payload;
-    },
-    MutAgreemBilatMapSelect(state, payload) {
-      state.agreemBilatMapSelect = payload;
-    },
-    MutAgreemBilatMapData(state, payload) {
-      state.agreemBilatMapData = payload;
-    },
-    MutAgreemRegionalMapSelect(state, payload) {
-      state.agreemRegionalMapSelect = payload;
-    },
-    MutAgreemRegionalMapData(state, payload) {
-      state.agreemRegionalMapData = payload;
-    },
-    MutGlobalStats(state, payload) {
-      state.globalStats = payload;
-    },
-    MutListOfProductRanking(state, payload) {
-      state.productRankings = payload;
-    },
-    MutTradeCountryRanking(state, payload) {
-      state.countryTradeRankings = payload;
-    },
-    MutContinentSelect(state, payload) {
-      state.continentSelect = payload;
-    },
-    MutStatsSeriesHistory(state, payload) {
-      state.statsSeriesHistory = payload;
-    },
+   plugins: [createPersistedState()],
+   state: {
+      userLogStatus: false,
+      logedUser: null,
+      listOfUsers: null,
+      listOfOmcs: null,
+      listOfProducts: null,
+      listOfCountries: null,
+      listOfSimpleCountryLabel: null,
+      listOfYearBetw95ToNow: null,
+      listOfOrganization: null,
+      countrySelectData: null,
+      orgaSelectData: null,
+      listOfAgreement: null,
+      filterCountryOrOrgaAgreem: null,
+      agreemBilatMapSelect: null,
+      agreemBilatMapData: null,
+      agreemRegionalMapSelect: null,
+      agreemRegionalMapData: null,
+      globalStats: null,
+      productRankings: null,
+      countryByAlphaCode2Select: null,
+      countryTradeRankings: null,
+      continentSelect: null,
+      statsSeriesHistory: null,
+      cooperationList: null
+   },
+   mutations: {
+      MutLogedUser(state, payload) {
+         state.logedUser = payload;
+      },
+      mutLogin(state, payload) {
+         state.userLogStatus = payload;
+         window.location.reload();
+      },
+      MutGlobalListOfUsers(state, payload) {
+         state.listOfUsers = payload;
+      },
+      MutGlobalListOfOmcs(state, payload) {
+         state.listOfOmcs = payload;
+      },
+      MutGlobalListOfProducts(state, payload) {
+         state.listOfProducts = payload;
+      },
+      MutGlobalCountries(state, payload) {
+         state.listOfCountries = payload;
+      },
+      MutSimpleCountryLabel(state, payload) {
+         state.listOfSimpleCountryLabel = payload;
+      },
+      MutListOfYearBetw95ToNow(state, payload) {
+         state.listOfYearBetw95ToNow = payload;
+      },
+      MutGlobalOrganization(state, payload) {
+         state.listOfOrganization = payload;
+      },
+      MutCountrySelectData(state, payload) {
+         state.countrySelectData = payload;
+      },
+      MutCountryByAlphaCode2Select(state, payload) {
+         state.countryByAlphaCode2Select = payload;
+      },
+      MutOrgaSelectData(state, payload) {
+         state.orgaSelectData = payload;
+      },
+      MutGlobalAgreement(state, payload) {
+         state.listOfAgreement = payload;
+      },
+      MutCountryOrOrgaAgreement(state, payload) {
+         state.filterCountryOrOrgaAgreem = payload;
+      },
+      MutAgreemBilatMapSelect(state, payload) {
+         state.agreemBilatMapSelect = payload;
+      },
+      MutAgreemBilatMapData(state, payload) {
+         state.agreemBilatMapData = payload;
+      },
+      MutAgreemRegionalMapSelect(state, payload) {
+         state.agreemRegionalMapSelect = payload;
+      },
+      MutAgreemRegionalMapData(state, payload) {
+         state.agreemRegionalMapData = payload;
+      },
+      MutGlobalStats(state, payload) {
+         state.globalStats = payload;
+      },
+      MutListOfProductRanking(state, payload) {
+         state.productRankings = payload;
+      },
+      MutTradeCountryRanking(state, payload) {
+         state.countryTradeRankings = payload;
+      },
+      MutContinentSelect(state, payload) {
+         state.continentSelect = payload;
+      },
+      MutStatsSeriesHistory(state, payload) {
+         state.statsSeriesHistory = payload;
+      },
 
-    MutListCooperation(state, payload) {
-      state.cooperationList = payload;
-    },
-  },
-  actions: {
-    
+      MutListCooperation(state, payload) {
+         state.cooperationList = payload;
+      },
+   },
+   actions: {
+
       getListOfUsers({ commit }, { page, size }) {
          axios.get(`/users?page=${page}&size=${size}`)
             .then((response) => {
@@ -130,47 +130,48 @@ export const store = createStore({
 
                const simpleOmcCountryLabel = response.data.map(item => {
                   return {
-                    label: item.label,
-                    value: item.label
+                     label: item.label,
+                     value: item.label
                   };
-                });
+               });
 
-                const countrySelectIdData = response.data.map(item => {
+               const countrySelectIdData = response.data.map(item => {
                   return {
-                    label: item.label,
-                    value: item.id
+                     label: item.label,
+                     value: item.id
                   };
-                });
-
-                const countryByAlpha2Select = response.data.map(item => {
-                  return {
-                    label: item.label,
-                    value: item.alphaCode2
-                  };
-                });
-
-                console.log("OK ICI OK OKS", countryByAlpha2Select);
-                
+               });
 
 
-                const currentYear = new Date().getFullYear();
-                const startYear = 1995;
+               const countryByAlpha2Select = response.data
+                  .map(item => ({
+                     label: item.label,
+                     value: item.alphaCode2
+                  }))
+                  .sort((a, b) => a.label.localeCompare(b.label));
 
-                const yearFor95ToNow = Array.from({ length: currentYear - startYear + 1 }, (_, i) => {
+               console.log("OK ICI OK OKS", countryByAlpha2Select);
+
+
+
+               const currentYear = new Date().getFullYear();
+               const startYear = 1995;
+
+               const yearFor95ToNow = Array.from({ length: currentYear - startYear + 1 }, (_, i) => {
                   const year = currentYear - i;
                   return { value: String(year), label: String(year) };
-                }); 
+               });
 
-               
+
                //LISTE DES ANNEES 1995 - AUJOURDHUI
                commit("MutListOfYearBetw95ToNow", yearFor95ToNow);
 
                //DESTINEE AU CHAMP SELECT POUR AJOUT PAYS
                commit("MutCountrySelectData", countrySelectIdData);
 
-                //DESTINE A LA RECHERCHE AU NIVEAU DES ECHANGE ET PRODUIT RANKING
-                
-                commit("MutCountryByAlphaCode2Select", countryByAlpha2Select);
+               //DESTINE A LA RECHERCHE AU NIVEAU DES ECHANGE ET PRODUIT RANKING
+
+               commit("MutCountryByAlphaCode2Select", countryByAlpha2Select);
 
                //INPUT LABEL FOR OMC ADD FORM
                commit("MutSimpleCountryLabel", simpleOmcCountryLabel);
@@ -201,17 +202,17 @@ export const store = createStore({
       },
 
 
-      SearchListOfOmc({commit}, {value}){
+      SearchListOfOmc({ commit }, { value }) {
          axios.get(`/omcs/search?q=${value}`)
-         .then((response) => {
-            commit("MutGlobalListOfOmcs", response.data);
-         })
-         .catch((error) => {
-            if (error.response.status == 401) {
-            commit("mutLogin", false);
-            localStorage.clear();
-            }
-         });
+            .then((response) => {
+               commit("MutGlobalListOfOmcs", response.data);
+            })
+            .catch((error) => {
+               if (error.response.status == 401) {
+                  commit("mutLogin", false);
+                  localStorage.clear();
+               }
+            });
       },
 
       getListOfProducts({ commit }, { page, size }) {
@@ -227,31 +228,31 @@ export const store = createStore({
             });
       },
 
-      SearchListOfProduct({commit}, {value}){
+      SearchListOfProduct({ commit }, { value }) {
          axios.get(`/products/search?q=${value}`)
-         .then((response) => {
-            commit("MutGlobalListOfProducts", response.data);
-         })
-         .catch((error) => {
-            if (error.response.status == 401) {
-            commit("mutLogin", false);
-            localStorage.clear();
-            }
-         });
+            .then((response) => {
+               commit("MutGlobalListOfProducts", response.data);
+            })
+            .catch((error) => {
+               if (error.response.status == 401) {
+                  commit("mutLogin", false);
+                  localStorage.clear();
+               }
+            });
       },
 
       getTradeFlowProductRanking({ commit }, { year, page = 0, size = 12, type = "both", countryCode2 = "", productId = "" }) {
          return axios.get(`/trade-flow/products/rankings`, {
             params: {
-              year,
-              page,
-              size,
-              type,
-              countryCode: countryCode2 || null,
-              productId: productId || null,
+               year,
+               page,
+               size,
+               type,
+               countryCode: countryCode2 || null,
+               productId: productId || null,
             }
-          })
-         .then((response) => {
+         })
+            .then((response) => {
 
                commit("MutListOfProductRanking", response.data);
 
@@ -267,16 +268,16 @@ export const store = createStore({
       getTradeFlowCountryRanking({ commit }, { year, page = 0, size = 12, type = "both", countryCode2 = "", productId = "", continentId = "" }) {
          return axios.get(`/trade-flow/countries/rankings`, {
             params: {
-              year,
-              page,
-              size,
-              type,
-              countryCode: countryCode2 || null,
-              productId: productId || null,
-              continentId: continentId || null
+               year,
+               page,
+               size,
+               type,
+               countryCode: countryCode2 || null,
+               productId: productId || null,
+               continentId: continentId || null
             }
-          })
-         .then((response) => {
+         })
+            .then((response) => {
 
                commit("MutTradeCountryRanking", response.data);
 
@@ -293,12 +294,13 @@ export const store = createStore({
          axios.get(`/organizations`)
             .then((response) => {
 
-               const orgaSelectIdData = response.data.map(item => {
-                  return {
-                    label: item.label,
-                    value: item.id
-                  };
-                });
+               const orgaSelectIdData = response.data.map(item => ({
+                  label: item.label,
+                  value: item.id
+               }))
+                  .sort((a, b) => a.label.localeCompare(b.label));
+
+
 
                commit("MutOrgaSelectData", orgaSelectIdData);
 
@@ -317,12 +319,12 @@ export const store = createStore({
          axios.get(`/continents`)
             .then((response) => {
 
-               const contientSelect = response.data.map(item => {
-                  return {
-                    label: item.label,
-                    value: item.id
-                  };
-                });
+               const contientSelect = response.data
+                  .map(item => ({
+                     label: item.label,
+                     value: item.id
+                  }))
+                  .sort((a, b) => a.label.localeCompare(b.label));
 
                commit("MutContinentSelect", contientSelect);
 
@@ -350,17 +352,17 @@ export const store = createStore({
                }
             });
       },
-      SearchCooperations({commit}, {value}){
+      SearchCooperations({ commit }, { value }) {
          axios.get(`/cooperations/search?q=${value}`)
-         .then((response) => {
-            commit("MutListCooperation", response.data);
-         })
-         .catch((error) => {
-            if (error.response.status == 401) {
-            commit("mutLogin", false);
-            localStorage.clear();
-            }
-         });
+            .then((response) => {
+               commit("MutListCooperation", response.data);
+            })
+            .catch((error) => {
+               if (error.response.status == 401) {
+                  commit("mutLogin", false);
+                  localStorage.clear();
+               }
+            });
       },
 
 
@@ -378,20 +380,20 @@ export const store = createStore({
             });
       },
 
-      SearchAgreements({commit}, {query, page=0, size=18}){
+      SearchAgreements({ commit }, { query, page = 0, size = 18 }) {
          axios.get(`/agreements/search?q=${query}&page=${page}&size=${size}`)
-         .then((response) => {
-            commit("MutGlobalAgreement", response.data);
-         })
-         .catch((error) => {
-            if (error.response.status == 401) {
-            commit("mutLogin", false);
-            localStorage.clear();
-            }
-         });
+            .then((response) => {
+               commit("MutGlobalAgreement", response.data);
+            })
+            .catch((error) => {
+               if (error.response.status == 401) {
+                  commit("mutLogin", false);
+                  localStorage.clear();
+               }
+            });
       },
 
-      getAgreementsByCountryIdOrOrgaId({commit}, { orgaId, countryId}){
+      getAgreementsByCountryIdOrOrgaId({ commit }, { orgaId, countryId }) {
          let url = "";
          if (orgaId == null) {
             url = `/agreements?countryId=${countryId}`
@@ -399,28 +401,28 @@ export const store = createStore({
             url = `/agreements?organizationId=${orgaId}`
          }
          axios.get(url)
-         .then((response) => {
-            commit("MutCountryOrOrgaAgreement", response.data);
-         })
-         .catch((error) => {
-            if (error.response.status == 401) {
-            commit("mutLogin", false);
-            localStorage.clear();
-            }
-         });
+            .then((response) => {
+               commit("MutCountryOrOrgaAgreement", response.data);
+            })
+            .catch((error) => {
+               if (error.response.status == 401) {
+                  commit("mutLogin", false);
+                  localStorage.clear();
+               }
+            });
       },
 
       getBilateralSignedCountries({ commit }) {
          axios.get(`/agreements/signed-countries`)
             .then((response) => {
 
-              
-                const mapCountrySelect = response.data.map(item => {
-                  return {
-                    label: item.label,
-                    value: item.id
-                  };
-                });
+
+               const mapCountrySelect = response.data.map(item => ({
+                  label: item.label,
+                  value: item.id
+               }))
+                  .sort((a, b) => a.label.localeCompare(b.label));
+
 
                //SELECT LIST PAYS AYANT UN ACCORD BILATERAL
                commit("MutAgreemBilatMapSelect", mapCountrySelect);
@@ -441,13 +443,13 @@ export const store = createStore({
          axios.get(`/agreements/signed-organizations`)
             .then((response) => {
 
-              
-                const mapOrganizationSelect = response.data.map(item => {
+
+               const mapOrganizationSelect = response.data.map(item => {
                   return {
-                    label: item.label,
-                    value: item.id
+                     label: item.label,
+                     value: item.id
                   };
-                });
+               });
 
                //SELECT LIST PAYS AYANT UN ACCORD BILATERAL
                commit("MutAgreemRegionalMapSelect", mapOrganizationSelect);
@@ -464,125 +466,125 @@ export const store = createStore({
             });
       },
 
-      getGlobalStats({commit}){
+      getGlobalStats({ commit }) {
          axios.get(`/stats/global`)
-         .then((response) => {
-            commit("MutGlobalStats", response.data);
-         })
-         .catch((error) => {
-            if (error.response.status == 401) {
-            commit("mutLogin", false);
-            localStorage.clear();
-            }
-         });
+            .then((response) => {
+               commit("MutGlobalStats", response.data);
+            })
+            .catch((error) => {
+               if (error.response.status == 401) {
+                  commit("mutLogin", false);
+                  localStorage.clear();
+               }
+            });
       },
 
-      checkValidateToken({commit}){
+      checkValidateToken({ commit }) {
          axios.get(`/users/validate-token`)
-         .then((response) => {
-            console.log('====================================');
-            console.log("intercept token",response);
-            console.log('====================================');
-         })
-         .catch((error) => {
-            if (error.response.status == 401) {
-            commit("mutLogin", false);
-            localStorage.clear();
-            }
-         });
+            .then((response) => {
+               console.log('====================================');
+               console.log("intercept token", response);
+               console.log('====================================');
+            })
+            .catch((error) => {
+               if (error.response.status == 401) {
+                  commit("mutLogin", false);
+                  localStorage.clear();
+               }
+            });
       },
 
-      getStatsSeriesHistory({commit}){
+      getStatsSeriesHistory({ commit }) {
          axios.get(`/stats/continent/series`)
-         .then((response) => {
-            // Retourne une liste d'objets contenant le label du continent avec le type d'échange (Importation ou Exportation)
-            // Pour les statistique Barchat
-            
-            commit("MutStatsSeriesHistory", response.data);
-         })
-         .catch((error) => {
-            if (error.response.status == 401) {
-            commit("mutLogin", false);
-            localStorage.clear();
-            }
-         });
+            .then((response) => {
+               // Retourne une liste d'objets contenant le label du continent avec le type d'échange (Importation ou Exportation)
+               // Pour les statistique Barchat
+
+               commit("MutStatsSeriesHistory", response.data);
+            })
+            .catch((error) => {
+               if (error.response.status == 401) {
+                  commit("mutLogin", false);
+                  localStorage.clear();
+               }
+            });
       },
 
 
 
-  },
-  getters: {
-    retLogUser(state) {
-      return state.logedUser || [];
-    },
-    retadminUser(state) {
-      return state.adminUser || 0;
-    },
-    retlistOfUsers(state) {
-      return state.listOfUsers || [];
-    },
-    retlistOfOmcs(state) {
-      return state.listOfOmcs || [];
-    },
-    retlistOfProducts(state) {
-      return state.listOfProducts || [];
-    },
-    retlistOfCountries(state) {
-      return state.listOfCountries || [];
-    },
-    retlistOfSimpleCountryLabel(state) {
-      return state.listOfSimpleCountryLabel || [];
-    },
-    retlistOfYearBetw95ToNow(state) {
-      return state.listOfYearBetw95ToNow || [];
-    },
-    retlistOfOrganization(state) {
-      return state.listOfOrganization || [];
-    },
-    retcountrySelectData(state) {
-      return state.countrySelectData || [];
-    },
-    retorgaSelectData(state) {
-      return state.orgaSelectData || [];
-    },
-    retlistOfAgreement(state) {
-      return state.listOfAgreement || [];
-    },
-    retAgrementByCountryIdOrOrgaId(state) {
-      return state.filterCountryOrOrgaAgreem || [];
-    },
-    retagreemBilatMapSelect(state) {
-      return state.agreemBilatMapSelect || [];
-    },
-    retagreemBilatMapData(state) {
-      return state.agreemBilatMapData || [];
-    },
-    retagreemRegionalMapSelect(state) {
-      return state.agreemRegionalMapSelect || [];
-    },
-    retagreemRegionalMapData(state) {
-      return state.agreemRegionalMapData || [];
-    },
-    retglobalStats(state) {
-      return state.globalStats || [];
-    },
-    retproductRankings(state) {
-      return state.productRankings || [];
-    },
-    retcountryByAlphaCode2Select(state) {
-      return state.countryByAlphaCode2Select || [];
-    },
-    retcountryTradeRankings(state) {
-      return state.countryTradeRankings || [];
-    },
-    retcontinentSelect(state) {
-      return state.continentSelect || [];
-    },
-    retstatsSeriesHistory(state) {
-      return state.statsSeriesHistory || [];
-    },
-    retcooperationList(state) {
-      return state.cooperationList || [];
-    }, 
-  }
+   },
+   getters: {
+      retLogUser(state) {
+         return state.logedUser || [];
+      },
+      retadminUser(state) {
+         return state.adminUser || 0;
+      },
+      retlistOfUsers(state) {
+         return state.listOfUsers || [];
+      },
+      retlistOfOmcs(state) {
+         return state.listOfOmcs || [];
+      },
+      retlistOfProducts(state) {
+         return state.listOfProducts || [];
+      },
+      retlistOfCountries(state) {
+         return state.listOfCountries || [];
+      },
+      retlistOfSimpleCountryLabel(state) {
+         return state.listOfSimpleCountryLabel || [];
+      },
+      retlistOfYearBetw95ToNow(state) {
+         return state.listOfYearBetw95ToNow || [];
+      },
+      retlistOfOrganization(state) {
+         return state.listOfOrganization || [];
+      },
+      retcountrySelectData(state) {
+         return state.countrySelectData || [];
+      },
+      retorgaSelectData(state) {
+         return state.orgaSelectData || [];
+      },
+      retlistOfAgreement(state) {
+         return state.listOfAgreement || [];
+      },
+      retAgrementByCountryIdOrOrgaId(state) {
+         return state.filterCountryOrOrgaAgreem || [];
+      },
+      retagreemBilatMapSelect(state) {
+         return state.agreemBilatMapSelect || [];
+      },
+      retagreemBilatMapData(state) {
+         return state.agreemBilatMapData || [];
+      },
+      retagreemRegionalMapSelect(state) {
+         return state.agreemRegionalMapSelect || [];
+      },
+      retagreemRegionalMapData(state) {
+         return state.agreemRegionalMapData || [];
+      },
+      retglobalStats(state) {
+         return state.globalStats || [];
+      },
+      retproductRankings(state) {
+         return state.productRankings || [];
+      },
+      retcountryByAlphaCode2Select(state) {
+         return state.countryByAlphaCode2Select || [];
+      },
+      retcountryTradeRankings(state) {
+         return state.countryTradeRankings || [];
+      },
+      retcontinentSelect(state) {
+         return state.continentSelect || [];
+      },
+      retstatsSeriesHistory(state) {
+         return state.statsSeriesHistory || [];
+      },
+      retcooperationList(state) {
+         return state.cooperationList || [];
+      },
+   }
 });

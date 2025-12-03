@@ -20,7 +20,7 @@
            
             <img
               src="../assets/images/mci.png"
-              width="300"
+              width="250"
               class="normal-zone-img"
               alt=""
             />
@@ -30,7 +30,7 @@
            
             <img
               src="../assets/icons/comexmap.png"
-              width="300"
+              width="250"
               class="normal-zone-img"
               alt=""
             />
@@ -38,13 +38,13 @@
           </div>
 
           <div class="repub-right-text col-md-4 text-center">
-            <p class="color-text">
-              Cartographie des accords et des fleux commerciaux
-            </p>
-            <!-- <p>
-              Vue d'ensemble des relations commerciales entre la Côte d'Ivoire
-              et ses partenaires d'affaires
-            </p> -->
+            <img
+              src="../assets/images/dgce.png"
+              width="200"
+              class="normal-zone-img"
+              alt=""
+            />
+            
           </div>
         </div>
       </div>
@@ -109,10 +109,10 @@ export default {
       isSticky: false,
       routes: [
         { name: "Accueil", path: "/accueil" },
-        { name: "Accord commerciaux", path: "/accord-commercial" },
+        { name: "Accords commerciaux", path: "/accord-commercial" },
         { name: "Flux commerciaux", path: "/flux-commercial" },
-        { name: "Point Cooperation", path: "/point-cooperations" },
-        { name: "Faqs", path: "/faq" },
+        { name: "Points de coopérations", path: "/point-cooperations" },
+        { name: "Faq", path: "/faq" },
         { name: "Contact", path: "/contact" },
       ],
     };

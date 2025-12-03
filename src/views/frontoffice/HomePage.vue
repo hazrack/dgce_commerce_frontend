@@ -1,7 +1,7 @@
 <template>
   <div>
     <WelcomeModal />
-    
+
     <div class="show-on-mobile">
           <UnderNavComponent />
     </div>
@@ -9,7 +9,7 @@
       <div class="home-apropos-block my-5">
         <div class="container">
           <div class="details-apropos">
-            <h2 class="top-title-block">D G C E</h2>
+            <h2 class="top-title-block">DIRECTION GÉNÉRALE DU COMMERCE EXTERIEUR (DGCE)</h2>
             <div class="details-text">
               <p>
                 Les Accords commerciaux constituent un fondement essentiel pour
@@ -43,7 +43,7 @@
                   class="ministre-photo"
                 />
                 <div class="ministre-badge">
-                  <span>Souleymane DIARRASSOUBA</span>
+                  <span>Dr. SOULEYMANE DIARRASSOUBA </span>
                 </div>
               </div>
             </div>
@@ -62,7 +62,7 @@
                 </p>
                 <div class="ministre-signature">
                   <p class="signature-name">
-                    Ministre du Commerce et de l'Industrie
+                    Le Ministre du Commerce et de l’Industrie
                   </p>
                   <p class="signature-title">République de Côte d'Ivoire</p>
                 </div>
@@ -73,7 +73,7 @@
       </div>
 
       <div class="my-5 text-center big-screen-second-chart">
-          <h3 class="ministre-title">Statistiques Commerciales</h3>
+          <h3 class="ministre-title">Tableau statistique par année</h3>
         <div class="center-divider">
           <div class="ministre-divider"></div>
         </div>
@@ -109,7 +109,7 @@
 
       <div>
         <div class="text-center">
-          <h2 class="top-title-block">STRUCTURES</h2>
+          <h2 class="ministre-title">Structures partenaires</h2>
           <div class="center-divider">
           <div class="ministre-divider"></div>
         </div>
@@ -202,7 +202,7 @@ export default {
           color: "#008C00",
         },
         {
-          name: "REGIONNAUX",
+          name: "REGIONAUX",
           value: this.retglobalStats.agreementsRegional,
           color: "#000000",
         },

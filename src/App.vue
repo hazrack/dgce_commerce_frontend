@@ -181,8 +181,8 @@ export default {
 }
 
 .logo-img-simple {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   object-fit: contain; // Garde le ratio du logo sans le couper
   transition: transform 0.3s ease-in-out;

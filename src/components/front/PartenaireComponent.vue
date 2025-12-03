@@ -19,10 +19,10 @@ export default {
   data() {
     return {
       partenaireInfos: [
-        { image: new URL('../../assets/images/logo_export_cm.png', import.meta.url).href },
-        { image: new URL('../../assets/images/agence_pql.png', import.meta.url).href },
-        { image: new URL('../../assets/images/epcci.jpg', import.meta.url).href },
-        { image: new URL('../../assets/images/copv.jpg', import.meta.url).href },
+        { image: new URL('../../assets/images/img-cci.png', import.meta.url).href },
+        { image: new URL('../../assets/images/img-guce.png', import.meta.url).href },
+        { image: new URL('../../assets/images/img-gude.png', import.meta.url).href },
+        // { image: new URL('../../assets/images/copv.jpg', import.meta.url).href },
       ]
     }
   }

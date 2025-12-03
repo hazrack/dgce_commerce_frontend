@@ -642,9 +642,9 @@ export default {
 
     initServiceBlock() {
       this.sideComTitleList = [
-        { id: 1, title: " Billateraux" },
-        { id: 2, title: " regionnaux" },
-        { id: 3, title: " Multilateraux ( OMC )" },
+        { id: 1, title: " Bilatéraux" },
+        { id: 2, title: " Régionaux " },
+        { id: 3, title: " Multilatéraux ( OMC )" },
       ];
     },
 

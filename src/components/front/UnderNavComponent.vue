@@ -18,12 +18,13 @@
             </svg>
           </div>
           <div class="ministry-title">
-            <h1>MINISTÈRE DU COMMERCE</h1>
-            <p>République de Côte d'Ivoire</p>
+            <h1>MINISTÈRE DU COMMERCE ET DE L'INDUSTRIE</h1>
+            <!-- <p>République de Côte d'Ivoire</p> -->
           </div>
         </div>
         <div class="national-motto">
-          <span>Union - Discipline - Travail</span>
+          <p>Dernière mise à jour</p>
+          <span>03-12-2025</span>
         </div>
       </div>
     </header>

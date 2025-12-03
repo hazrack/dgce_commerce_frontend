@@ -9,7 +9,7 @@
                 <img src="../assets/images/comex-map-icon.jpeg" alt="Logo" class="logo-img-simple" />
                 </div>
             </div>
-            <p class="footer-text text-center">Construire l’avenir du commerce.</p>
+            <p class="footer-text text-center">Construire l’avenir du commerce</p>
 
             <div class="social-icons">
                 <a href="#" class="social-link"><i class="bi bi-arrow-up-circle"></i></a>

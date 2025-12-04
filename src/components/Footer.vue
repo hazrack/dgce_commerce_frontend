@@ -9,7 +9,7 @@
                 <img src="../assets/images/comex-map-icon.jpeg" alt="Logo" class="logo-img-simple" />
                 </div>
             </div>
-            <p class="footer-text text-center">Construire l’avenir du commerce</p>
+            <p class="footer-text text-center">Construire l'avenir du commerce</p>
 
             <div class="social-icons">
                 <a href="#" class="social-link"><i class="bi bi-arrow-up-circle"></i></a>
@@ -46,12 +46,42 @@
           </div>
   
           <div class="col-md-3">
-            <h5 class="footer-title">MISSIONS & ENGAGEMENT</h5>
+            <h5 class="footer-title">LIENS UTILES</h5>
             <hr class="foot-hr">
 
-            <p class="footer-text">
-              Présents sur tout le territoire ivoirien, nous œuvrons au développement du commerce intérieur et extérieur, à la régulation des marchés, à la promotion de la consommation locale et à la protection des consommateurs. 
-            </p>
+            <ul class="useful-links">
+              <li>
+                <a href="https://www.presidence.ci" class="useful-link" target="_blank">
+                  <i class="bi bi-chevron-right"></i>
+                  <span>Présidence</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://primature.ci" class="useful-link" target="_blank">
+                  <i class="bi bi-chevron-right"></i>
+                  <span>Primature</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://commerce.gouv.ci" class="useful-link" target="_blank">
+                  <i class="bi bi-chevron-right"></i>
+                  <span>Ministère du commerce</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.douanes.ci" class="useful-link" target="_blank">
+                  <i class="bi bi-chevron-right"></i>
+                  <span>Douane</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://pwic.gouv.ci" class="useful-link" target="_blank">
+                  <i class="bi bi-chevron-right"></i>
+                  <span>Pwic</span>
+                </a>
+              </li>
+            </ul>
+
             <div class="social-icons">
                 <a href="#" class="social-link" target="_blank"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
@@ -152,6 +182,65 @@
         }
       }
     }
+
+    // Nouveaux styles pour les liens utiles
+    .useful-links {
+      list-style: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 2px;
+      }
+
+      .useful-link {
+        color: #fff;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        padding: 8px 0;
+        position: relative;
+
+        i {
+          font-size: 14px;
+          color: #ff6b07;
+          margin-right: 10px;
+          transition: transform 0.3s ease;
+        }
+
+        span {
+          transition: transform 0.3s ease;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 0;
+          height: 2px;
+          background: #ff6b07;
+          transition: width 0.3s ease;
+        }
+
+        &:hover {
+          color: #ff6b07;
+
+          i {
+            transform: translateX(5px);
+          }
+
+          span {
+            transform: translateX(3px);
+          }
+
+          &::before {
+            width: 100%;
+          }
+        }
+      }
+    }
   
     .footer-bottom {
       text-align: center;
@@ -190,5 +279,16 @@
     }
 
 }
+
+// Responsive
+@media (max-width: 768px) {
+  .footer {
+    .useful-links {
+      .useful-link {
+        font-size: 13px;
+        padding: 6px 0;
+      }
+    }
+  }
+}
   </style>
-  

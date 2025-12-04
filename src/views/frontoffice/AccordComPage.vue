@@ -435,7 +435,7 @@ export default {
       maxVisiblePages: 5,
       titleModalText: 1,
       switchOptions: [
-        { id: "agreements", label: "Les ACCORDS", value: false },
+        { id: "agreements", label: "Les accords", value: false },
         { id: "countries", label: "Les pays membres", value: true },
       ],
 

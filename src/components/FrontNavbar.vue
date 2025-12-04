@@ -5,7 +5,7 @@
         <div class="marquee-container">
           <div class="marquee-content">
             <p>
-              🏛️ BIENVENUE SUR LA PLATEFORME OFFICIELLE DU MINISTÈRE DU COMMERCE
+              🏛️ REPUBLIQUE DE CÔTE D'IVOIRE - BIENVENUE SUR LA PLATEFORME OFFICIELLE DU MINISTÈRE DU COMMERCE
               ET DE L'INDUSTRIE 📊 CARTOGRAPHIE DES ACCORDS ET FLUX COMMERCIAUX
               DE LA CÔTE D'IVOIRE 🌍 UNION - DISCIPLINE - TRAVAIL 🤝
               RENFORCEMENT DES RELATIONS COMMERCIALES INTERNATIONALES 📈
@@ -108,12 +108,12 @@ export default {
       showAllNav: window.innerWidth > 700,
       isSticky: false,
       routes: [
-        { name: "Accueil", path: "/accueil" },
-        { name: "Accords commerciaux", path: "/accord-commercial" },
-        { name: "Flux commerciaux", path: "/flux-commercial" },
-        { name: "Points de coopérations", path: "/point-cooperations" },
+        { name: "ACCUEIL", path: "/accueil" },
+        { name: "ACCORDS COMMERCIAUX", path: "/accord-commercial" },
+        { name: "FLUX COMMERCIAUX", path: "/flux-commercial" },
+        { name: "POINTS DE COOPERATIONS", path: "/point-cooperations" },
         { name: "FAQ", path: "/faq" },
-        { name: "Contacts", path: "/contact" },
+        { name: "CONTACTS", path: "/contact" },
       ],
     };
   },

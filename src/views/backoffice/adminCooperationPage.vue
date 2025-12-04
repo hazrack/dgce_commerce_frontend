@@ -69,6 +69,8 @@
       @update:show="(val) => (showDeleteModal = val)"
     />
 
+    <!-- <QuillEditorComponent /> -->
+
     <LoaderBlockComponent :isLoading="showSpinner" :message="loaderMessage" />
   </div>
 </template>
@@ -86,6 +88,7 @@ import TableComponent from "@/components/front/TableComponent.vue";
 import moment from "moment";
 import axios from "../../services/index.js";
 import Swal from "sweetalert2";
+import QuillEditorComponent from "@/components/front/QuillEditorComponent.vue";
 
 
 export default {
@@ -131,6 +134,7 @@ export default {
     LoaderBlockComponent,
     NoResultsMessageComponent,
     TableComponent,
+    QuillEditorComponent
   },
 
   watch: {

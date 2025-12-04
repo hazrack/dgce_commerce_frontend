@@ -11,7 +11,7 @@ export default {
             filterByType: "both",
             filterByCountryCode: "",
             filterByProductId: "",
-            filterByContinent: "", 
+            filterByContinent: "",
             filterYear: null,
             listOfSelectProduct: [],
             tableData: [],
@@ -20,33 +20,34 @@ export default {
 
             tableFieldsGlobal: [
                 { key: "year", label: "ANNÉE" },
-                { key: "rank", label: "RANG GLOBAL" },
+                { key: "rank", label: "RANG" },
                 { key: "countryLabel", label: "PAYS" },
                 { key: "totalAmount", label: "ÉCHANGES BILATÉRAUX (CFA)" },
-                { key: "balance", label: "BALANCE COMMERCIALE" },
-                { key: "part", label: "PART / ÉCHANGES GLOBAUX (%)" },
                 { key: "totalWeight", label: "QUANTITÉ GLOBALE (KG)" },
+                { key: "balance", label: "BALANCE COMMERCIALE (CFA)" },
+                { key: "part", label: "PART DANS LES ECHANGES AVEC LE RESTE DU MONDE (%)" },
+                // { key: "supplierRank", label: "RANG FOURNISSEUR" },
+                // { key: "customerRank", label: "RANG CLIENT" },
+
             ],
 
             tableFieldsImport: [
                 { key: "year", label: "ANNÉE" },
                 { key: "rank", label: "RANG FOURNISSEUR" },
 
-                // { key: "supplierRank", label: "RANG FOURNISSEUR" },
                 { key: "countryLabel", label: "PAYS" },
-                { key: "importAmount", label: "VALEURS IMPORTATIONS (CFA)" },
-                { key: "part", label: "PART / IMPORTATIONS GLOBALES (%)" },
-                { key: "importWeight", label: "QUANTITÉ IMPORTÉE (TONNE)" },
+                { key: "importAmount", label: "VALEURS (CFA)" },
+                { key: "importWeight", label: "QUANTITÉ (KG)" },
+                { key: "part", label: "PART DANS LES IMPORTATIONS TOTALES (%)" },
             ],
 
             tableFieldsExport: [
                 { key: "year", label: "ANNÉE" },
                 { key: "rank", label: "RANG CLIENT" },
-                // { key: "customerRank", label: "RANG CLIENT" },
                 { key: "countryLabel", label: "PAYS" },
-                { key: "exportAmount", label: "VALEURS EXPORTATIONS (CFA)" },
-                { key: "part", label: "PART / EXPORTATIONS GLOBALES (%)" },
-                { key: "exportWeight", label: "QUANTITÉ EXPORTÉE (TONNE)" },
+                { key: "exportAmount", label: "VALEURS (CFA)" },
+                { key: "exportWeight", label: "QUANTITÉ (KG)" },
+                { key: "part", label: "PART DANS LES EXPORTATIONS TOTALES (%)" },
             ],
 
             currentPage: 0,
@@ -170,7 +171,7 @@ export default {
             console.log('la valeur ', value);
 
             //value = 0 => LE CLICK SUR ( Tous les continents, pays, produit )
-            if(value == 0) {
+            if (value == 0) {
                 //on passe la value a null afin de sortir du filtre vers le backend au niveau du fetchTradeRanking
                 //si la value est different de 0 alors on filtre avec la valeur
                 value = null;

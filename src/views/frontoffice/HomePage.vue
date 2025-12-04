@@ -119,6 +119,9 @@
 
       <LoaderBlockComponent :isLoading="showSpinner" :message="loaderMessage" />
     </div>
+
+<!-- <QuillEditor /> -->
+
   </div>
 </template>
 
@@ -130,6 +133,7 @@ import LoaderBlockComponent from "../../components/front/LoaderBlockComponent.vu
 import BarChart from "../../components/stats/BarsChart.vue";
 import UnderNavComponent from "@/components/front/UnderNavComponent.vue";
 import WelcomeModal from "@/components/front/WelcomModalComponent.vue";
+import QuillEditor from "@/components/front/QuillEditorComponent.vue";  
 
 export default {
   data() {
@@ -149,7 +153,8 @@ export default {
     BarChart,
     LoaderBlockComponent,
     UnderNavComponent,
-    WelcomeModal
+    WelcomeModal,
+    QuillEditor
   },
 
   computed: {

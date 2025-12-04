@@ -112,7 +112,7 @@ export default {
         { name: "Accords commerciaux", path: "/accord-commercial" },
         { name: "Flux commerciaux", path: "/flux-commercial" },
         { name: "Points de coopérations", path: "/point-cooperations" },
-        { name: "Faq", path: "/faq" },
+        { name: "FAQ", path: "/faq" },
         { name: "Contacts", path: "/contact" },
       ],
     };

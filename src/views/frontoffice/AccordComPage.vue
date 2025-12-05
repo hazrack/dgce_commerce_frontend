@@ -435,7 +435,7 @@ export default {
       maxVisiblePages: 5,
       titleModalText: 1,
       switchOptions: [
-        { id: "agreements", label: "Les accords", value: false },
+        { id: "agreements", label: "Les Accords", value: false },
         { id: "countries", label: "Les pays membres", value: true },
       ],
 
@@ -644,7 +644,7 @@ export default {
       this.sideComTitleList = [
         { id: 1, title: " Bilatéraux" },
         { id: 2, title: " Régionaux " },
-        { id: 3, title: " Multilatéraux ( OMC )" },
+        { id: 3, title: " Multilatéraux" },
       ];
     },
 

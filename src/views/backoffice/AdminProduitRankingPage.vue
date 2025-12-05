@@ -219,7 +219,7 @@ export default {
           options: this.retlistOfYearBetw95ToNow,
         },
         {
-          label: "Type échanges",
+          label: "Flux échanges",
           type: "select",
           model: "choosedTrade",
           required: true,

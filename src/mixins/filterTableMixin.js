@@ -22,9 +22,9 @@ export default {
                 { key: "year", label: "ANNÉE" },
                 { key: "rank", label: "RANG" },
                 { key: "countryLabel", label: "PAYS" },
-                { key: "totalAmount", label: "ÉCHANGES BILATÉRAUX (CFA)" },
-                { key: "totalWeight", label: "QUANTITÉ GLOBALE (KG)" },
-                { key: "balance", label: "BALANCE COMMERCIALE (CFA)" },
+                { key: "totalAmount", label: "Valeurs (FCFA)" },
+                { key: "totalWeight", label: "QUANTITÉ (KG)" },
+                { key: "balance", label: "BALANCE COMMERCIALE (FCFA)" },
                 { key: "part", label: "PART DANS LES ECHANGES AVEC LE RESTE DU MONDE (%)" },
                 // { key: "supplierRank", label: "RANG FOURNISSEUR" },
                 // { key: "customerRank", label: "RANG CLIENT" },
@@ -36,7 +36,7 @@ export default {
                 { key: "rank", label: "RANG FOURNISSEUR" },
 
                 { key: "countryLabel", label: "PAYS" },
-                { key: "importAmount", label: "VALEURS (CFA)" },
+                { key: "importAmount", label: "VALEURS (FCFA)" },
                 { key: "importWeight", label: "QUANTITÉ (KG)" },
                 { key: "part", label: "PART DANS LES IMPORTATIONS TOTALES (%)" },
             ],
@@ -45,7 +45,7 @@ export default {
                 { key: "year", label: "ANNÉE" },
                 { key: "rank", label: "RANG CLIENT" },
                 { key: "countryLabel", label: "PAYS" },
-                { key: "exportAmount", label: "VALEURS (CFA)" },
+                { key: "exportAmount", label: "VALEURS (FCFA)" },
                 { key: "exportWeight", label: "QUANTITÉ (KG)" },
                 { key: "part", label: "PART DANS LES EXPORTATIONS TOTALES (%)" },
             ],
@@ -210,7 +210,6 @@ export default {
 
 
         initSelectFilter() {
-
             const countriesDatas = [...this.retcountryByAlphaCode2Select];
             const countriesWithAll = [
                 { label: "Tous les pays", value: "0" },
@@ -229,9 +228,6 @@ export default {
                 ...productDatas
             ];
 
-
-
-
             this.selectFluxDatas = [
                 {
                     label: "Année",
@@ -239,9 +235,11 @@ export default {
                     model: "choosedYear",
                     required: true,
                     options: this.retlistOfYearBetw95ToNow,
+                    enableSearch: true,
+
                 },
                 {
-                    label: "Type échanges",
+                    label: "Flux échanges",
                     type: "select",
                     model: "choosedTrade",
                     required: true,
@@ -250,13 +248,17 @@ export default {
                         { value: "import", label: "Importation" },
                         { value: "export", label: "Exportation" },
                     ],
+                    enableSearch: true,
+
                 },
                 {
                     label: "Continent",
                     type: "select",
                     model: "continentSelected",
                     required: true,
-                    options: continentWithAll
+                    options: continentWithAll,
+                    enableSearch: true,
+
                 },
                 {
                     label: "Pays",
@@ -264,6 +266,7 @@ export default {
                     model: "checkByCountry",
                     required: true,
                     options: countriesWithAll,
+                    enableSearch: true, // Active la fonctionnalité de recherche
                 },
                 {
                     label: "Produit",
@@ -271,9 +274,10 @@ export default {
                     model: "productSelected",
                     required: true,
                     options: productWithAll,
+                    enableSearch: true,
                 },
             ];
-        },
+        }
     },
 
     mounted() {

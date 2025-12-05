@@ -8,6 +8,12 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
+
+   optimizeDeps: {
+    exclude: ['vue-select'], // Exclure vue-select de l'optimisation
+    include: ['vue'] // Forcer l'inclusion de Vue
+  },
+
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

@@ -885,4 +885,237 @@ p {
       width: 5px !important;
     height: 25px !important;
 }
+
+
+
+
+
+/* ====================================== */
+/* STYLES SPÉCIFIQUES POUR VUE-SELECT */
+/* ====================================== */
+
+.vselect-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.vselect-label {
+  position: absolute;
+  left: 12px;
+  top: -8px;
+  color: #000;
+  font-size: 0.8rem;
+  background: white;
+  padding: 0 4px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Style principal pour v-select - SANS border supplémentaire */
+.v-select-custom {
+  width: 100%;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  
+  /* Supprimer TOUTES les borders supplémentaires */
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  
+  /* Style du conteneur principal */
+  .vs__dropdown-toggle {
+    border: 2px solid #000;
+    border-radius: 5px;
+    padding: 6px 8px;
+    min-height: 38px;
+    background-color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    
+    &:focus-within {
+      outline: none;
+      border-color: #c6183d;
+      box-shadow: 0 0 0 3px rgba(198, 24, 61, 0.1);
+      
+      + .vselect-label {
+        color: #c6183d;
+      }
+    }
+  }
+  
+  /* Style du champ de recherche */
+  .vs__search {
+    margin: 0;
+    padding: 4px 2px;
+    font-size: 0.95rem;
+    color: #111827;
+    font-weight: bold;
+    height: 28px;
+    
+    &::placeholder {
+      color: #9ca3af;
+      font-weight: normal;
+      opacity: 0.8;
+    }
+    
+    &:focus {
+      outline: none;
+    }
+  }
+  
+  /* Style des éléments sélectionnés */
+  .vs__selected {
+    margin: 2px 4px 2px 0;
+    padding: 4px 8px;
+    background-color: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 3px;
+    color: #111827;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  /* Style des actions (clear, dropdown) */
+  .vs__actions {
+    padding: 0 4px;
+  }
+  
+  .vs__clear {
+    fill: #9ca3af;
+    
+    &:hover {
+      fill: #c6183d;
+    }
+  }
+  
+  .vs__open-indicator {
+    fill: #9ca3af;
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+    
+    .vs--open & {
+      transform: rotate(180deg) scale(1.1);
+    }
+  }
+  
+  /* Style du dropdown menu */
+  .vs__dropdown-menu {
+    border: 2px solid #000;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-height: 280px;
+    width: 350px;
+    margin-top: -2px;
+    z-index: 1000;
+  }
+  
+  /* Style des options du dropdown */
+  .vs__dropdown-option {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    color: #111827;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    
+    &:hover {
+      background-color: #fce7eb;
+      color: #c6183d;
+    }
+    
+    &.vs__dropdown-option--highlight {
+      background-color: #c6183d;
+      color: white;
+    }
+    
+    &.vs__dropdown-option--selected {
+      background-color: #f3f4f6;
+      color: #111827;
+      font-weight: bold;
+    }
+  }
+  
+  /* Style pour "no options" */
+  .vs__no-options {
+    padding: 12px;
+    color: #6b7280;
+    font-style: italic;
+    text-align: center;
+  }
+}
+
+/* Style pour l'état ouvert */
+.v-select-custom.vs--open {
+  .vs__dropdown-toggle {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+/* Animation pour le dropdown */
+.vs__dropdown-menu {
+  animation: fadeInDropdown 0.2s ease;
+}
+
+@keyframes fadeInDropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Style pour l'option "Tous les pays" */
+.vs__dropdown-option:first-child {
+  font-weight: bold;
+  color: #c6183d;
+  
+  &:hover {
+    background-color: rgba(198, 24, 61, 0.1);
+  }
+  
+  &.vs__dropdown-option--highlight {
+    background-color: #c6183d;
+    color: white;
+  }
+}
+
+/* Style pour les états désactivés */
+.v-select-custom.vs--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  
+  .vs__dropdown-toggle {
+    background-color: #f3f4f6;
+  }
+}
+
+/* Version mobile pour v-select */
+@media (max-width: 768px) {
+  .v-select-custom {
+    .vs__dropdown-toggle {
+      padding: 8px 10px;
+      min-height: 44px;
+    }
+    
+    .vs__search {
+      padding: 6px 4px;
+      font-size: 1rem;
+      height: 32px;
+    }
+    
+    .vs__selected {
+      font-size: 1rem;
+      padding: 6px 10px;
+    }
+  }
+  
+  .vselect-label {
+    top: -6px;
+    font-size: 0.85rem;
+  }
+}
 </style>

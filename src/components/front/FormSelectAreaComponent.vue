@@ -1,19 +1,15 @@
 <template>
   <div class="form-zone">
     <div class="blockBox">
-      <div
-        class="inputBox"
-        v-for="(field, index) in fields"
-        :key="index"
-      >
-        <!-- Champ Select avec vue-select pour les pays -->
+      <div class="inputBox" v-for="(field, index) in fields" :key="index">
+        <!-- Champ Select avec vue-select pour la recherche & select -->
         <template v-if="field.type === 'select' && field.enableSearch">
           <div class="vselect-wrapper">
             <v-select
               v-model="selectedValues[field.model]"
               :options="field.options"
               label="label"
-              :reduce="option => option.value"
+              :reduce="(option) => option.value"
               :searchable="true"
               :clearable="field.clearable !== false"
               :placeholder="field.placeholder || ''"
@@ -34,7 +30,7 @@
             <span class="vselect-label">{{ field.label }}</span>
           </div>
         </template>
-        
+
         <!-- Champ Select normal pour les autres champs -->
         <template v-else-if="field.type === 'select'">
           <select
@@ -43,7 +39,9 @@
             @change="handleSelectChange(field, $event)"
             class="standard-select"
           >
-            <option value="" disabled>{{ field.placeholder || 'Sélectionnez...' }}</option>
+            <option value="" disabled>
+              {{ field.placeholder || "Sélectionnez..." }}
+            </option>
             <option
               v-for="option in field.options"
               :key="option.value"
@@ -58,116 +56,141 @@
         </template>
       </div>
 
-      <div v-if="showMoreProductBtn">
-        <button class="btn-custom" @click="checkMoreProductBtn">
-          <i v-if="!isBtnClicked" class="bi bi-plus-circle"></i>
-          <i v-else class="bi bi-dash-circle"></i>
-        </button>
-      </div>
-
+      
     </div>
   </div>
 </template>
 
 <script>
-import { ref, reactive, watch } from 'vue';
-import vSelect from 'vue-select'
-import 'vue-select/dist/vue-select.css'
+import { ref, reactive, watch } from "vue";
+import vSelect from "vue-select";
+import "vue-select/dist/vue-select.css";
 
 export default {
-  name: 'FormSelectAreaComponent',
+  name: "FormSelectAreaComponent",
   components: {
-    vSelect
+    vSelect,
   },
   props: {
     fields: {
       type: Array,
       required: true,
-      default: () => []
+      default: () => [],
     },
     initialValues: {
       type: Object,
-      default: () => ({})
-    },
-    showMoreProductBtn: {
-      type: Boolean,
-      default: false,
-    },
+      default: () => ({}),
+    }
   },
-  
+
   setup(props, { emit }) {
     const selectedValues = reactive({ ...props.initialValues });
-    const isBtnClicked = ref(false);
+
+    console.log("====================================");
+    console.log("selected c", selectedValues);
+    console.log("====================================");
+
+    const timeout = ref(null);
 
     // Watchers
-    watch(() => props.initialValues, (newValues) => {
-      Object.assign(selectedValues, newValues);
-    }, { deep: true });
+    watch(
+      () => props.initialValues,
+      (newValues) => {
+        Object.assign(selectedValues, newValues);
+      },
+      { deep: true }
+    );
 
     const filterOptions = (option, label, search) => {
-      return (label || '').toLowerCase().includes((search || '').toLowerCase());
+      return (label || "").toLowerCase().includes((search || "").toLowerCase());
     };
 
-    // Pour v-select: émis quand la valeur change (après sélection)
-    const handleVSelectInput = (field, value) => {
-      console.log('v-select input event:', value);
-      emit('select-values-updated', selectedValues);
+    const handleVSelectInput = (field, option) => {
+      //EMIT DE MISE A JOUR DES VALEURS DU SELECT ACTUELLE
+      emit("select-values-updated", selectedValues);
     };
 
     // Pour v-select: émis quand une option est cliquée dans la liste
     const handleVSelectOptionSelected = (field, option) => {
-      console.log('v-select option selected:', option);
+      console.log("v-select option selected:", option);
       // Émettre immédiatement quand une option est cliquée
       if (option) {
-        emit('field-changed', {
+        emit("field-changed", {
           fieldName: field.model,
           value: option.value,
           fieldType: field.type,
-          immediate: true
+          immediate: true,
         });
       }
     };
 
     const handleVSelectSearch = (field, search) => {
-      emit('search-changed', {
+      console.log("====================================");
+      console.log("LE FIELDS A LA RECHERCHE : ", field.model);
+      console.log(
+        "====================================v-select input event:  ",
+        search
+      );
+
+      if (!search || search.trim() === "") {
+        return;
+      }
+
+      if (field.model === "productSelected") {
+        handleSearch(search);
+      }
+
+      emit("search-changed", {
         fieldName: field.model,
-        query: search
+        query: search,
       });
     };
 
     // Pour les selects standards
     const handleSelectChange = (field, event) => {
       const value = event.target.value;
-      emit('field-changed', {
+      emit("field-changed", {
         fieldName: field.model,
         value,
-        fieldType: field.type
+        fieldType: field.type,
       });
-      emit('select-values-updated', selectedValues);
+      emit("select-values-updated", selectedValues);
     };
 
-    const checkMoreProductBtn = () => {
-      isBtnClicked.value = !isBtnClicked.value;
-      emit('is-more-product', isBtnClicked.value);
+    const handleSearch = (searchQuery) => {
+      clearTimeout(timeout.value);
+
+      if (!searchQuery || searchQuery.trim() === "") return;
+
+      if (searchQuery.length < 2) return;
+
+      timeout.value = setTimeout(() => {
+        triggerSearch(searchQuery);
+      }, 500);
     };
+
+    const triggerSearch = (searchQuery) => {
+      emit("search", searchQuery);
+      console.log("Recherche déclenchée:", searchQuery);
+    };
+
+    
 
     return {
       selectedValues,
-      isBtnClicked,
       filterOptions,
       handleVSelectInput,
       handleVSelectOptionSelected,
       handleVSelectSearch,
       handleSelectChange,
-      checkMoreProductBtn
     };
-  }
-}
+  },
+};
 </script>
   
 <style lang="scss" scoped>
 .form-zone {
-  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-family: "Segoe UI", system-ui, sans-serif;
 }
 
 .btn-custom {
@@ -178,11 +201,11 @@ export default {
   padding: 8px 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  
+
   &:hover {
     background-color: #1e4668;
   }
-  
+
   i {
     font-size: 1.2rem;
   }
@@ -226,23 +249,23 @@ export default {
     transition: all 0.3s ease;
     cursor: pointer;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  
+
     &:focus {
       outline: none;
       border-color: #c6183d;
       box-shadow: 0 0 0 3px rgba(198, 24, 61, 0.1);
-  
+
       + span {
         color: #c6183d;
         transform: translateY(-24px);
         font-size: 0.8rem;
       }
-  
+
       ~ i::before {
         border-color: #c6183d;
       }
     }
-  
+
     &:valid:not(:focus) {
       + span {
         transform: translateY(-24px);
@@ -260,7 +283,7 @@ export default {
     width: 12px;
     height: 12px;
     pointer-events: none;
-  
+
     &::before {
       content: "";
       position: absolute;
@@ -272,12 +295,12 @@ export default {
       transition: all 0.3s ease;
     }
   }
-  
+
   &:hover {
     .standard-select {
       border-color: #9ca3af;
     }
-  
+
     .select-arrow::before {
       border-color: #6b7280;
     }
@@ -289,11 +312,11 @@ select option {
   padding: 10px;
   background: white;
   color: #111827;
-  
+
   &:disabled {
     color: #9ca3af;
   }
-  
+
   &:checked {
     background-color: #fce7eb;
     color: #c6183d;
@@ -305,14 +328,13 @@ select option {
   .blockBox {
     gap: 15px;
   }
-  
+
   .inputBox {
     min-width: 100%;
-    
+
     select {
       padding: 12px 14px;
     }
   }
 }
-
 </style>

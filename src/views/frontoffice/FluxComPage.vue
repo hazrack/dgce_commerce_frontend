@@ -9,14 +9,9 @@
         <FormSelectAreaComponent 
           :fields="selectFluxDatas"
           :initial-values="packTrade"
-          :showMoreProductBtn="true"
-          @is-more-product="checkSearchProduct"
           @field-changed="handleFieldFluxChange"
+          @search="performSearch"
         />
-
-        <div v-if="showSearch">
-          <SearchInputComponent :placeHolderText="'Autres produits..'" @search="performSearch" />
-        </div>
         
       </div>
 
@@ -66,9 +61,6 @@ export default {
   data() {
     return {
 
-      showSearch:false,
-
-
     };
   },
 
@@ -84,9 +76,7 @@ export default {
     UnderNavComponent
   },
   methods: {
-    checkSearchProduct(value) {
-      this.showSearch = value;
-    },
+    
   },
 
   mounted() {

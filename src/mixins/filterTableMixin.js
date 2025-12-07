@@ -202,9 +202,6 @@ export default {
             this.currentPage = 0;
             this.fetchTradeRanking();
 
-            // setTimeout(() => {
-            //     this.showSpinner = false;
-            // }, 500);
         },
 
 

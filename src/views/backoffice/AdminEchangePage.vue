@@ -23,19 +23,11 @@
       <FormSelectAreaComponent
         :fields="selectFluxDatas"
         :initial-values="packTrade"
-        :showMoreProductBtn="true"
-        @is-more-product="checkSearchProduct"
         @field-changed="handleFieldFluxChange"
+        @search="performSearch"
       />
     </div>
-    <div>
-      <div v-if="showSearch">
-        <SearchInputComponent
-          :placeHolderText="'Rechercher d\'autres Produits..'"
-          @search="performSearch"
-        />
-      </div>
-    </div>
+    
 
     <div class="block-trade-table mt-3" v-if="tableData.length !== 0">
       <TableComponent :table-data="tableData" :fields="tablefields" />
@@ -102,7 +94,6 @@ export default {
   data() {
     return {
       isFileForm: false,
-      showSearch: false,
       showExchangeForm: false,
       loaderMessage: "Chargement...",
       defaultValues: {},
@@ -127,9 +118,7 @@ export default {
       this.isFileForm = false;
       this.initExchangeForm();
     },
-    checkSearchProduct(value) {
-      this.showSearch = value;
-    },
+    
 
     handleImportdb() {
       this.formFields = [];

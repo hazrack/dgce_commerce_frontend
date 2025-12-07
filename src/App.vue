@@ -924,7 +924,7 @@ p {
   
   /* Style du conteneur principal */
   .vs__dropdown-toggle {
-    border: 2px solid #000;
+    border: 2px solid #000 !important;
     border-radius: 5px;
     padding: 6px 8px;
     min-height: 38px;
@@ -1005,7 +1005,7 @@ p {
     border-radius: 0 0 5px 5px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     max-height: 280px;
-    width: 350px;
+    min-width: 350px;
     margin-top: -2px;
     z-index: 1000;
   }

@@ -5,7 +5,7 @@
         v-for="option in options"
         :key="option.id"
         class="switch-option"
-        :class="{ active: selectedValue === option.value }"
+        :class="{ active: selectedValue === option.value, 'is-omc-page': option.value === true }"
         @click="handleClick(option.value)"
       >
         <p>{{ option.label }}</p>
@@ -69,11 +69,14 @@ export default {
 }
 
 .switch-option.active {
-  /* Style actif */
   background: #008c00;
   color: white;
   font-weight: 500;
   box-shadow: 0 2px 8px rgba(0, 140, 0, 0.2);
+}
+
+.is-omc-page {
+    background: #ccc !important;
 }
 
 .switch-option p {

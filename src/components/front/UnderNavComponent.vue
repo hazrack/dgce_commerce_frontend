@@ -47,7 +47,7 @@ export default {
   box-shadow: 0 4px 20px rgba(255, 140, 0, 0.3);
 
   .header-container {
-    max-width: 1200px;
+    // max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
     display: flex;

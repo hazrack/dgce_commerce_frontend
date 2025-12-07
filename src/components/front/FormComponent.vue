@@ -103,7 +103,7 @@
     input:read-only ~ span {
       color: #c6183d;
       transform: translateX(0px) translateY(-34px);
-      font-size: 0.75em;
+      font-size: 1.1em;
     }
 
     i {

@@ -12,7 +12,7 @@
               :reduce="(option) => option.value"
               :searchable="true"
               :clearable="field.clearable !== false"
-              :placeholder="field.placeholder || ''"
+              :placeholder="field.placeholder || '...'"
               @input="handleVSelectInput(field, $event)"
               @option:selected="handleVSelectOptionSelected(field, $event)"
               @search="handleVSelectSearch(field, $event)"

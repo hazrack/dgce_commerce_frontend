@@ -139,7 +139,7 @@ export default {
           blueIcon: "document.svg",
           icon: "document.svg",
           text: "Nos Accords",
-          url: "/administration/accord",
+          url: "/administration/accords",
         },  
         {
           blueIcon: "trade-side.svg",

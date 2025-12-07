@@ -3,9 +3,14 @@
    <UnderNavComponent />
   <div class="container-fluid my-5">
 
-    <div class="row">
+    <div class="btn-right my-4 ">
+          <button class="btn-custom" @click="downloadFile" title="Exporter les données globales de l'exercice sélectionné">
+          <i class="bi bi-box-arrow-up"></i> Exporter les données
+        </button>
+        </div>
 
-      <div class="col-md-2">
+    <div class="row">
+      <div class="col-md-2 mb-3">
         <FormSelectAreaComponent 
           :fields="selectFluxDatas"
           :initial-values="packTrade"
@@ -16,6 +21,8 @@
       </div>
 
       <div class="col-md-10">
+        
+
         <div class="block-trade-table" v-if="tableData.length !== 0">
           <TableComponent
             :table-data="tableData"
@@ -26,7 +33,7 @@
           <NoResultsMessageComponent :message="filterMessage" />
         </div>
         
-        <div>
+        <div class="scroll-sm-pagin">
           <PaginnationComponent 
             :current-page="currentPage"
             :total-pages="totalPages"
@@ -56,6 +63,7 @@ import filterTableMixin from "../../mixins/filterTableMixin.js";
 import LoaderBlockComponent from "../../components/front/LoaderBlockComponent.vue";
 import SearchInputComponent from "../../components/front/SearchInputComponent.vue";
 import UnderNavComponent from "@/components/front/UnderNavComponent.vue";
+import actionMixin from "@/mixins/actionMixin";
 
 export default {
   data() {
@@ -64,7 +72,7 @@ export default {
     };
   },
 
-  mixins: [filterTableMixin],
+  mixins: [filterTableMixin, actionMixin],
 
   components: {
     FormSelectAreaComponent,
@@ -76,16 +84,26 @@ export default {
     UnderNavComponent
   },
   methods: {
-    
+    downloadFile() {
+      this.showSpinner = true;
+      this.loaderMessage = 'Exportation des données en cours ...'
+      //EXPORTER LES ECHANGES D'UNE ANNEE
+      const fileName = "Flux-Commerciaux-Exercice-" + this.filterYear + ".csv";
+      const url = `/trade-flow/countries/rankings/export?year=${this.filterYear}`;
+      this.downloadFromBackend(url, fileName);
+    },
   },
 
   mounted() {
-    console.log("LE HORS PRIMES");
     
   },
 };
 </script>
 
 <style scoped lang="scss">
-
+.btn-right{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
 </style>

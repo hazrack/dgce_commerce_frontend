@@ -726,8 +726,6 @@ p {
 }
 
 
-
-
 .simple-form-area {
   .simple-input {
     font-size: 1.8rem;
@@ -803,6 +801,7 @@ p {
   }
 
 }
+
 
 .block-trade-table {
   overflow-x: auto;

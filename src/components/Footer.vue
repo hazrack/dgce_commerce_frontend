@@ -6,7 +6,7 @@
             
             <div class="espace-logo">
                 <div class="logo-img-block">
-                <img src="../assets/images/comex-map-icon.jpeg" alt="Logo" class="logo-img-simple" />
+                <img src="../assets/images/dgce.png" alt="Logo" class="logo-img-simple" />
                 </div>
             </div>
             <p class="footer-text text-center">Construire l'avenir du commerce</p>

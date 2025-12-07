@@ -4,7 +4,7 @@
 
     <div class="detail-servicepage-space">
       <div class="home-services-block">
-        <div class="container my-5">
+        <div class="container-fluid px-4 my-5">
           <div class="row">
             <div class="col-md-3 mt-4">
               <SideTitleComponent
@@ -77,7 +77,7 @@
                 </div>
 
                 <div class="overflow-scroll-block multi-block-size">
-                  <div v-if="!isSwitchCountry">
+                  <!-- <div v-if="!isSwitchCountry"> -->
                     <div
                       class="line-block-text my-3"
                       v-for="(accord, index) in listOfmultiAccord"
@@ -102,9 +102,9 @@
                         </span>
                       </div>
                     </div>
-                  </div>
+                  <!-- </div> -->
 
-                  <div v-else>
+                  <!-- <div v-else>
                     <div
                       class="line-block-text my-3"
                       v-for="(country, index) in listOfCountry"
@@ -120,7 +120,7 @@
                         <p>Membre depuis {{ country.year }}</p>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
 
                   <div class="pt-4">
                     <PaginnationComponent
@@ -465,6 +465,7 @@ export default {
       markers: [],
       sideComTitleList: [],
       regionalFilterMapData: [],
+      isRegionalSelectUseOnce: false
     };
   },
 
@@ -696,6 +697,7 @@ export default {
         this.checkDataByCountry(value);
       } else if (fieldName === "orgaRegioSelected") {
         console.log("NOUs sommes ici");
+        this.isRegionalSelectUseOnce = true;
         //RECUPERER LES PAYS CONTENU DANS L'ORGANISATION ET LES AFFICHER SUR LA MAP
         this.getCountryInOrganizationById(value);
         this.callFetchAgreement(value);
@@ -725,6 +727,11 @@ export default {
         this.isSwitchCountry = false;
       } else if (key === 2) {
         this.regionauxInput();
+
+        if(!this.isRegionalSelectUseOnce) {
+          this.getCountryInOrganizationById(this.retorgaSelectData[0]?.value)
+        }
+
         //ACTUALISER LA MAP AVEC LES PAYS DE LA DERNIERE ORGANISATION
         this.initMapBillateralMarker(this.regionalFilterMapData);
         this.showMultilateralBlock = false;
@@ -767,10 +774,14 @@ export default {
     },
 
     toSwitchedCountry(value) {
+      console.log('====================================');
+      console.log("LA VALEUR DU SWTICH : ", value);
+      console.log('====================================');
       this.isSwitchCountry = value;
       //CHANGER LE CONTENU DE LA PAGINATION AVEC LES PAYS MEMBRES
       if (this.isSwitchCountry) {
-        this.initListOfOmcsBlock();
+         window.open("https://www.wto.org/french/thewto_f/whatis_f/tif_f/org6_f.htm", "_blank");
+        // this.initListOfOmcsBlock();
       } else {
         //CHANGER LE CONTENU DE LA PAGINATION AVEC LES ACCORDS MULTILATERAL
         this.initMultilateralAgreement();

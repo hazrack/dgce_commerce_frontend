@@ -5,42 +5,46 @@
         <div class="marquee-container">
           <div class="marquee-content">
             <p>
-              🏛️ REPUBLIQUE DE CÔTE D'IVOIRE - BIENVENUE SUR LA PLATEFORME OFFICIELLE DU MINISTÈRE DU COMMERCE
-              ET DE L'INDUSTRIE 📊 CARTOGRAPHIE DES ACCORDS ET FLUX COMMERCIAUX
-              DE LA CÔTE D'IVOIRE 🌍 UNION - DISCIPLINE - TRAVAIL 🤝
-              RENFORCEMENT DES RELATIONS COMMERCIALES INTERNATIONALES 📈
+              REPUBLIQUE DE CÔTE D'IVOIRE <span class="mx-2">
+                <img
+              src="../assets/images/flag-civ.png"
+              width="20"
+              alt=""
+            />
+              </span> 
+               -  Ministère du Commerce et de l'Industrie  -  Bienvenue sur la plateforme de la Cartographie des accords et des flux commerciaux
             </p>
           </div>
         </div>
       </div>
 
       <div class="py-2">
-        <div class="row px-4 republic-head">
-          <div class="repub-left-text fw-bold col-md-4">
+        <div class="px-4 republic-head">
+          <div class="repub-left-text fw-bold ">
            
-            <img
-              src="../assets/images/mci.png"
-              width="250"
-              class="normal-zone-img"
-              alt=""
-            />
-          </div>
+            
 
-          <div class="repub-central-img col-md-4 my-3 text-center">
-           
             <img
               src="../assets/icons/comexmap.png"
               width="250"
               class="normal-zone-img"
               alt=""
             />
-            
           </div>
 
-          <div class="repub-right-text col-md-4">
-            <img
+          
+
+          <div class="repub-right-text ">
+            <!-- <img
               src="../assets/images/dgce.png"
               width="200"
+              class="normal-zone-img"
+              alt=""
+            /> -->
+
+            <img
+              src="../assets/images/mci.png"
+              width="250"
               class="normal-zone-img"
               alt=""
             />
@@ -109,9 +113,9 @@ export default {
       isSticky: false,
       routes: [
         { name: "ACCUEIL", path: "/accueil" },
-        { name: "ACCORDS COMMERCIAUX", path: "/accord-commercial" },
-        { name: "FLUX COMMERCIAUX", path: "/flux-commercial" },
-        { name: "POINTS DE COOPERATIONS", path: "/point-cooperations" },
+        { name: "ACCORDS COMMERCIAUX", path: "/accords-commerciaux" },
+        { name: "FLUX COMMERCIAUX", path: "/flux-commerciaux" },
+        // { name: "POINTS DE COOPERATIONS", path: "/points-cooperations" },
         { name: "FAQ", path: "/faq" },
         { name: "CONTACTS", path: "/contact" },
       ],
@@ -153,7 +157,10 @@ export default {
   background: #008c00;
 }
 .republic-head {
-  align-items: center;
+  // align-items: center;
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
 
   hr.black-line {
     height: 10px;

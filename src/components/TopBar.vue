@@ -7,6 +7,15 @@
           <p class="fw-bold mb-0 mx-3">{{ $route.meta.title }}</p>
         </div>
 
+        <!-- Section Nombre de Visiteurs -->
+        <div class="visitors-section">
+          <img src="../assets/icons/img-visitor.png" alt="visiteurs" width="24" />
+          <div class="visitors-info">
+            <span class="visitors-label">Visiteurs</span>
+            <span class="visitors-count">{{ new Intl.NumberFormat('fr-FR').format(visitorsCount) }}</span>
+          </div>
+        </div>
+
         <div class="link-user-info">
           <p class="user-info">
             <span class="mx-2"> </span>
@@ -45,6 +54,7 @@ export default {
     return {
       showDropdown: false,
       userDropClick: false,
+      visitorsCount: 3250,
     };
   },
 
@@ -52,18 +62,23 @@ export default {
     ...mapGetters(["retLogUser"]),
   },
 
-   watch: {
+  watch: {
     retLogUser: {
-      immediate: true, // Exécute dès le montage
+      immediate: true,
       handler(newValue) {
         this.check();
       },
-    },},
+    },
+  },
 
   methods: {
-    check(){
-      console.log("user man ",this.retLogUser)
+    check() {
+      console.log("user man ", this.retLogUser);
     },
+    
+    // Méthode pour récupérer le nombre de visiteurs
+   
+
     logoutUser() {
       this.userDropClick = true;
       setTimeout(() => {
@@ -75,7 +90,8 @@ export default {
       }, 2000);
     },
   },
-  mounted() {},
+
+  
 };
 </script>
 
@@ -100,6 +116,35 @@ export default {
       cursor: pointer;
     }
   }
+
+  /* Style pour la section visiteurs */
+  .visitors-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 8px 16px;
+    border-radius: 8px;
+    
+    .visitors-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      
+      .visitors-label {
+        font-size: 11px;
+        opacity: 0.9;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      
+      .visitors-count {
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+  }
+
   .link-user-info {
     margin-right: 1rem;
 

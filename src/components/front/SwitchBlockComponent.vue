@@ -5,7 +5,7 @@
         v-for="option in options"
         :key="option.id"
         class="switch-option"
-        :class="{ active: selectedValue === option.value, 'is-omc-page': option.value === true }"
+        :class="{ active: selectedValue === option.value, 'is-omc-page': option.value === 'country_member' }"
         @click="handleClick(option.value)"
       >
         <p>{{ option.label }}</p>

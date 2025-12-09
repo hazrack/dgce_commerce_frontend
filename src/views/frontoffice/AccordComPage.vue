@@ -435,8 +435,9 @@ export default {
       maxVisiblePages: 5,
       titleModalText: 1,
       switchOptions: [
-        { id: "agreements", label: "Les Accords", value: false },
-        { id: "countries", label: "Les pays membres", value: true },
+        { id: "agreements", label: "OMC", value: false },
+        { id: "others", label: "Autres", value: 'other_omc' },
+        { id: "countries", label: "Les pays membres", value: 'country_member' },
       ],
 
       selectedCountry: {
@@ -779,7 +780,7 @@ export default {
       console.log('====================================');
       this.isSwitchCountry = value;
       //CHANGER LE CONTENU DE LA PAGINATION AVEC LES PAYS MEMBRES
-      if (this.isSwitchCountry) {
+      if (this.isSwitchCountry == 'country_member') {
          window.open("https://www.wto.org/french/thewto_f/whatis_f/tif_f/org6_f.htm", "_blank");
         // this.initListOfOmcsBlock();
       } else {

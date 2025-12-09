@@ -3,13 +3,12 @@
     <UnderNavComponent />
     <div class="container-fluid my-5">
       
-      <div class="btn-right my-4" v-if="filterByType =='both'">
+      <div class="btn-right my-4" >
         <button
           class="btn-custom"
           @click="downloadFile"
-          title="Exporter les flux globaux de l'exercice sélectionné"
         >
-          <i class="bi bi-box-arrow-up"></i> Exporter les données
+          <i class="bi bi-box-arrow-up"></i> Exporter les données annuelles
         </button>
       </div>
 
@@ -77,7 +76,7 @@ export default {
   methods: {
     downloadFile() {
       this.showSpinner = true;
-      this.loaderMessage = "Exportation des flux globaux en cours ...";
+      this.loaderMessage = "Exportation des flux en cours ...";
       //EXPORTER LES ECHANGES D'UNE ANNEE
       const fileName = "Flux-Commerciaux-Exercice-" + this.filterYear + ".csv";
       const url = `/trade-flow/countries/rankings/export?year=${this.filterYear}`;

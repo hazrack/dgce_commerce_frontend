@@ -437,7 +437,7 @@ export default {
       switchOptions: [
         { id: "agreements", label: "OMC", value: false },
         { id: "others", label: "Autres", value: 'other_omc' },
-        { id: "countries", label: "Les pays membres", value: 'country_member' },
+        { id: "countries", label: "Les membres de l'OMC", value: 'country_member' },
       ],
 
       selectedCountry: {

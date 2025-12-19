@@ -23,7 +23,7 @@ export default {
         { image: new URL('../../assets/images/img-guce.png', import.meta.url).href },
         { image: new URL('../../assets/images/img-gude.png', import.meta.url).href },
         { image: new URL('../../assets/images/img-export.jpeg', import.meta.url).href },
-        { image: new URL('../../assets/images/img-cepici.jpeg', import.meta.url).href },
+        { image: new URL('../../assets/images/img-anstat.jpeg', import.meta.url).href },
         { image: new URL('../../assets/images/img-ocpv.jpeg', import.meta.url).href },
         { image: new URL('../../assets/images/img-pme.png', import.meta.url).href },
       ]

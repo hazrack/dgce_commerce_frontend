@@ -54,7 +54,7 @@ export default {
     return {
       showDropdown: false,
       userDropClick: false,
-      visitorsCount: 3250,
+      visitorsCount: 220,
     };
   },
 

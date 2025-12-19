@@ -11,7 +11,7 @@
               label="label"
               :reduce="(option) => option.value"
               :searchable="true"
-              :clearable="field.clearable !== false"
+              :clearable="false"
               :placeholder="field.placeholder || '...'"
               @input="handleVSelectInput(field, $event)"
               @option:selected="handleVSelectOptionSelected(field, $event)"

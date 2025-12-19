@@ -109,7 +109,7 @@
 
       <div>
         <div class="text-center">
-          <h2 class="ministre-title">Structures parténaires</h2>
+          <h2 class="ministre-title">Structures partenaires</h2>
           <div class="center-divider">
           <div class="ministre-divider"></div>
         </div>

@@ -28,18 +28,21 @@
         </div>
   
           <div class="col-md-3">
-            <h5 class="footer-title">Contact</h5>
+            <h5 class="footer-title">Contacts</h5>
             <hr class="foot-hr">
 
             <ul class="contact-info">
 
               <li><i class="bi bi-geo-alt-fill"></i> Abidjan-Plateau</li>
               <li class="social-link">
-               <a href="tel:2520229528"> <i class="bi bi-telephone-fill"></i> 25 20 22 95 28 </a>
+               <a href="tel:+2250708135172"> <i class="bi bi-telephone-fill"></i>+225 0708135172</a>
+              </li>
+              <li class="social-link">
+               <a href="tel:+2250709825303"> <i class="bi bi-telephone-fill"></i>+225 0709825303</a>
               </li>
 
-              <li><i class="bi bi-geo-alt-fill"></i> BP V 142/143 Abidjan</li>
-              <li><i class="bi bi-envelope-fill"></i>info@commerce.gouv.ci</li>
+              <li><i class="bi bi-envelope-fill"></i>comexmap@commerce.gouv.ci</li>
+              <li><i class="bi bi-envelope-fill"></i>secretariatdcir@gmail.com</li>
 
             </ul>
             
@@ -65,13 +68,13 @@
               <li>
                 <a href="https://commerce.gouv.ci" class="useful-link" target="_blank">
                   <i class="bi bi-chevron-right"></i>
-                  <span>Ministère du commerce</span>
+                  <span>Ministère du Commerce et de l'Industrie</span>
                 </a>
               </li>
               <li>
                 <a href="https://www.douanes.ci" class="useful-link" target="_blank">
                   <i class="bi bi-chevron-right"></i>
-                  <span>Douane</span>
+                  <span>Douanes</span>
                 </a>
               </li>
               <li>

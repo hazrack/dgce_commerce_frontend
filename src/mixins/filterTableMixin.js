@@ -25,7 +25,7 @@ export default {
                 { key: "totalAmount", label: "Valeurs (FCFA)" },
                 { key: "totalWeight", label: "QUANTITÉ (KG)" },
                 { key: "balance", label: "BALANCE COMMERCIALE (FCFA)" },
-                { key: "part", label: "PART DANS LES ECHANGES AVEC LE RESTE DU MONDE (%)" },
+                { key: "part", label: "PART DANS LES ECHANGES (%)" },
                 // { key: "supplierRank", label: "RANG FOURNISSEUR" },
                 // { key: "customerRank", label: "RANG CLIENT" },
 
@@ -38,7 +38,7 @@ export default {
                 { key: "countryLabel", label: "PAYS" },
                 { key: "importAmount", label: "VALEURS (FCFA)" },
                 { key: "importWeight", label: "QUANTITÉ (KG)" },
-                { key: "part", label: "PART DANS LES IMPORTATIONS TOTALES (%)" },
+                { key: "part", label: "PART DANS LES IMPORTATIONS  (%)" },
             ],
 
             tableFieldsExport: [
@@ -47,7 +47,7 @@ export default {
                 { key: "countryLabel", label: "PAYS" },
                 { key: "exportAmount", label: "VALEURS (FCFA)" },
                 { key: "exportWeight", label: "QUANTITÉ (KG)" },
-                { key: "part", label: "PART DANS LES EXPORTATIONS TOTALES (%)" },
+                { key: "part", label: "PART DANS LES EXPORTATIONS (%)" },
             ],
 
             currentPage: 0,

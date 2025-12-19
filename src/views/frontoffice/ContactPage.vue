@@ -62,7 +62,8 @@
                 </div>
                 <div class="contact-text">
                   <strong>Téléphone</strong>
-                  <span>+225 07 49 66 13 96</span>
+                  <span>+225 0708135172</span>
+                  <span>+225 0709825303</span>
                 </div>
               </div>
 

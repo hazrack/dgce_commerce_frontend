@@ -12,7 +12,7 @@
               alt=""
             />
               </span> 
-               -  Ministère du Commerce et de l'Industrie  -  Bienvenue sur la plateforme de la Cartographie des accords et des flux commerciaux
+               -  Ministère du Commerce et de l'Industrie  -  Bienvenue sur la plateforme de la Cartographie des Accords et des Flux Commerciaux
             </p>
           </div>
         </div>

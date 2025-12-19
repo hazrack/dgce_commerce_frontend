@@ -60,6 +60,11 @@
         </div>
       </template>
 
+      <template #cell(part)="data">
+        <span v-if="data.item.part === 100">//</span>
+        <span v-else>{{ addSeparatorNumber(data.value) }}</span>
+      </template>
+
       <template #cell(action)="data">
         <div class="action-btn" v-if="loginUserRole == 'admin'">
           <button class="btn-action edit" @click="$emit('edit', data.item)">

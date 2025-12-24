@@ -380,8 +380,15 @@ export const store = createStore({
             });
       },
 
-      SearchAgreements({ commit }, { query, page = 0, size = 18 }) {
-         axios.get(`/agreements/search?q=${query}&page=${page}&size=${size}`)
+      SearchAgreements({ commit }, { query, institu = "", page = 0, size = 18 }) {
+         axios.get("/agreements/search", {
+            params: {
+               q: query,
+               institution: institu || null,
+               page,
+               size
+            }
+         })
             .then((response) => {
                commit("MutGlobalAgreement", response.data);
             })

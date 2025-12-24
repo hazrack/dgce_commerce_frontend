@@ -35,7 +35,7 @@ const routes = [
   { path: '/flux-commerciaux', component: FluxComPage, name: 'Flux Commercial', meta: { title: 'Flux Commerciaul', guest: true } },
   { path: '/points-cooperations', component: CooperationPage, name: 'Point Cooperation', meta: { title: 'Point de Cooperation', guest: true } },
   { path: '/faq', component: FaqPage, name: 'Faqs', meta: { title: 'Foire aux questions', guest: true } },
-  { path: '/contact', component: ContactPage, name: 'Contact', meta: { title: 'Nous Contacter', guest: true } },
+  { path: '/contacts', component: ContactPage, name: 'Contact', meta: { title: 'Nous Contacter', guest: true } },
   { path: '/:pathMatch(.*)*', redirect: '/accueil', meta: { guest: true } }, // remplace path: '*'
 ];
 

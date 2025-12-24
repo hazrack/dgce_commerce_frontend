@@ -420,6 +420,7 @@ export default {
             typeOfAgreement: this.clickedAgreementForm,
             organizationId: datas.organizationId || null,
             countryId: datas.countryId,
+            institution: datas.institution,
             typeOfDocument: datas.typeOfDocument,
           }),
         ],
@@ -501,6 +502,10 @@ export default {
     },
 
     handleEditClick(item) {
+console.log('====================================');
+console.log("les mec ", item);
+console.log('====================================');
+
       this.showFormModal = true;
       this.showDetailsModal = false;
       this.editMode = true;
@@ -615,7 +620,7 @@ export default {
 
       this.initialForm();
 
-      // Ajoute le champ Pays au début du tableau
+      // Ajoute le champ Organisation au début du tableau
       this.formFields.unshift({
         label: "Organisation",
         type: "select",
@@ -631,6 +636,19 @@ export default {
       this.clickedAgreementForm = "Multilateral";
 
       this.initialForm();
+
+      // Ajoute le champ Organisation au début du tableau
+      this.formFields.unshift({
+          label: "Institution",
+          type: "select",
+          required: false,
+          model: "institution",
+          options: [
+            { value: "omc", label: "OMC" },
+            { value: "autres", label: "Autres" },
+          ],
+        });
+
       this.showFormModal = true;
     },
   },

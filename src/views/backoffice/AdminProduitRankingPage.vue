@@ -178,6 +178,11 @@ export default {
     handleAdminFieldFluxChange({ fieldName, value }) {
       this.showSpinner = true;
 
+      //FILTRE AU CLICK SUR  CLIQUE SUR TOUT LES PAYS
+      if (value == 0) {
+            value = null;
+        }
+
       switch (fieldName) {
         case "choosedYear":
           this.filterYear = value;
@@ -217,6 +222,8 @@ export default {
           model: "choosedYear",
           required: true,
           options: this.retlistOfYearBetw95ToNow,
+          enableSearch: true,
+
         },
         {
           label: "Flux échanges",
@@ -228,6 +235,7 @@ export default {
             { value: "import", label: "Importation" },
             { value: "export", label: "Exportation" },
           ],
+          enableSearch: true,
         },
       ];
     },
@@ -241,7 +249,17 @@ export default {
     toSwitchedClick(value) {
       this.initSelectFilter();
 
+      const productDatas = [...this.listOfSelectProduct];
+            const productWithAll = [
+                { label: "Tous les produits", value: "0" },
+                ...productDatas
+            ];
 
+            const countriesDatas = [...this.retcountryByAlphaCode2Select];
+            const countriesWithAll = [
+                { label: "Tous les pays", value: "0" },
+                ...countriesDatas
+            ];
 
       switch (value) {
         case "product":
@@ -250,7 +268,9 @@ export default {
             type: "select",
             model: "productSelected",
             required: true,
-            options: this.listOfSelectProduct,
+            options: productWithAll,
+                      enableSearch: true,
+
           });
           break;
 
@@ -260,7 +280,9 @@ export default {
             type: "select",
             model: "checkByCountry",
             required: true,
-            options: this.retcountryByAlphaCode2Select,
+            options: countriesWithAll,
+                      enableSearch: true,
+
           });
           break;
 

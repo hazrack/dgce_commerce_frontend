@@ -24,7 +24,7 @@ export default {
                 { key: "countryLabel", label: "PAYS" },
                 { key: "totalAmount", label: "Valeurs (FCFA)" },
                 { key: "totalWeight", label: "QUANTITÉ (KG)" },
-                { key: "balance", label: "BALANCE COMMERCIALE (FCFA)" },
+                // { key: "balance", label: "BALANCE COMMERCIALE (FCFA)" },
                 { key: "part", label: "PART DANS LES ECHANGES (%)" },
                 // { key: "supplierRank", label: "RANG FOURNISSEUR" },
                 // { key: "customerRank", label: "RANG CLIENT" },

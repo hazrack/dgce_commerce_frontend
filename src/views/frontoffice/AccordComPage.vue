@@ -430,6 +430,7 @@ export default {
         paysRegioSelected: null,
         orgaRegioSelected: null,
       },
+      typeOfAccordMulti: "omc",
       totalPages: 1,
       currentPage: 0,
       maxVisiblePages: 5,
@@ -741,6 +742,7 @@ export default {
         this.showMultilateralBlock = true;
         this.$store.dispatch("SearchAgreements", {
           query: "multilateral",
+          institu: this.typeOfAccordMulti,
           page: 0,
           size: 5,
         });
@@ -768,6 +770,7 @@ export default {
       } else {
         this.$store.dispatch("SearchAgreements", {
           query: "multilateral",
+          institu: this.typeOfAccordMulti,
           page: this.currentPage,
           size: 5,
         });
@@ -783,7 +786,27 @@ export default {
       if (this.isSwitchCountry == 'country_member') {
          window.open("https://www.wto.org/french/thewto_f/whatis_f/tif_f/org6_f.htm", "_blank");
         // this.initListOfOmcsBlock();
-      } else {
+      } else if (this.isSwitchCountry == 'other_omc') {
+
+        this.typeOfAccordMulti = 'autres';
+
+        this.$store.dispatch("SearchAgreements", {
+          query: "multilateral",
+          institu: this.typeOfAccordMulti,
+          page: 0,
+          size: 5,
+        });
+
+      }
+      else {
+        this.typeOfAccordMulti = 'omc';
+
+        this.$store.dispatch("SearchAgreements", {
+          query: "multilateral",
+          institu: this.typeOfAccordMulti,
+          page: 0,
+          size: 5,
+        });
         //CHANGER LE CONTENU DE LA PAGINATION AVEC LES ACCORDS MULTILATERAL
         this.initMultilateralAgreement();
       }

@@ -117,7 +117,7 @@ export default {
         { name: "FLUX COMMERCIAUX", path: "/flux-commerciaux" },
         // { name: "POINTS DE COOPERATIONS", path: "/points-cooperations" },
         { name: "FAQ", path: "/faq" },
-        { name: "CONTACTS", path: "/contact" },
+        { name: "CONTACTS", path: "/contacts" },
       ],
     };
   },

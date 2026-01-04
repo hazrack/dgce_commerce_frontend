@@ -439,6 +439,10 @@ export default {
         { id: "agreements", label: "OMC", value: false },
         { id: "others", label: "Autres", value: 'other_omc' },
         { id: "countries", label: "Les membres de l'OMC", value: 'country_member' },
+        { id: "celced", label: "CELCED", value: 'celced' },
+        { id: "onudi", label: "ONUDI", value: 'onudi' },
+        { id: "ompi", label: "OMPI", value: 'ompi' },
+        { id: "cv_international", label: "Convention Internationales", value: 'cv_international' },
       ],
 
       selectedCountry: {
@@ -648,6 +652,7 @@ export default {
         { id: 1, title: " Bilatéraux" },
         { id: 2, title: " Régionaux " },
         { id: 3, title: " Multilatéraux" },
+        { id: 4, title: " Télécharger la liste des Etats-parties aux accords" },
       ];
     },
 
@@ -746,6 +751,13 @@ export default {
           page: 0,
           size: 5,
         });
+      } else if (key === 4) {
+
+        const link = document.createElement("a");
+        link.href = "/file_comex_xlsx/etats-parties.xlsx";
+        link.download = "etats-parties.xlsx";
+        link.click();
+
       }
     },
 

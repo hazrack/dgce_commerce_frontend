@@ -6,32 +6,7 @@
           <UnderNavComponent />
     </div>
     <div class="homepage-space">
-      <div class="home-apropos-block my-5">
-        <div class="container">
-          <div class="details-apropos">
-            <h2 class="top-title-block">DIRECTION GÉNÉRALE DU COMMERCE EXTÉRIEUR (DGCE)</h2>
-            <div class="details-text">
-              <p>
-                Les Accords commerciaux constituent un fondement essentiel pour
-                le développement des relations commerciales internationales.
-                <br />
-                Ces Accords facilitent le déploiement de la politique
-                commerciale des Etats. Ils visent à créer de meilleures
-                opportunités d'affaires pour les entreprises, en leur assurant
-                plus de prévisibilité dans le développement de leurs
-                partenariats et dans la surmontée des obstacles au commerce.
-                <br />
-                Cette cartographie fournit des renseignements clés sur les
-                Accords commerciaux préférentiels et non préférentiels signés
-                par la Côte d'Ivoire, ainsi que sur les flux commerciaux qui
-                dynamisent ses relations avec les partenaires internationaux.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Section Ministre -->
+       <!-- Section Ministre -->
       <div class="ministre-section">
         <div class="container">
           <div class="ministre-content">
@@ -71,6 +46,33 @@
           </div>
         </div>
       </div>
+
+      <div class="home-apropos-block my-5">
+        <div class="container">
+          <div class="details-apropos">
+            <!-- <h2 class="top-title-block">DIRECTION GÉNÉRALE DU COMMERCE EXTÉRIEUR (DGCE)</h2> -->
+            <div class="details-text">
+              <p>
+                Les Accords commerciaux constituent un fondement essentiel pour
+                le développement des relations commerciales internationales.
+                <br />
+                Ces Accords facilitent le déploiement de la politique
+                commerciale des Etats. Ils visent à créer de meilleures
+                opportunités d'affaires pour les entreprises, en leur assurant
+                plus de prévisibilité dans le développement de leurs
+                partenariats et dans la surmontée des obstacles au commerce.
+                <br />
+                Cette cartographie fournit des renseignements clés sur les
+                Accords commerciaux préférentiels et non préférentiels signés
+                par la Côte d'Ivoire, ainsi que sur les flux commerciaux qui
+                dynamisent ses relations avec les partenaires internationaux.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     
 
       <div class="my-5 text-center big-screen-second-chart">
           <h3 class="ministre-title">Tableau statistique par année</h3>
@@ -120,7 +122,6 @@
       <LoaderBlockComponent :isLoading="showSpinner" :message="loaderMessage" />
     </div>
 
-<!-- <QuillEditor /> -->
 
   </div>
 </template>
@@ -163,7 +164,8 @@ export default {
     labelsParAnnee() {
       //STATS BARCHAT FLUX 7 ANNEE EN ARRIERE
       const endYear = new Date().getFullYear(); // Exemple : 2024
-      return Array.from({ length: 7 }, (_, i) => endYear - 7 + i);
+      // return Array.from({ length: 7 }, (_, i) => endYear - 7 + i);
+      return Array.from({ length: 3 }, (_, i) => endYear - 3 + i);
     },
     labelsParContinent() {
       return ["Afrique", "Europe", "Asie", "Amérique", "Océanie"];
@@ -238,7 +240,8 @@ export default {
       // Transforme les données reçues en format attendu pour barChartData
       this.barChartData = this.retstatsSeriesHistory.map((item, index) => ({
         label: item.label,
-        data: item.data,
+        // data: item.data,
+          data: item.data.slice(-3), // Recupererer les 3 dernières années valeurs sur les 7 ans
         backgroundColor: colors[index % colors.length], // cycle dans les couleurs
       }));
     },

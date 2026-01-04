@@ -72,24 +72,37 @@
                 </a>
               </li>
               <li>
+                <a href="https://www.cci.ci" class="useful-link" target="_blank">
+                  <i class="bi bi-chevron-right"></i>
+                  <span>Chambre de Commerce et d’Industrie</span>
+                </a>
+              </li>
+              <li>
                 <a href="https://www.douanes.ci" class="useful-link" target="_blank">
                   <i class="bi bi-chevron-right"></i>
                   <span>Douanes</span>
                 </a>
               </li>
+              
               <li>
                 <a href="https://pwic.gouv.ci" class="useful-link" target="_blank">
                   <i class="bi bi-chevron-right"></i>
                   <span>Pwic</span>
                 </a>
               </li>
+              <li>
+                <a href="https://gudepme.ci" class="useful-link" target="_blank">
+                  <i class="bi bi-chevron-right"></i>
+                  <span>GUDE-PME</span>
+                </a>
+              </li>
             </ul>
 
             <div class="social-icons">
-                <a href="#" class="social-link" target="_blank"><i class="bi bi-facebook"></i></a>
+                <!-- <a href="#" class="social-link" target="_blank"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
                 <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
-                <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-instagram"></i></a> -->
             </div>
           </div>
         </div>

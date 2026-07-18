@@ -13,12 +13,12 @@
             <div class="ministre-image-wrapper">
               <div class="ministre-image-container">
                 <img
-                  src="../../assets/images/img-ministre.jpg"
+                  src="../../assets/images/img-ministre-1.jpeg"
                   alt="Ministre du Commerce"
                   class="ministre-photo"
                 />
                 <div class="ministre-badge">
-                  <span>Dr. SOULEYMANE DIARRASSOUBA </span>
+                  <span>Mr. Ibrahim Kalil Konaté </span>
                 </div>
               </div>
             </div>

@@ -18,6 +18,19 @@ import {
 // Enregistre les composants nécessaires
 Chart.register(BarController, BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
+function formatMontant(value) {
+  const num = Number(value);
+  if (Math.abs(num) >= 1e9) {
+    const milliards = (num / 1e9).toLocaleString('fr-FR', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+      useGrouping: false
+    });
+    return `${milliards} (milliard) FCFA`;
+  }
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " FCFA";
+}
+
 export default {
   name: 'BarChart',
   props: {
@@ -46,7 +59,7 @@ export default {
             callbacks: {
               label: function(context) {
                 const label = context.dataset.label || '';
-                const value = context.parsed.y.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                const value = formatMontant(context.parsed.y);
                 return `${label}: ${value}`;
               }
             }
@@ -65,7 +78,7 @@ export default {
             ticks: {
               color: '#000',
               callback: function(value) {
-                return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " FCFA";
+                return formatMontant(value);
               }
             }
           }

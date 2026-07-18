@@ -12,10 +12,10 @@
         {{ data.value.length > 50 ? data.value.substring(0, 50) + "..." : data.value}}
       </template>
       <template #cell(exportAmount)="data">
-        {{ addSeparatorNumber(data.value) }}
+        {{ convertToMilliard(data.value) }}
       </template>
       <template #cell(importAmount)="data">
-        {{ addSeparatorNumber(data.value) }}
+        {{ convertToMilliard(data.value) }}
       </template>
       <template #cell(montant)="data">
         {{ addSeparatorNumber(data.value) }}
@@ -24,16 +24,16 @@
         {{ addSeparatorNumber(data.value) }}
       </template>
       <template #cell(totalAmount)="data">
-        {{ addSeparatorNumber(data.value) }}
+        {{ convertToMilliard(data.value) }}
       </template>
       <template #cell(exportWeight)="data">
-        {{ addSeparatorNumber(data.value) }}
+        {{ convertKgToTonne(data.value) }}
       </template>
       <template #cell(importWeight)="data">
-        {{ addSeparatorNumber(data.value) }}
+        {{ convertKgToTonne(data.value) }}
       </template>
       <template #cell(totalWeight)="data">
-        {{ addSeparatorNumber(data.value) }}
+        {{ convertKgToTonne(data.value) }}
       </template>
 
       
@@ -109,8 +109,26 @@ export default {
       return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
     },
 
+    convertKgToTonne(valueKg) {
+      if (valueKg === 0) return '0';
+      if (!valueKg) return '';
+      return (valueKg / 1000).toLocaleString('fr-FR', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    },
+
+    convertToMilliard(value) {
+      if (value === 0) return '0';
+      if (!value) return '';
+      return (value / 1e9).toLocaleString('fr-FR', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    },
+
     calculateBalance(item) {
-    const formatted = this.addSeparatorNumber(Math.abs(item.balance));
+    const formatted = this.convertToMilliard(Math.abs(item.balance));
 
     if (item.balance > 0) {
       return `Excédentaire (+${formatted})`;

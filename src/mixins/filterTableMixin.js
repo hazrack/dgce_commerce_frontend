@@ -22,9 +22,9 @@ export default {
                 { key: "year", label: "ANNÉE" },
                 { key: "rank", label: "RANG" },
                 { key: "countryLabel", label: "PAYS" },
-                { key: "totalAmount", label: "Valeurs (FCFA)" },
-                { key: "totalWeight", label: "QUANTITÉ (KG)" },
-                // { key: "balance", label: "BALANCE COMMERCIALE (FCFA)" },
+                { key: "totalAmount", label: "Valeurs (MRD FCFA)" },
+                { key: "totalWeight", label: "QUANTITÉ (TONNE)" },
+                { key: "balance", label: "BALANCE COM ( MRD FCFA)" },
                 { key: "part", label: "PART DANS LES ECHANGES (%)" },
                 // { key: "supplierRank", label: "RANG FOURNISSEUR" },
                 // { key: "customerRank", label: "RANG CLIENT" },
@@ -36,8 +36,8 @@ export default {
                 { key: "rank", label: "RANG FOURNISSEUR" },
 
                 { key: "countryLabel", label: "PAYS" },
-                { key: "importAmount", label: "VALEURS (FCFA)" },
-                { key: "importWeight", label: "QUANTITÉ (KG)" },
+                { key: "importAmount", label: "VALEURS (milliard FCFA)" },
+                { key: "importWeight", label: "QUANTITÉ (TONNE)" },
                 { key: "part", label: "PART DANS LES IMPORTATIONS  (%)" },
             ],
 
@@ -45,8 +45,8 @@ export default {
                 { key: "year", label: "ANNÉE" },
                 { key: "rank", label: "RANG CLIENT" },
                 { key: "countryLabel", label: "PAYS" },
-                { key: "exportAmount", label: "VALEURS (FCFA)" },
-                { key: "exportWeight", label: "QUANTITÉ (KG)" },
+                { key: "exportAmount", label: "VALEURS (milliard FCFA)" },
+                { key: "exportWeight", label: "QUANTITÉ (TONNE)" },
                 { key: "part", label: "PART DANS LES EXPORTATIONS (%)" },
             ],
 
@@ -236,7 +236,7 @@ export default {
 
                 },
                 {
-                    label: "Flux échanges",
+                    label: "Type de flux",
                     type: "select",
                     model: "choosedTrade",
                     required: true,

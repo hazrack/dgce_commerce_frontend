@@ -8,13 +8,13 @@
         </div>
 
         <!-- Section Nombre de Visiteurs -->
-        <div class="visitors-section">
+        <!-- <div class="visitors-section">
           <img src="../assets/icons/img-visitor.png" alt="visiteurs" width="24" />
           <div class="visitors-info">
             <span class="visitors-label">Visiteurs</span>
             <span class="visitors-count">{{ new Intl.NumberFormat('fr-FR').format(visitorsCount) }}</span>
           </div>
-        </div>
+        </div> -->
 
         <div class="link-user-info">
           <p class="user-info">

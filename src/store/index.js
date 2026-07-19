@@ -28,6 +28,7 @@ export const store = createStore({
       countryByAlphaCode2Select: null,
       countryTradeRankings: null,
       continentSelect: null,
+      continentsRawData: null,
       statsSeriesHistory: null,
       cooperationList: null
    },
@@ -98,6 +99,9 @@ export const store = createStore({
       },
       MutContinentSelect(state, payload) {
          state.continentSelect = payload;
+      },
+      MutContinentsRawData(state, payload) {
+         state.continentsRawData = payload;
       },
       MutStatsSeriesHistory(state, payload) {
          state.statsSeriesHistory = payload;
@@ -265,7 +269,7 @@ export const store = createStore({
             });
       },
 
-      getTradeFlowCountryRanking({ commit }, { year, page = 0, size = 12, type = "both", countryCode2 = "", productId = "", continentId = "" }) {
+      getTradeFlowCountryRanking({ commit }, { year, page = 0, size = 12, type = "both", countryCode2 = "", productId = "", continentId = "", sortBy = "totalAmount" }) {
          return axios.get(`/trade-flow/countries/rankings`, {
             params: {
                year,
@@ -274,7 +278,8 @@ export const store = createStore({
                type,
                countryCode: countryCode2 || null,
                productId: productId || null,
-               continentId: continentId || null
+               continentId: continentId || null,
+               sortBy
             }
          })
             .then((response) => {
@@ -327,9 +332,7 @@ export const store = createStore({
                   .sort((a, b) => a.label.localeCompare(b.label));
 
                commit("MutContinentSelect", contientSelect);
-
-
-               // commit("MutContinentData", response.data);
+               commit("MutContinentsRawData", response.data);
             })
             .catch((error) => {
                if (error.response && error.response.status === 401) {
@@ -586,6 +589,9 @@ export const store = createStore({
       },
       retcontinentSelect(state) {
          return state.continentSelect || [];
+      },
+      retcontinentsRawData(state) {
+         return state.continentsRawData || [];
       },
       retstatsSeriesHistory(state) {
          return state.statsSeriesHistory || [];

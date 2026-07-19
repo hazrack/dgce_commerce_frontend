@@ -12,6 +12,7 @@ export default {
             filterByCountryCode: "",
             filterByProductId: "",
             filterByContinent: "",
+            filterBySortBy: "totalAmount",
             filterYear: null,
             listOfSelectProduct: [],
             tableData: [],
@@ -22,12 +23,23 @@ export default {
                 { key: "year", label: "ANNÉE" },
                 { key: "rank", label: "RANG" },
                 { key: "countryLabel", label: "PAYS" },
-                { key: "totalAmount", label: "Valeurs (MRD FCFA)" },
+                { key: "totalAmount", label: "MONTANT TOTAL (MRD FCFA)" },
                 { key: "totalWeight", label: "QUANTITÉ (TONNE)" },
                 { key: "balance", label: "BALANCE COM ( MRD FCFA)" },
                 { key: "part", label: "PART DANS LES ECHANGES (%)" },
                 // { key: "supplierRank", label: "RANG FOURNISSEUR" },
                 // { key: "customerRank", label: "RANG CLIENT" },
+
+            ],
+
+            tableFieldsBalanceGlobal: [
+                { key: "year", label: "ANNÉE" },
+                { key: "balanceRank", label: "RANG" },
+                { key: "countryLabel", label: "PAYS" },
+                { key: "totalAmount", label: "MONTANT TOTAL (MRD FCFA)" },
+                { key: "totalWeight", label: "QUANTITÉ (TONNE)" },
+                { key: "balance", label: "BALANCE COM ( MRD FCFA)" },
+                { key: "part", label: "PART DANS LES ECHANGES (%)" }
 
             ],
 
@@ -63,7 +75,8 @@ export default {
             "retlistOfYearBetw95ToNow",
             "retcountryTradeRankings",
             "retlistOfProducts",
-            "retcontinentSelect"
+            "retcontinentSelect",
+            "retcontinentsRawData"
         ]),
     },
 
@@ -109,6 +122,8 @@ export default {
                 this.tablefields = this.tableFieldsImport;
             } else if (this.filterByType === "export") {
                 this.tablefields = this.tableFieldsExport;
+            } else if (this.filterBySortBy === "balance") {
+                this.tablefields = this.tableFieldsBalanceGlobal;
             } else {
                 this.tablefields = this.tableFieldsGlobal;
             }
@@ -160,7 +175,8 @@ export default {
                 type: this.filterByType,
                 countryCode2: this.filterByCountryCode,
                 productId: this.filterByProductId,
-                continentId: this.filterByContinent
+                continentId: this.filterByContinent,
+                sortBy: this.filterBySortBy
             });
         },
 
@@ -185,6 +201,12 @@ export default {
                 case "choosedTrade":
                     this.filterByType = value;
                     this.updateTableFields();
+                    // Le tri par balance n'a de sens que pour le type "both" (voir backend)
+                    if (this.filterByType !== "both") {
+                        this.filterBySortBy = "totalAmount";
+                    }
+                    // Le select "Trier par" n'a lui-même de sens que pour le type "both"
+                    this.initSelectFilter();
 
                     break;
                 case "checkByCountry":
@@ -195,6 +217,13 @@ export default {
                     break;
                 case "continentSelected":
                     this.filterByContinent = value;
+                    // Le pays précédemment sélectionné peut ne plus appartenir à ce continent
+                    this.filterByCountryCode = "";
+                    this.initSelectFilter();
+                    break;
+                case "sortBySelected":
+                    this.filterBySortBy = value || "totalAmount";
+                    this.updateTableFields();
                     break;
 
             }
@@ -207,7 +236,21 @@ export default {
 
 
         initSelectFilter() {
-            const countriesDatas = [...this.retcountryByAlphaCode2Select];
+            let countriesDatas = [...this.retcountryByAlphaCode2Select];
+
+            // Si un continent précis est sélectionné, ne garder que ses pays
+            if (this.filterByContinent) {
+                const selectedContinent = this.retcontinentsRawData.find(
+                    (continent) => continent.id === this.filterByContinent
+                );
+                if (selectedContinent) {
+                    const alphaCodesOfContinent = new Set(selectedContinent.countryAlphaCodes);
+                    countriesDatas = countriesDatas.filter((country) =>
+                        alphaCodesOfContinent.has(country.value)
+                    );
+                }
+            }
+
             const countriesWithAll = [
                 { label: "Tous les pays", value: "0" },
                 ...countriesDatas
@@ -248,6 +291,18 @@ export default {
                     enableSearch: true,
 
                 },
+                ...(this.filterByType === "both" ? [{
+                    label: "Trier par",
+                    type: "select",
+                    model: "sortBySelected",
+                    required: true,
+                    options: [
+                        { value: "totalAmount", label: "Montant total" },
+                        { value: "balance", label: "Balance commerciale" },
+                    ],
+                    enableSearch: true,
+
+                }] : []),
                 {
                     label: "Continent",
                     type: "select",

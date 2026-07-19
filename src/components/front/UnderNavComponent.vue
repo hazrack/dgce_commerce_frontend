@@ -22,10 +22,10 @@
             <!-- <p>République de Côte d'Ivoire</p> -->
           </div>
         </div>
-        <div class="national-motto">
+        <!-- <div class="national-motto">
           <p>Dernière mise à jour</p>
           <span>03-12-2025</span>
-        </div>
+        </div> -->
       </div>
     </header>
   </div>

@@ -12,6 +12,7 @@ export default {
             filterByCountryCode: "",
             filterByProductId: "",
             filterByContinent: "",
+            filterByOrganization: "",
             filterBySortBy: "totalAmount",
             filterYear: null,
             listOfSelectProduct: [],
@@ -76,7 +77,9 @@ export default {
             "retcountryTradeRankings",
             "retlistOfProducts",
             "retcontinentSelect",
-            "retcontinentsRawData"
+            "retcontinentsRawData",
+            "retorgaSelectData",
+            "retlistOfOrganization"
         ]),
     },
 
@@ -176,6 +179,7 @@ export default {
                 countryCode2: this.filterByCountryCode,
                 productId: this.filterByProductId,
                 continentId: this.filterByContinent,
+                organizationId: this.filterByOrganization,
                 sortBy: this.filterBySortBy
             });
         },
@@ -217,8 +221,20 @@ export default {
                     break;
                 case "continentSelected":
                     this.filterByContinent = value;
-                    // Le pays précédemment sélectionné peut ne plus appartenir à ce continent
+                    // Le pays précédemment sélectionné peut ne plus appartenir à ce continent :
+                    // on réinitialise le filtre ET on force le select visuel "Pays" sur
+                    // "Tous les pays" via une nouvelle référence de packTrade.
                     this.filterByCountryCode = "";
+                    this.packTrade = { ...this.packTrade, checkByCountry: "0" };
+                    this.initSelectFilter();
+                    break;
+                case "organizationSelected":
+                    this.filterByOrganization = value;
+                    // Le pays précédemment sélectionné peut ne plus appartenir à cette C.E.R :
+                    // on réinitialise le filtre ET on force le select visuel "Pays" sur
+                    // "Tous les pays" via une nouvelle référence de packTrade.
+                    this.filterByCountryCode = "";
+                    this.packTrade = { ...this.packTrade, checkByCountry: "0" };
                     this.initSelectFilter();
                     break;
                 case "sortBySelected":
@@ -251,6 +267,21 @@ export default {
                 }
             }
 
+            // Si une C.E.R précise est sélectionnée, ne garder que ses pays membres
+            if (this.filterByOrganization) {
+                const selectedOrganization = this.retlistOfOrganization.find(
+                    (organization) => organization.id === this.filterByOrganization
+                );
+                if (selectedOrganization) {
+                    const alphaCodesOfOrganization = new Set(
+                        (selectedOrganization.countries || []).map((c) => c.alphaCode2)
+                    );
+                    countriesDatas = countriesDatas.filter((country) =>
+                        alphaCodesOfOrganization.has(country.value)
+                    );
+                }
+            }
+
             const countriesWithAll = [
                 { label: "Tous les pays", value: "0" },
                 ...countriesDatas
@@ -260,6 +291,12 @@ export default {
             const continentWithAll = [
                 { label: "Tous les continents", value: "0" },
                 ...continentDatas
+            ];
+
+            const organizationDatas = [...this.retorgaSelectData];
+            const organizationWithAll = [
+                { label: "Toutes les C.E.R", value: "0" },
+                ...organizationDatas
             ];
 
             const productDatas = [...this.listOfSelectProduct];
@@ -313,6 +350,15 @@ export default {
 
                 },
                 {
+                    label: "C.E.R",
+                    type: "select",
+                    model: "organizationSelected",
+                    required: true,
+                    options: organizationWithAll,
+                    enableSearch: true,
+
+                },
+                {
                     label: "Pays",
                     type: "select",
                     model: "checkByCountry",
@@ -346,6 +392,7 @@ export default {
             Promise.all([
                 this.$store.dispatch("getListOfCountries"),
                 this.$store.dispatch("getListOfContinents"),
+                this.$store.dispatch("getListOfOrganization"),
                 this.$store.dispatch("getListOfProducts", { page: 0, size: 16 }),
                 this.$store.dispatch("getTradeFlowCountryRanking", {
                     year: this.filterYear,

@@ -645,7 +645,11 @@ console.log('====================================');
           model: "institution",
           options: [
             { value: "omc", label: "OMC" },
-            { value: "autres", label: "Autres" },
+            { value: "onudi", label: "ONUDI" },
+            { value: "cnuced", label: "CNUCED" },
+            { value: "ompi", label: "OMPI" },
+            { value: "celced", label: "CELCED" },
+            { value: "autres", label: "AUTRES" },
           ],
         });
 

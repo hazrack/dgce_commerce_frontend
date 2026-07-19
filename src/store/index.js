@@ -269,7 +269,7 @@ export const store = createStore({
             });
       },
 
-      getTradeFlowCountryRanking({ commit }, { year, page = 0, size = 12, type = "both", countryCode2 = "", productId = "", continentId = "", sortBy = "totalAmount" }) {
+      getTradeFlowCountryRanking({ commit }, { year, page = 0, size = 12, type = "both", countryCode2 = "", productId = "", continentId = "", organizationId = "", sortBy = "totalAmount" }) {
          return axios.get(`/trade-flow/countries/rankings`, {
             params: {
                year,
@@ -279,6 +279,7 @@ export const store = createStore({
                countryCode: countryCode2 || null,
                productId: productId || null,
                continentId: continentId || null,
+               organizationId: organizationId || null,
                sortBy
             }
          })

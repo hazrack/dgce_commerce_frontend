@@ -69,7 +69,6 @@
                 <div
                   class="top-multi-block-info d-flex align-items-center justify-content-end"
                 >
-
                   <SwitchBlockComponent
                     :options="switchOptions"
                     @switchValue="toSwitchedCountry"
@@ -78,30 +77,30 @@
 
                 <div class="overflow-scroll-block multi-block-size">
                   <!-- <div v-if="!isSwitchCountry"> -->
+                  <div
+                    class="line-block-text my-3"
+                    v-for="(accord, index) in listOfmultiAccord"
+                    :key="index"
+                  >
                     <div
-                      class="line-block-text my-3"
-                      v-for="(accord, index) in listOfmultiAccord"
-                      :key="index"
+                      class="line-title d-flex align-items-center justify-content-between"
                     >
-                      <div
-                        class="line-title d-flex align-items-center justify-content-between"
-                      >
-                        <p>
-                          {{
-                            accord.title.length > 70
-                              ? accord.title.substring(0, 90) + "..."
-                              : accord.title
-                          }}
-                        </p>
+                      <p>
+                        {{
+                          accord.title.length > 70
+                            ? accord.title.substring(0, 90) + "..."
+                            : accord.title
+                        }}
+                      </p>
 
-                        <span
-                          class="icon-arrow custom-icon-space"
-                          @click="seeAboutMultiAccord(accord)"
-                        >
-                          <i class="bi bi-arrow-right"></i>
-                        </span>
-                      </div>
+                      <span
+                        class="icon-arrow custom-icon-space"
+                        @click="seeAboutMultiAccord(accord)"
+                      >
+                        <i class="bi bi-arrow-right"></i>
+                      </span>
                     </div>
+                  </div>
                   <!-- </div> -->
 
                   <!-- <div v-else>
@@ -136,7 +135,7 @@
                   id="modal-multi-flux"
                   hide-footer
                   v-model="showMultilateralModal"
-                  >
+                >
                   <template #header>
                     <div class="d-flex justify-content-between w-100">
                       <div>
@@ -437,12 +436,17 @@ export default {
       titleModalText: 1,
       switchOptions: [
         { id: "agreements", label: "OMC", value: false },
-        { id: "others", label: "Autres", value: 'other_omc' },
-        { id: "countries", label: "Les membres de l'OMC", value: 'country_member' },
-        { id: "celced", label: "CELCED", value: 'celced' },
-        { id: "onudi", label: "ONUDI", value: 'onudi' },
-        { id: "ompi", label: "OMPI", value: 'ompi' },
-        { id: "cv_international", label: "Convention Internationales", value: 'cv_international' },
+        {
+          id: "countries",
+          label: "Les membres de l'OMC",
+          value: "country_member",
+        },
+        { id: "others", label: "Autres", value: "other_omc" },
+        { id: "celced", label: "CELCED", value: "celced" },
+        { id: "onudi", label: "ONUDI", value: "onudi" },
+        { id: "ompi", label: "OMPI", value: "ompi" },
+        { id: "cnuced", label: "CNUCED", value: "cnuced" },
+        
       ],
 
       selectedCountry: {
@@ -471,7 +475,7 @@ export default {
       markers: [],
       sideComTitleList: [],
       regionalFilterMapData: [],
-      isRegionalSelectUseOnce: false
+      isRegionalSelectUseOnce: false,
     };
   },
 
@@ -735,8 +739,8 @@ export default {
       } else if (key === 2) {
         this.regionauxInput();
 
-        if(!this.isRegionalSelectUseOnce) {
-          this.getCountryInOrganizationById(this.retorgaSelectData[0]?.value)
+        if (!this.isRegionalSelectUseOnce) {
+          this.getCountryInOrganizationById(this.retorgaSelectData[0]?.value);
         }
 
         //ACTUALISER LA MAP AVEC LES PAYS DE LA DERNIERE ORGANISATION
@@ -752,12 +756,10 @@ export default {
           size: 5,
         });
       } else if (key === 4) {
-
         const link = document.createElement("a");
         link.href = "/file_comex_xlsx/etats-parties.xlsx";
         link.download = "etats-parties.xlsx";
         link.click();
-
       }
     },
 
@@ -774,7 +776,7 @@ export default {
     checkToPage(page) {
       this.currentPage = page;
 
-      if (this.isSwitchCountry) {
+      if (this.isSwitchCountry === "country_member") {
         this.$store.dispatch("getListOfOmc", {
           page: this.currentPage,
           size: 7,
@@ -790,38 +792,35 @@ export default {
     },
 
     toSwitchedCountry(value) {
-      console.log('====================================');
+      console.log("====================================");
       console.log("LA VALEUR DU SWTICH : ", value);
-      console.log('====================================');
+      console.log("====================================");
       this.isSwitchCountry = value;
       //CHANGER LE CONTENU DE LA PAGINATION AVEC LES PAYS MEMBRES
-      if (this.isSwitchCountry == 'country_member') {
-         window.open("https://www.wto.org/french/thewto_f/whatis_f/tif_f/org6_f.htm", "_blank");
+      if (this.isSwitchCountry == "country_member") {
+        window.open(
+          "https://www.wto.org/french/thewto_f/whatis_f/tif_f/org6_f.htm",
+          "_blank"
+        );
         // this.initListOfOmcsBlock();
-      } else if (this.isSwitchCountry == 'other_omc') {
-
-        this.typeOfAccordMulti = 'autres';
-
-        this.$store.dispatch("SearchAgreements", {
-          query: "multilateral",
-          institu: this.typeOfAccordMulti,
-          page: 0,
-          size: 5,
-        });
-
+        return;
       }
-      else {
-        this.typeOfAccordMulti = 'omc';
 
-        this.$store.dispatch("SearchAgreements", {
-          query: "multilateral",
-          institu: this.typeOfAccordMulti,
-          page: 0,
-          size: 5,
-        });
-        //CHANGER LE CONTENU DE LA PAGINATION AVEC LES ACCORDS MULTILATERAL
-        this.initMultilateralAgreement();
-      }
+      const institutionMap = {
+        other_omc: "autres",
+        celced: "celced",
+        onudi: "onudi",
+        ompi: "ompi",
+        cnuced: "cnuced",
+      };
+      this.typeOfAccordMulti = institutionMap[value] || "omc";
+
+      this.$store.dispatch("SearchAgreements", {
+        query: "multilateral",
+        institu: this.typeOfAccordMulti,
+        page: 0,
+        size: 5,
+      });
     },
 
     downloadFile(documentUrl) {
@@ -902,14 +901,14 @@ export default {
   }
 }
 
-.select-flux{
+.select-flux {
   width: 50%;
 }
 
 @media (max-width: 576px) {
-  .select-flux{
-  width: 100%;
-}
+  .select-flux {
+    width: 100%;
+  }
 }
 </style>
 

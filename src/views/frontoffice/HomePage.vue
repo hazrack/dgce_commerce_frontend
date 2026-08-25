@@ -18,7 +18,7 @@
                   class="ministre-photo"
                 />
                 <div class="ministre-badge">
-                  <span>Mr. Ibrahim Kalil Konaté </span>
+                  <span>Mr. Ibrahim Kalil KONATE </span>
                 </div>
               </div>
             </div>

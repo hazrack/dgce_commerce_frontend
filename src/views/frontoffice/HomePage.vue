@@ -37,7 +37,7 @@
                 </p>
                 <div class="ministre-signature">
                   <p class="signature-name">
-                    Le Ministre du Commerce et de l’Industrie
+                    Le Ministre du commerce, de l'industrie et de l'artisanat
                   </p>
                   <p class="signature-title">République de Côte d'Ivoire</p>
                 </div>

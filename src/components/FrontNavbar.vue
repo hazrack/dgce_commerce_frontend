@@ -12,7 +12,7 @@
               alt=""
             />
               </span> 
-               -  Ministère du Commerce et de l'Industrie  -  Bienvenue sur la plateforme de la Cartographie des Accords et des Flux Commerciaux
+               -  Ministère du commerce, de l'industrie et de l'artisanat  -  Bienvenue sur la plateforme de la Cartographie des Accords et des Flux Commerciaux
             </p>
           </div>
         </div>
@@ -25,8 +25,8 @@
             
 
             <img
-              src="../assets/icons/comexmap.png"
-              width="250"
+              src="../assets/icons/comexmap.jpeg"
+              width="210"
               class="normal-zone-img"
               alt=""
             />
@@ -43,7 +43,7 @@
             /> -->
 
             <img
-              src="../assets/images/mci.png"
+              src="../assets/icons/mci.jpeg"
               width="250"
               class="normal-zone-img"
               alt=""

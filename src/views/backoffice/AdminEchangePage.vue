@@ -89,6 +89,7 @@ import actionMixin from "../../mixins/actionMixin.js";
 import filterTableMixin from "../../mixins/filterTableMixin.js";
 import SearchInputComponent from "../../components/front/SearchInputComponent.vue";
 import Swal from "sweetalert2";
+import axios from "../../services/index.js";
 
 export default {
   data() {
@@ -204,21 +205,79 @@ export default {
     },
 
     submitFinalTradeData(url, method, datas) {
-      this.processRequest({
-        method,
-        url,
-        data: datas,
-        onSuccess: () => {
-          this.$store.dispatch("getTradeFlowCountryRanking", {
-            year: this.filterYear,
-            page: 0,
-            size: 12,
-          });
-        },
-      });
+      this.showSpinner = true;
+      this.loaderMessage = "Envoi du fichier en cours...";
+
+      axios[method](url, datas)
+        .then((response) => {
+          const jobId = response.data && response.data.jobId;
+          if (!jobId) {
+            // Compatibilité : réponse synchrone (ancien comportement)
+            this.showSpinner = false;
+            this.processAfterSuccess(() => {
+              this.$store.dispatch("getTradeFlowCountryRanking", {
+                year: this.filterYear,
+                page: 0,
+                size: 12,
+              });
+            });
+            return;
+          }
+
+          this.loaderMessage =
+            "Import en cours de traitement, cela peut prendre plusieurs minutes...";
+          this.pollImportStatus(jobId);
+        })
+        .catch((error) => {
+          this.showSpinner = false;
+          this.processError(error);
+        });
 
       this.isFileForm = false;
       this.defaultValues = {};
+    },
+
+    pollImportStatus(jobId) {
+      axios
+        .get(`/accesdb/import-db/status/${jobId}`)
+        .then((response) => {
+          const { status, message } = response.data;
+
+          if (status === "SUCCESS") {
+            this.showSpinner = false;
+            Swal.fire({
+              title: "Succès !",
+              text: message || "Import terminé avec succès.",
+              timer: 2500,
+              showConfirmButton: false,
+            });
+            this.$store.dispatch("getTradeFlowCountryRanking", {
+              year: this.filterYear,
+              page: 0,
+              size: 12,
+            });
+            return;
+          }
+
+          if (status === "FAILED") {
+            this.showSpinner = false;
+            Swal.fire({
+              title: "Erreur",
+              text: message || "L'import a échoué.",
+              icon: "error",
+              timer: 3000,
+              showConfirmButton: false,
+            });
+            return;
+          }
+
+          // PENDING ou IN_PROGRESS : on continue à interroger le serveur
+          setTimeout(() => this.pollImportStatus(jobId), 3000);
+        })
+        .catch((error) => {
+          this.showSpinner = false;
+          this.processError(error);
+        });
     },
   },
 

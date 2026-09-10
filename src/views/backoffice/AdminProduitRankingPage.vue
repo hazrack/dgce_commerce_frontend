@@ -26,7 +26,11 @@
     </div>
 
     <div class="block-table-list" v-if="tableData.length !== 0">
-      <TableComponent :table-data="tableData" :fields="tablefields" />
+      <TableComponent
+        :table-data="tableData"
+        :fields="tablefields"
+        :convert-total-amount-to-milliard="false"
+      />
     </div>
 
     <div v-else>
@@ -75,7 +79,7 @@ export default {
         { key: "rank", label: "RANG" },
         { key: "labelProduct", label: "PRODUIT" },
         { key: "totalAmount", label: "MONTANT (FCFA)" },
-        { key: "totalWeight", label: "POIDS (KG)" },
+        { key: "totalWeight", label: "POIDS (TONNE)" },
       ],
       currentPage: 0,
       totalPages: 1,

@@ -24,7 +24,7 @@
         {{ addSeparatorNumber(data.value) }}
       </template>
       <template #cell(totalAmount)="data">
-        {{ convertToMilliard(data.value) }}
+        {{ convertTotalAmountToMilliard ? convertToMilliard(data.value) : addSeparatorNumber(data.value) }}
       </template>
       <template #cell(exportWeight)="data">
         {{ convertKgToTonne(data.value) }}
@@ -99,6 +99,12 @@ export default {
     loginUserRole: {
       type: String,
       required: false,
+    },
+
+    convertTotalAmountToMilliard: {
+      type: Boolean,
+      required: false,
+      default: true,
     },
   },
 

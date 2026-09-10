@@ -27,11 +27,11 @@
                   <l-map
                     :zoom="2"
                     :center="[29, 0]"
+                    :attribution-control="false"
                     style="height: 500px; width: 100%"
                   >
                     <l-tile-layer
                       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                      attribution="&copy; OpenStreetMap contributors"
                     />
 
                     <l-marker
@@ -855,8 +855,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+
 .l-map {
   height: 100%;
+
 }
 
 .info-marque p {

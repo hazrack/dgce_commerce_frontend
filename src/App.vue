@@ -355,11 +355,8 @@ button.close:hover {
 }
 
 .label-orange {
-  color: #FF6B07;
+  color: #ff6b07;
 }
-
-
-
 
 #modal-simple-flux,
 #modal-multi-flux {
@@ -385,8 +382,6 @@ button.close:hover {
   }
 }
 
-
-
 #modal-global-form {
   .modal-dialog {
     max-width: 500px !important;
@@ -401,7 +396,6 @@ button.close:hover {
   }
 
   #header {
-    
     display: flex;
     justify-content: space-between;
 
@@ -432,9 +426,6 @@ button.close:hover {
   }
 }
 
-
-
-
 #user-modal-form {
   .modal-dialog {
     max-width: 1000px !important;
@@ -452,7 +443,6 @@ button.close:hover {
   }
 }
 
-
 .close-modal-icon {
   cursor: pointer;
   color: #333;
@@ -461,7 +451,6 @@ button.close:hover {
     color: #dc3545; /* Rouge au survol */
   }
 }
-
 
 p {
   font-size: 14px !important;
@@ -484,12 +473,12 @@ p {
     transition: all 0.2s ease;
 
     &:hover {
-      background-color: #FF6B07;
+      background-color: #ff6b07;
       color: #fff;
     }
 
     &:active {
-      background-color: #FF6B07;
+      background-color: #ff6b07;
     }
   }
 }
@@ -504,7 +493,7 @@ p {
   background: #fff;
 
   &:hover {
-    border-color: #FF6B07;
+    border-color: #ff6b07;
     cursor: pointer;
   }
 }
@@ -534,10 +523,9 @@ p {
   .line-title {
     text-transform: uppercase;
     &:hover {
-      color: #FF6B07;
+      color: #ff6b07;
     }
   }
-  
 }
 
 .detail-title {
@@ -589,9 +577,9 @@ p {
     }
   }
   .more-btn {
-    border-color: #FF6B07; // Vert plus foncé
+    border-color: #ff6b07; // Vert plus foncé
     &:hover {
-      background: #FF6B07;
+      background: #ff6b07;
       color: #fff;
       i {
         transform: scale(1.1);
@@ -627,7 +615,7 @@ p {
 
   .detail-hr {
     height: 7px;
-    background-color: #FF6B07;
+    background-color: #ff6b07;
     border: none;
     width: 25%;
     margin: 4px 0;
@@ -701,7 +689,6 @@ p {
   }
 }
 
-
 .btn-custom {
   display: inline-flex;
   align-items: center;
@@ -724,7 +711,6 @@ p {
     transform: scale(1.05);
   }
 }
-
 
 .simple-form-area {
   .simple-input {
@@ -799,9 +785,13 @@ p {
       transition: 0.3s;
     }
   }
-
 }
 
+.leaflet-control-container {
+  .leaflet-control-attribution {
+    display: none !important;
+  }
+}
 
 .block-trade-table {
   overflow-x: auto;
@@ -849,18 +839,15 @@ p {
   font-weight: bold !important;
 }
 
-
-
 //MOBILE NAVIGATION SLIDE
 
-
 .bm-burger-button {
-  .bm-burger-bars{
-      background-color: #fff !important;
+  .bm-burger-bars {
+    background-color: #fff !important;
   }
-  }
+}
 
-.bm-item-list{
+.bm-item-list {
   color: #fff !important;
 
   ul {
@@ -868,26 +855,20 @@ p {
     padding: 0;
     margin: 0;
   }
-
-  
 }
- .bm-item-list li.nav-item {
-    margin-bottom: 16px; /* plus d’espace sur petits écrans */
-  }
-
-  .bm-item-list a.nav-link {
-    font-size: 16px;
-    padding: 2px 12px;
-    display: block;
-  }
-.bm-cross{
-      width: 5px !important;
-    height: 25px !important;
+.bm-item-list li.nav-item {
+  margin-bottom: 16px; /* plus d’espace sur petits écrans */
 }
 
-
-
-
+.bm-item-list a.nav-link {
+  font-size: 16px;
+  padding: 2px 12px;
+  display: block;
+}
+.bm-cross {
+  width: 5px !important;
+  height: 25px !important;
+}
 
 /* ====================================== */
 /* STYLES SPÉCIFIQUES POUR VUE-SELECT */
@@ -913,14 +894,14 @@ p {
 /* Style principal pour v-select - SANS border supplémentaire */
 .v-select-custom {
   width: 100%;
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  
+  font-family: "Segoe UI", system-ui, sans-serif;
+
   /* Supprimer TOUTES les borders supplémentaires */
   border: none !important;
   box-shadow: none !important;
   border-radius: 0 !important;
   background: transparent !important;
-  
+
   /* Style du conteneur principal */
   .vs__dropdown-toggle {
     border: 2px solid #000 !important;
@@ -930,18 +911,18 @@ p {
     background-color: white;
     transition: all 0.3s ease;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    
+
     &:focus-within {
       outline: none;
       border-color: #c6183d;
       box-shadow: 0 0 0 3px rgba(198, 24, 61, 0.1);
-      
+
       + .vselect-label {
         color: #c6183d;
       }
     }
   }
-  
+
   /* Style du champ de recherche */
   .vs__search {
     margin: 0;
@@ -950,18 +931,18 @@ p {
     color: #111827;
     font-weight: bold;
     height: 28px;
-    
+
     &::placeholder {
       color: #9ca3af;
       font-weight: normal;
       opacity: 0.8;
     }
-    
+
     &:focus {
       outline: none;
     }
   }
-  
+
   /* Style des éléments sélectionnés */
   .vs__selected {
     margin: 2px 4px 2px 0;
@@ -973,30 +954,30 @@ p {
     font-weight: bold;
     font-size: 0.9rem;
   }
-  
+
   /* Style des actions (clear, dropdown) */
   .vs__actions {
     padding: 0 4px;
   }
-  
+
   .vs__clear {
     fill: #9ca3af;
-    
+
     &:hover {
       fill: #c6183d;
     }
   }
-  
+
   .vs__open-indicator {
     fill: #9ca3af;
     transform: scale(1.1);
     transition: transform 0.2s ease;
-    
+
     .vs--open & {
       transform: rotate(180deg) scale(1.1);
     }
   }
-  
+
   /* Style du dropdown menu */
   .vs__dropdown-menu {
     border: 2px solid #000;
@@ -1008,7 +989,7 @@ p {
     margin-top: -2px;
     z-index: 1000;
   }
-  
+
   /* Style des options du dropdown */
   .vs__dropdown-option {
     padding: 10px 12px;
@@ -1016,24 +997,24 @@ p {
     color: #111827;
     transition: all 0.2s ease;
     cursor: pointer;
-    
+
     &:hover {
       background-color: #fce7eb;
       color: #c6183d;
     }
-    
+
     &.vs__dropdown-option--highlight {
       background-color: #c6183d;
       color: white;
     }
-    
+
     &.vs__dropdown-option--selected {
       background-color: #f3f4f6;
       color: #111827;
       font-weight: bold;
     }
   }
-  
+
   /* Style pour "no options" */
   .vs__no-options {
     padding: 12px;
@@ -1071,11 +1052,11 @@ p {
 .vs__dropdown-option:first-child {
   font-weight: bold;
   color: #c6183d;
-  
+
   &:hover {
     background-color: rgba(198, 24, 61, 0.1);
   }
-  
+
   &.vs__dropdown-option--highlight {
     background-color: #c6183d;
     color: white;
@@ -1086,7 +1067,7 @@ p {
 .v-select-custom.vs--disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  
+
   .vs__dropdown-toggle {
     background-color: #f3f4f6;
   }
@@ -1099,19 +1080,19 @@ p {
       padding: 8px 10px;
       min-height: 44px;
     }
-    
+
     .vs__search {
       padding: 6px 4px;
       font-size: 1rem;
       height: 32px;
     }
-    
+
     .vs__selected {
       font-size: 1rem;
       padding: 6px 10px;
     }
   }
-  
+
   .vselect-label {
     top: -6px;
     font-size: 0.85rem;

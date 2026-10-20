@@ -32,3 +32,4 @@ coverage
 # Environments
 .env
 .env.*
+!.env.example
